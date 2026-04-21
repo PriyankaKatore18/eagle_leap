@@ -12,6 +12,7 @@ type IllustrationPanelProps = {
   items?: string[];
   dark?: boolean;
   className?: string;
+  mediaClassName?: string;
 };
 
 export function IllustrationPanel({
@@ -23,6 +24,7 @@ export function IllustrationPanel({
   items = [],
   dark = false,
   className,
+  mediaClassName,
 }: IllustrationPanelProps) {
   return (
     <div
@@ -33,13 +35,14 @@ export function IllustrationPanel({
       )}
     >
       <p className="text-sm font-semibold uppercase tracking-[0.28em] text-accent">{eyebrow}</p>
-      <h3 className={cn("mt-4 text-3xl font-extrabold leading-[1.08]", dark ? "text-white" : "text-primary")}>{title}</h3>
+      <h3 className={cn("mt-4 text-3xl font-extrabold leading-[1.18]", dark ? "text-white" : "text-primary")}>{title}</h3>
       {description ? <p className={cn("mt-4 text-base leading-relaxed", dark ? "text-white/80" : "text-muted-foreground")}>{description}</p> : null}
 
       <div
         className={cn(
           "relative mt-8 aspect-[4/5] overflow-hidden rounded-[1.75rem] border sm:aspect-[5/4] lg:aspect-[4/3]",
           dark ? "border-white/10 bg-white/5" : "border-border bg-secondary/80",
+          mediaClassName,
         )}
       >
         <Image

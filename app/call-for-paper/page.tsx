@@ -35,9 +35,31 @@ const FaqList = dynamic(() => import("@/components/site/faq-list").then((module)
 
 export const metadata = createMetadata({
   title: "Call for Paper",
-  description: "Submit your research paper, article, or book chapter for ongoing ISBN-based edited volumes with publication details, benefits, and submission flow.",
+  description:
+    "Submit your research paper, article, or book chapter for ongoing ISBN-based edited volumes with publication details, benefits, and submission flow.",
   path: "/call-for-paper",
 });
+
+const paperInfoCards = [
+  {
+    id: "subjects",
+    eyebrow: "Areas & Subjects Covered",
+    titleLines: ["Multidisciplinary", "Scope"],
+    items: paperSubjects,
+  },
+  {
+    id: "benefits",
+    eyebrow: "Benefits of Publishing",
+    titleLines: ["Author-Facing", "Value"],
+    items: paperBenefits,
+  },
+  {
+    id: "submission-guidelines",
+    eyebrow: "Submission Guidelines",
+    titleLines: ["Checklist", "Before Upload"],
+    items: paperGuidelines,
+  },
+] as const;
 
 export default function CallForPaperPage() {
   return (
@@ -92,30 +114,30 @@ export default function CallForPaperPage() {
 
       <section className="bg-secondary py-24">
         <div className="container-custom grid gap-6 lg:grid-cols-3">
-          <div className="card-reveal rounded-3xl bg-card p-8 shadow-card">
-            <SectionHeading eyebrow="Areas & Subjects Covered" title="Multidisciplinary scope" />
-            <div className="mt-6 space-y-3 text-muted-foreground">
-              {paperSubjects.map((subject) => (
-                <p key={subject}>• {subject}</p>
-              ))}
+          {paperInfoCards.map((card) => (
+            <div
+              key={card.id}
+              id={card.id === "submission-guidelines" ? "submission-guidelines" : undefined}
+              className="card-reveal flex h-full flex-col rounded-3xl bg-card p-8 shadow-card"
+            >
+              <p className="text-sm font-semibold uppercase tracking-[0.28em] text-accent">{card.eyebrow}</p>
+              <h2 className="mt-5 text-[2.2rem] font-extrabold leading-[1.12] text-primary md:text-[2.55rem]">
+                {card.titleLines.map((line) => (
+                  <span key={line} className="block">
+                    {line}
+                  </span>
+                ))}
+              </h2>
+              <div className="mt-8 space-y-4 text-muted-foreground">
+                {card.items.map((item) => (
+                  <div key={item} className="flex items-start gap-3">
+                    <span className="mt-2 h-2.5 w-2.5 shrink-0 rounded-full bg-accent" />
+                    <p className="text-lg leading-relaxed">{item}</p>
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
-          <div className="card-reveal rounded-3xl bg-card p-8 shadow-card">
-            <SectionHeading eyebrow="Benefits of Publishing" title="Author-facing value" />
-            <div className="mt-6 space-y-3 text-muted-foreground">
-              {paperBenefits.map((benefit) => (
-                <p key={benefit}>• {benefit}</p>
-              ))}
-            </div>
-          </div>
-          <div id="submission-guidelines" className="card-reveal rounded-3xl bg-card p-8 shadow-card">
-            <SectionHeading eyebrow="Submission Guidelines" title="Checklist before upload" />
-            <div className="mt-6 space-y-3 text-muted-foreground">
-              {paperGuidelines.map((guideline) => (
-                <p key={guideline}>• {guideline}</p>
-              ))}
-            </div>
-          </div>
+          ))}
         </div>
       </section>
 

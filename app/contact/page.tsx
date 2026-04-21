@@ -22,6 +22,8 @@ export const metadata = createMetadata({
 });
 
 export default function ContactPage() {
+  const mapQuery = encodeURIComponent(siteConfig.location);
+
   return (
     <SiteShell>
       <PageHero
@@ -34,7 +36,27 @@ export default function ContactPage() {
 
       <section className="py-24">
         <div className="container-custom grid gap-10 lg:grid-cols-[1fr_0.9fr]">
-          <ContactForm />
+          <div className="space-y-6">
+            <ContactForm />
+            <div className="overflow-hidden rounded-3xl border border-border bg-card shadow-card">
+              <div className="border-b border-border px-8 py-6">
+                <SectionHeading
+                  eyebrow="Visit Us"
+                  title="Find our office on Google Maps."
+                  description="Use the map for quick directions before you visit or call."
+                />
+              </div>
+              <iframe
+                title="Eagle Leap Publication Map"
+                src={`https://www.google.com/maps?q=${mapQuery}&z=13&output=embed`}
+                width="100%"
+                height="320"
+                style={{ border: 0 }}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
+          </div>
           <div className="space-y-6">
             <div className="card-reveal rounded-3xl border border-border bg-card p-8 shadow-card">
               <SectionHeading eyebrow="Contact Info" title="Reach Eagle Leap Publication directly." />
@@ -76,17 +98,9 @@ export default function ContactPage() {
               description="This helps the contact page feel like a proper business support channel rather than only a form block."
               items={contactResponsePoints}
               dark
+              className="h-auto p-6 md:p-8"
+              mediaClassName="mt-6 aspect-[16/11] sm:aspect-[16/10] lg:aspect-[16/10]"
             />
-            <div className="overflow-hidden rounded-3xl border border-border shadow-card">
-              <iframe
-                title="Eagle Leap Publication Map"
-                src="https://www.google.com/maps?q=Pune%2C%20Maharashtra&z=13&output=embed"
-                width="100%"
-                height="320"
-                style={{ border: 0 }}
-                loading="lazy"
-              />
-            </div>
           </div>
         </div>
       </section>

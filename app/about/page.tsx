@@ -68,7 +68,7 @@ export default function AboutPage() {
               <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(8,24,69,0.08)_0%,rgba(9,26,71,0.26)_34%,rgba(8,24,69,0.82)_100%)]" />
               <div className="absolute inset-x-0 bottom-0 p-6 text-white md:p-8">
                 <p className="text-xs font-semibold uppercase tracking-[0.32em] text-accent">Academic Publishing Identity</p>
-                <h2 className="mt-3 max-w-xl font-display text-3xl font-extrabold leading-[1.08] md:text-[2.35rem]">
+                <h2 className="mt-3 max-w-xl font-display text-3xl font-extrabold leading-[1.14] md:text-[2.35rem]">
                   A stronger visual story for trust, leadership, and academic credibility.
                 </h2>
                 <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/82">
@@ -90,7 +90,7 @@ export default function AboutPage() {
         <div className="container-custom grid gap-6 lg:grid-cols-2">
           <div className="card-reveal h-full rounded-3xl bg-card p-10 shadow-card">
             <Target className="h-12 w-12 text-accent" />
-            <h2 className="mt-6 text-3xl font-extrabold leading-[1.08] text-primary">Our Mission</h2>
+            <h2 className="mt-6 text-3xl font-extrabold leading-[1.14] text-primary">Our Mission</h2>
             <p className="mt-4 leading-relaxed text-muted-foreground">
               At Eagle Leap Publication, our mission is to simplify and professionalize the publishing process for
               authors, researchers, academicians, and institutions across India. We are committed to providing
@@ -100,7 +100,7 @@ export default function AboutPage() {
           </div>
           <div className="card-reveal h-full rounded-3xl bg-card p-10 shadow-card">
             <Telescope className="h-12 w-12 text-accent" />
-            <h2 className="mt-6 text-3xl font-extrabold leading-[1.08] text-primary">Our Vision</h2>
+            <h2 className="mt-6 text-3xl font-extrabold leading-[1.14] text-primary">Our Vision</h2>
             <p className="mt-4 leading-relaxed text-muted-foreground">
               Our vision is to establish Eagle Leap Publication as a trusted and recognized name in the field of
               academic and professional publishing in India. We aspire to build a comprehensive ecosystem that supports

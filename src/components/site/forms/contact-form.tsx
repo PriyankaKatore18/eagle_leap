@@ -7,6 +7,7 @@ import { toast } from "sonner";
 
 import { submitContact } from "@/lib/api";
 import { contactSchema, type ContactValues } from "@/schemas/forms";
+import { cn } from "@/lib/utils";
 
 import { Button } from "../../ui/button";
 import { Input } from "../../ui/input";
@@ -16,7 +17,11 @@ function ErrorText({ message }: { message?: string }) {
   return message ? <p className="mt-2 text-sm text-destructive">{message}</p> : null;
 }
 
-export function ContactForm() {
+type ContactFormProps = {
+  className?: string;
+};
+
+export function ContactForm({ className }: ContactFormProps) {
   const [isPending, startTransition] = useTransition();
   const form = useForm<ContactValues>({
     resolver: zodResolver(contactSchema),
@@ -42,7 +47,20 @@ export function ContactForm() {
   };
 
   return (
-    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5 rounded-3xl border border-border bg-card p-8 shadow-card">
+    <form
+      onSubmit={form.handleSubmit(onSubmit)}
+      className={cn("space-y-5 rounded-3xl border border-border bg-card p-8 shadow-card", className)}
+    >
+      <div className="max-w-2xl">
+        <p className="text-xs font-semibold uppercase tracking-[0.32em] text-accent">Enquire Now</p>
+        <h2 className="mt-3 text-3xl font-extrabold leading-[1.16] text-primary md:text-4xl">
+          Start a powerful conversation about your publishing goals.
+        </h2>
+        <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+          Share your requirement and our team will guide you on the right next step for book publishing, printing,
+          journal support, distribution, or store assistance.
+        </p>
+      </div>
       <div className="grid gap-5 md:grid-cols-2">
         <div>
           <label className="mb-2 block text-sm font-semibold text-primary">Full Name *</label>

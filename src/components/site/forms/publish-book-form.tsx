@@ -9,6 +9,7 @@ import { packagePlans } from "@/data/forms-data";
 import { siteConfig } from "@/data/site-config";
 import { submitPublishRequest } from "@/lib/api";
 import { publishBookSchema, type PublishBookValues } from "@/schemas/forms";
+import { cn } from "@/lib/utils";
 
 import { Button } from "../../ui/button";
 import { Input } from "../../ui/input";
@@ -18,7 +19,11 @@ function ErrorText({ message }: { message?: string }) {
   return message ? <p className="mt-2 text-sm text-destructive">{message}</p> : null;
 }
 
-export function PublishBookForm() {
+type PublishBookFormProps = {
+  className?: string;
+};
+
+export function PublishBookForm({ className }: PublishBookFormProps) {
   const [isPending, startTransition] = useTransition();
   const [file, setFile] = useState<File | null>(null);
   const form = useForm<PublishBookValues>({
@@ -65,7 +70,11 @@ export function PublishBookForm() {
   };
 
   return (
-    <form id="publish-book-form" onSubmit={form.handleSubmit(onSubmit)} className="space-y-5 rounded-3xl border border-border bg-card p-8 shadow-card">
+    <form
+      id="publish-book-form"
+      onSubmit={form.handleSubmit(onSubmit)}
+      className={cn("space-y-5 rounded-3xl border border-border bg-card p-8 shadow-card", className)}
+    >
       <div className="grid gap-5 lg:grid-cols-2">
         <div>
           <label className="mb-2 block text-sm font-semibold text-primary">Full Name *</label>

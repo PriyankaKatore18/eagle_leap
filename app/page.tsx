@@ -97,7 +97,7 @@ export default function HomePage() {
             <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(7,19,53,0.05)_0%,rgba(8,24,69,0.2)_34%,rgba(8,24,69,0.82)_100%)]" />
             <div className="absolute inset-x-0 bottom-0 p-6 text-white md:p-8">
               <p className="text-xs font-semibold uppercase tracking-[0.32em] text-accent">Why It Works</p>
-              <h2 className="mt-3 max-w-lg font-display text-3xl font-extrabold leading-[1.02] md:text-[2.2rem]">
+              <h2 className="mt-3 max-w-lg font-display text-3xl font-extrabold leading-[1.12] md:text-[2.2rem]">
                 Built for authors, researchers, institutions, and distribution partners.
               </h2>
               <p className="mt-4 max-w-xl text-sm leading-relaxed text-white/84 md:text-base">
@@ -162,7 +162,7 @@ export default function HomePage() {
               <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(8,18,45,0.12)_0%,rgba(10,27,71,0.68)_52%,rgba(9,23,61,0.92)_100%)]" />
               <div className="absolute inset-x-0 bottom-0 p-8 text-white md:p-10">
                 <p className="text-sm font-semibold uppercase tracking-[0.28em] text-accent">Publishing Showcase</p>
-                <h3 className="mt-4 max-w-xl text-3xl font-extrabold leading-tight md:text-4xl">
+                <h3 className="mt-4 max-w-xl text-3xl font-extrabold leading-[1.14] md:text-4xl">
                   Books, brand, and marketplace-ready presentation in one visual story.
                 </h3>
                 <p className="mt-4 max-w-2xl text-white/80">

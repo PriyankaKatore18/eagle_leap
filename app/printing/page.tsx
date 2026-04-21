@@ -31,6 +31,19 @@ const whyPrinting = [
   { icon: Palette, text: "Custom design support" },
 ];
 
+const printingEnquiryPoints = [
+  "Share quantity, deadline, and delivery location",
+  "Upload any sample artwork, ID format, or reference file",
+  "Get a practical quote for institutional or event printing",
+];
+
+const printingEnquiryChecklist = [
+  "Service type and approximate quantity",
+  "Required finish, size, or paper preference",
+  "Delivery timeline and destination",
+  "Reference design or sample document",
+];
+
 export default function PrintingPage() {
   return (
     <SiteShell>
@@ -79,7 +92,7 @@ export default function PrintingPage() {
           <div className="mt-14 grid gap-6 lg:grid-cols-4">
             {printingServices.map((service) => (
               <div key={service.title} className="card-reveal rounded-3xl bg-card p-8 shadow-card">
-                <h3 className="text-2xl font-bold leading-[1.08] text-primary">{service.title}</h3>
+                <h3 className="text-2xl font-bold leading-[1.14] text-primary">{service.title}</h3>
                 <div className="mt-5 space-y-3 text-muted-foreground">
                   {service.points.map((point) => (
                     <p key={point}>• {point}</p>
@@ -129,13 +142,63 @@ export default function PrintingPage() {
       </section>
 
       <section id="printing-enquiry" className="py-24">
-        <div className="container-custom grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
-          <div>
+        <div className="container-custom grid items-stretch gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+          <div className="flex h-full flex-col">
             <SectionHeading
               eyebrow="Printing Enquiry"
               title="Request a customized quote for your institution or event."
               description="The form is already prepared for API integration, file upload, and lead capture flow for the later backend step."
             />
+            <div className="mt-8 overflow-hidden rounded-[2rem] border border-border bg-card shadow-card">
+              <div className="relative aspect-[16/10] overflow-hidden">
+                <Image
+                  src={heroImages.printingFeature}
+                  alt="Professional printing support for institutional and event orders"
+                  fill
+                  sizes="(min-width: 1024px) 32vw, 100vw"
+                  className="object-cover object-center"
+                />
+                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(9,20,55,0.08)_0%,rgba(8,21,58,0.22)_45%,rgba(8,21,58,0.8)_100%)]" />
+                <div className="absolute inset-x-0 bottom-0 p-6 text-white">
+                  <p className="text-xs font-semibold uppercase tracking-[0.28em] text-accent">Quote Support</p>
+                  <h3 className="mt-3 text-2xl font-extrabold leading-[1.14] md:text-[2rem]">
+                    Clear requirements lead to faster, more accurate printing quotes.
+                  </h3>
+                </div>
+              </div>
+              <div className="space-y-8 p-6 md:p-8">
+                <div className="grid gap-4 sm:grid-cols-2">
+                  {whyPrinting.map((item) => (
+                    <div key={item.text} className="rounded-2xl border border-border bg-secondary/70 p-5">
+                      <item.icon className="h-6 w-6 text-accent" />
+                      <p className="mt-4 text-base font-semibold leading-relaxed text-primary">{item.text}</p>
+                    </div>
+                  ))}
+                </div>
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.28em] text-accent">What to Share</p>
+                  <div className="mt-4 grid gap-3">
+                    {printingEnquiryPoints.map((item) => (
+                      <div key={item} className="flex items-start gap-3 rounded-2xl border border-border bg-background px-4 py-4">
+                        <span className="mt-2 h-2.5 w-2.5 shrink-0 rounded-full bg-accent" />
+                        <p className="text-sm font-medium leading-relaxed text-primary">{item}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div className="rounded-[1.75rem] gradient-brand p-6 text-white">
+                  <p className="text-xs font-semibold uppercase tracking-[0.28em] text-accent">Best Results</p>
+                  <h3 className="mt-3 text-2xl font-extrabold leading-[1.14]">A complete brief helps us match pricing, materials, and delivery expectations.</h3>
+                  <div className="mt-5 grid gap-3 sm:grid-cols-2">
+                    {printingEnquiryChecklist.map((item) => (
+                      <div key={item} className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm font-medium text-white/90">
+                        {item}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
           <PrintingForm />
         </div>

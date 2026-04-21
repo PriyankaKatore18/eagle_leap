@@ -23,7 +23,7 @@ export function PublicationCard({ item }: { item: PublicationRecord }) {
           <span className="rounded-full bg-secondary px-3 py-1 text-xs font-semibold text-primary">{item.year}</span>
         </div>
         <div className="mt-4 min-h-[6.75rem]">
-          <h3 className="text-xl font-bold leading-[1.08] text-primary">{item.title}</h3>
+          <h3 className="text-xl font-bold leading-[1.14] text-primary">{item.title}</h3>
           <p className="mt-2 text-sm text-muted-foreground">{item.author}</p>
         </div>
         <p className="flex-1 text-sm leading-relaxed text-muted-foreground">{item.description}</p>

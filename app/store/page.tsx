@@ -26,6 +26,24 @@ export const metadata = createMetadata({
 });
 
 export default function StorePage() {
+  const ebookReadyCount = storeProducts.filter((item) => item.format === "Ebook" || item.format === "Both").length;
+  const printReadyCount = storeProducts.filter((item) => item.format === "Hard Copy" || item.format === "Both").length;
+  const startingPrice = Math.min(...storeProducts.map((item) => Number(item.price.replace(/[^0-9]/g, "")))).toLocaleString("en-IN");
+
+  const storeSnapshot = [
+    { icon: ShoppingBag, value: `${storeProducts.length}+`, label: "Titles ready to browse" },
+    { icon: Sparkles, value: `${storeCategoryHighlights.length}`, label: "Curated discovery categories" },
+    { icon: Shield, value: `${ebookReadyCount}+`, label: "Secure ebook-ready titles" },
+    { icon: Truck, value: `${printReadyCount}+`, label: "Print editions with delivery support" },
+  ];
+
+  const buyingSignals = [
+    "Category-led browsing for faster discovery",
+    "Protected reader access for digital formats",
+    "Institution-friendly hard copy ordering",
+    `Starting price from INR ${startingPrice}`,
+  ];
+
   return (
     <SiteShell>
       <PageHero
@@ -37,7 +55,7 @@ export default function StorePage() {
       />
 
       <section className="py-24">
-        <div className="container-custom grid items-center gap-10 lg:grid-cols-[0.95fr_1.05fr]">
+        <div className="container-custom grid items-start gap-10 lg:grid-cols-[0.95fr_1.05fr]">
           <div>
             <SectionHeading
               eyebrow="Storefront Experience"
@@ -51,6 +69,38 @@ export default function StorePage() {
               <Button asChild size="lg" variant="outline">
                 <Link href="#formats">Browse Ebooks</Link>
               </Button>
+            </div>
+            <div className="mt-10 rounded-[2rem] border border-border bg-card p-6 shadow-card md:p-8">
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.32em] text-accent">Store Snapshot</p>
+                  <h3 className="mt-3 text-2xl font-extrabold leading-[1.14] text-primary">
+                    Useful numbers for readers, libraries, and institutional buyers.
+                  </h3>
+                </div>
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl gradient-accent text-white">
+                  <ShoppingBag className="h-5 w-5" />
+                </div>
+              </div>
+              <div className="mt-6 grid gap-4 sm:grid-cols-2">
+                {storeSnapshot.map((item) => (
+                  <div key={item.label} className="rounded-3xl border border-border bg-secondary/70 p-5">
+                    <item.icon className="h-5 w-5 text-accent" />
+                    <p className="mt-4 text-3xl font-extrabold text-primary">{item.value}</p>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.label}</p>
+                  </div>
+                ))}
+              </div>
+              <div className="mt-6 grid gap-3 sm:grid-cols-2">
+                {buyingSignals.map((item) => (
+                  <div
+                    key={item}
+                    className="rounded-2xl border border-border bg-background px-4 py-3 text-sm font-medium text-primary"
+                  >
+                    {item}
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
           <IllustrationPanel
