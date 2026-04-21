@@ -1,3 +1,4 @@
+import Image from "next/image";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { CheckCircle2 } from "lucide-react";
@@ -25,6 +26,12 @@ export const metadata = createMetadata({
   path: "/publish-my-book",
 });
 
+const consultationSteps = [
+  "We review your manuscript details and recommended package fit",
+  "You receive guided consultation on ISBN, formatting, and listing",
+  "Our team aligns the launch plan, printing, and distribution support",
+];
+
 export default function PublishMyBookPage() {
   return (
     <SiteShell>
@@ -35,7 +42,7 @@ export default function PublishMyBookPage() {
       />
 
       <section className="py-24">
-        <div className="container-custom grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+        <div className="container-custom grid items-start gap-10 lg:grid-cols-[0.9fr_1.1fr]">
           <div className="space-y-8">
             <div className="rounded-3xl border border-border bg-card p-8 shadow-card">
               <SectionHeading
@@ -75,9 +82,48 @@ export default function PublishMyBookPage() {
               description="This visual block makes the page feel more premium while still keeping the package-led conversion path from the document."
               items={packagePlans.map((plan) => `${plan.name} - ${plan.price}`)}
               dark
+              className="h-auto p-6 md:p-8"
+              mediaClassName="mt-6 aspect-[16/9] sm:aspect-[16/10] lg:aspect-[16/9]"
             />
           </div>
-          <PublishBookForm />
+          <div className="space-y-8">
+            <PublishBookForm className="self-start" />
+            <div className="overflow-hidden rounded-3xl border border-border bg-card shadow-card">
+              <div className="relative aspect-[16/8] overflow-hidden">
+                <Image
+                  src={heroImages.homeEditorial}
+                  alt="Editorial support and publishing consultation"
+                  fill
+                  sizes="(min-width: 1024px) 42vw, 100vw"
+                  className="object-cover object-center"
+                />
+                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(8,20,59,0.08)_0%,rgba(8,20,59,0.28)_46%,rgba(8,20,59,0.85)_100%)]" />
+                <div className="absolute inset-x-0 bottom-0 p-6 text-white">
+                  <p className="text-xs font-semibold uppercase tracking-[0.28em] text-accent">Consultation Flow</p>
+                  <h3 className="mt-3 text-[2rem] font-extrabold leading-[1.24] md:text-[2.25rem]">
+                    Clear next steps after you submit your manuscript.
+                  </h3>
+                </div>
+              </div>
+              <div className="p-6 md:p-8">
+                <p className="text-sm font-semibold uppercase tracking-[0.28em] text-accent">What Happens Next</p>
+                <div className="mt-5 grid gap-4">
+                  {consultationSteps.map((item) => (
+                    <div key={item} className="flex items-start gap-3 rounded-2xl border border-border bg-secondary/70 px-4 py-4">
+                      <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-accent" />
+                      <p className="text-base font-medium leading-relaxed text-primary">{item}</p>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-6 rounded-[1.5rem] gradient-brand p-5 text-white">
+                  <p className="text-xs font-semibold uppercase tracking-[0.28em] text-accent">Author Support</p>
+                  <p className="mt-3 text-lg font-semibold leading-relaxed">
+                    Submission, consultation, package alignment, and publishing guidance now sit in one clean right-side block instead of leaving empty space.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </SiteShell>

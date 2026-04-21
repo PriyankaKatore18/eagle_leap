@@ -35,7 +35,7 @@ export function IllustrationPanel({
       )}
     >
       <p className="text-sm font-semibold uppercase tracking-[0.28em] text-accent">{eyebrow}</p>
-      <h3 className={cn("mt-4 text-3xl font-extrabold leading-[1.18]", dark ? "text-white" : "text-primary")}>{title}</h3>
+      <h3 className={cn("mt-4 text-[2.15rem] font-extrabold leading-[1.28] md:text-[2.45rem]", dark ? "text-white" : "text-primary")}>{title}</h3>
       {description ? <p className={cn("mt-4 text-base leading-relaxed", dark ? "text-white/80" : "text-muted-foreground")}>{description}</p> : null}
 
       <div

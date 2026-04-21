@@ -68,7 +68,7 @@
   h6 {
     font-family: var(--font-display), Georgia, serif;
     @apply font-bold tracking-tight;
-    line-height: 1.08;
+    line-height: 1.28;
     text-wrap: balance;
   }
 

@@ -81,19 +81,19 @@ export function HomeHeroCarousel() {
           <div className="absolute inset-x-[12%] bottom-10 h-28 rounded-full bg-accent/35 blur-3xl" />
           <div className="absolute right-[10%] top-[6%] h-44 w-44 rounded-full bg-white/12 blur-3xl" />
 
-          <div className="absolute right-[8%] top-[2%] z-20 w-[46%] rotate-[4deg] rounded-[2rem] border border-white/30 bg-white p-5 shadow-[0_36px_90px_-34px_rgba(15,23,42,0.75)] sm:w-[42%]">
+          <div className="absolute right-[5%] top-[1%] z-20 w-[47%] rotate-[5deg] rounded-[2rem] border border-white/30 bg-white p-5 shadow-[0_36px_90px_-34px_rgba(15,23,42,0.75)] sm:w-[43%]">
             <div className="relative aspect-[4/5] overflow-hidden rounded-[1.35rem]">
               <Image src={featuredBooks[0].cover} alt={featuredBooks[0].title} fill sizes="(min-width: 1024px) 18vw, 42vw" className="object-cover" />
             </div>
           </div>
 
-          <div className="absolute left-[10%] top-[25%] z-10 w-[30%] -rotate-[8deg] rounded-[2rem] border border-white/30 bg-white p-5 shadow-[0_36px_90px_-34px_rgba(15,23,42,0.85)] sm:w-[26%]">
+          <div className="absolute left-[0%] top-[20%] z-10 w-[34%] -rotate-[11deg] rounded-[2rem] border border-white/30 bg-white p-5 shadow-[0_36px_90px_-34px_rgba(15,23,42,0.85)] sm:w-[30%]">
             <div className="relative aspect-[4/5] overflow-hidden rounded-[1.35rem]">
               <Image src={featuredBooks[1].cover} alt={featuredBooks[1].title} fill sizes="(min-width: 1024px) 16vw, 38vw" className="object-cover" />
             </div>
           </div>
 
-          <div className="absolute bottom-[3%] left-[12%] right-[4%] z-0 rounded-[1.5rem] border border-white/15 bg-white/10 px-5 py-4 text-white backdrop-blur-md shadow-[0_20px_60px_-28px_rgba(15,23,42,0.85)]">
+          <div className="absolute bottom-[2%] left-[20%] right-[2%] z-0 rounded-[1.5rem] border border-white/15 bg-white/10 px-5 py-4 text-white backdrop-blur-md shadow-[0_20px_60px_-28px_rgba(15,23,42,0.85)]">
             <p className="text-xs font-semibold uppercase tracking-[0.28em] text-accent">{hero.panelEyebrow}</p>
             <p className="mt-3 max-w-[18rem] text-sm font-semibold leading-relaxed text-white">{hero.panelTitle}</p>
             <div className="mt-3 space-y-2 text-sm text-white/88">

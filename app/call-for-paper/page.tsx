@@ -121,7 +121,7 @@ export default function CallForPaperPage() {
               className="card-reveal flex h-full flex-col rounded-3xl bg-card p-8 shadow-card"
             >
               <p className="text-sm font-semibold uppercase tracking-[0.28em] text-accent">{card.eyebrow}</p>
-              <h2 className="mt-5 text-[2.2rem] font-extrabold leading-[1.12] text-primary md:text-[2.55rem]">
+              <h2 className="mt-5 text-[2.2rem] font-extrabold leading-[1.26] text-primary md:text-[2.55rem]">
                 {card.titleLines.map((line) => (
                   <span key={line} className="block">
                     {line}

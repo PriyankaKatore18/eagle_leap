@@ -58,7 +58,7 @@ export function PageHero({
             </span>
           ))}
         </nav>
-        <h1 className="mt-4 text-4xl font-extrabold leading-[1.18] text-white md:text-5xl lg:text-6xl">{title}</h1>
+        <h1 className="mt-4 text-[2.4rem] font-extrabold leading-[1.3] text-white md:text-[3rem] lg:text-[3.6rem]">{title}</h1>
         {subtitle ? <p className="mt-4 max-w-3xl text-lg text-white/80">{subtitle}</p> : null}
       </div>
     </section>

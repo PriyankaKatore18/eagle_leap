@@ -53,7 +53,7 @@ export function ContactForm({ className }: ContactFormProps) {
     >
       <div className="max-w-2xl">
         <p className="text-xs font-semibold uppercase tracking-[0.32em] text-accent">Enquire Now</p>
-        <h2 className="mt-3 text-3xl font-extrabold leading-[1.16] text-primary md:text-4xl">
+        <h2 className="mt-3 text-[2.1rem] font-extrabold leading-[1.28] text-primary md:text-[2.45rem]">
           Start a powerful conversation about your publishing goals.
         </h2>
         <p className="mt-4 text-base leading-relaxed text-muted-foreground">
