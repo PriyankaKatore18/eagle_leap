@@ -127,14 +127,14 @@ export function WhatsAppFloat() {
   };
 
   return (
-    <div className="fixed bottom-4 right-4 z-50 flex max-w-[calc(100vw-1rem)] flex-col items-end gap-3 sm:bottom-6 sm:right-6">
+    <div className="fixed bottom-3 right-3 z-50 flex max-w-[calc(100vw-0.75rem)] flex-col items-end gap-3 sm:bottom-6 sm:right-6 sm:max-w-[calc(100vw-1.5rem)]">
       {isOpen ? (
         <section
           aria-label="Publishing assistant"
-          className="w-[min(24rem,calc(100vw-1rem))] overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white shadow-[0_32px_90px_-30px_rgba(15,23,42,0.45)]"
+          className="mb-1 flex max-h-[calc(100dvh-6.5rem)] min-h-0 w-[min(23.25rem,calc(100vw-0.75rem))] flex-col overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white shadow-[0_32px_90px_-30px_rgba(15,23,42,0.45)] sm:max-h-[calc(100dvh-7.5rem)] sm:w-[24rem]"
           role="dialog"
         >
-          <div className="bg-[linear-gradient(135deg,#1d4ed8_0%,#1e40af_55%,#2563eb_100%)] px-5 py-4 text-white">
+          <div className="shrink-0 bg-[linear-gradient(135deg,#1d4ed8_0%,#1e40af_55%,#2563eb_100%)] px-4 py-3.5 text-white sm:px-5 sm:py-4">
             <div className="flex items-start justify-between gap-3">
               <div>
                 <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-white/90">
@@ -159,7 +159,7 @@ export function WhatsAppFloat() {
             </div>
           </div>
 
-          <div className="max-h-[min(72vh,36rem)] space-y-4 overflow-y-auto bg-white p-4 sm:p-5">
+          <div className="min-h-0 flex-1 space-y-4 overflow-y-auto overscroll-contain bg-white p-4 sm:p-5">
             <div>
               <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-accent">Choose a topic</p>
               <div className="mt-3 grid gap-2 sm:grid-cols-2">
