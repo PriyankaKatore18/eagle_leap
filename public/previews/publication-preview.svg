@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1600" viewBox="0 0 1200 1600" fill="none">
+  <rect width="1200" height="1600" fill="#F4F7FB"/>
+  <rect x="84" y="84" width="1032" height="1432" rx="36" fill="white" stroke="#D8E1EE" stroke-width="8"/>
+  <rect x="132" y="132" width="936" height="180" rx="28" fill="#18377D"/>
+  <text x="172" y="212" fill="#FF8A2D" font-family="Georgia, serif" font-size="34" font-weight="700" letter-spacing="8">PUBLICATION PREVIEW</text>
+  <text x="172" y="274" fill="white" font-family="Georgia, serif" font-size="64" font-weight="700">Eagle Leap Publication</text>
+  <rect x="132" y="364" width="936" height="2" fill="#E5EBF3"/>
+  <text x="172" y="442" fill="#18377D" font-family="Georgia, serif" font-size="48" font-weight="700">Abstract & Publication Overview</text>
+  <text x="172" y="514" fill="#5B677A" font-family="Arial, sans-serif" font-size="28">Structured publication summary, author details, and preview-ready reading layout.</text>
+  <rect x="172" y="584" width="856" height="24" rx="12" fill="#E8EEF7"/>
+  <rect x="172" y="636" width="824" height="24" rx="12" fill="#E8EEF7"/>
+  <rect x="172" y="688" width="848" height="24" rx="12" fill="#E8EEF7"/>
+  <rect x="172" y="740" width="770" height="24" rx="12" fill="#E8EEF7"/>
+  <text x="172" y="864" fill="#18377D" font-family="Georgia, serif" font-size="42" font-weight="700">Publication Metadata</text>
+  <rect x="172" y="908" width="412" height="188" rx="24" fill="#F6F8FC" stroke="#E0E7F2"/>
+  <rect x="616" y="908" width="412" height="188" rx="24" fill="#F6F8FC" stroke="#E0E7F2"/>
+  <rect x="172" y="1128" width="412" height="188" rx="24" fill="#F6F8FC" stroke="#E0E7F2"/>
+  <rect x="616" y="1128" width="412" height="188" rx="24" fill="#F6F8FC" stroke="#E0E7F2"/>
+  <text x="212" y="986" fill="#7A879A" font-family="Arial, sans-serif" font-size="22" letter-spacing="3">AUTHOR</text>
+  <text x="212" y="1044" fill="#18377D" font-family="Georgia, serif" font-size="36" font-weight="700">Professional Author Profile</text>
+  <text x="656" y="986" fill="#7A879A" font-family="Arial, sans-serif" font-size="22" letter-spacing="3">ISBN</text>
+  <text x="656" y="1044" fill="#18377D" font-family="Georgia, serif" font-size="36" font-weight="700">Registered Publication ID</text>
+  <text x="212" y="1206" fill="#7A879A" font-family="Arial, sans-serif" font-size="22" letter-spacing="3">DATE</text>
+  <text x="212" y="1264" fill="#18377D" font-family="Georgia, serif" font-size="36" font-weight="700">Official Publication Release</text>
+  <text x="656" y="1206" fill="#7A879A" font-family="Arial, sans-serif" font-size="22" letter-spacing="3">TYPE</text>
+  <text x="656" y="1264" fill="#18377D" font-family="Georgia, serif" font-size="36" font-weight="700">Book / Paper / Edited Volume</text>
+  <text x="600" y="1508" fill="#C9D5E5" font-family="Arial, sans-serif" font-size="26" text-anchor="middle">Preview document for Eagle Leap Publication detail page</text>
+</svg>

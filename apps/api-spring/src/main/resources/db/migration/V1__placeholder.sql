@@ -1,0 +1,3 @@
+-- Spring Boot reference migration note.
+-- Apply the production MySQL schema from database/mysql/schema.sql
+-- and seed data from database/mysql/seed.sql for the shared Eagle Leap schema.

@@ -1,0 +1,60 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "es2022"
+    ],
+    "allowJs": true,
+    "baseUrl": ".",
+    "esModuleInterop": true,
+    "incremental": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "noImplicitAny": false,
+    "noEmit": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    },
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "strictNullChecks": false,
+    "strict": false
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "apps/**/*",
+    "src/App.tsx",
+    "src/main.tsx",
+    "src/pages/**/*",
+    "src/components/AnimatedCounter.tsx",
+    "src/components/Breadcrumb.tsx",
+    "src/components/Footer.tsx",
+    "src/components/Header.tsx",
+    "src/components/Layout.tsx",
+    "src/components/Logo.tsx",
+    "src/components/NavLink.tsx",
+    "src/components/PageBanner.tsx",
+    "src/components/WhatsAppButton.tsx",
+    "src/contexts/**/*",
+    "src/hooks/useReveal.ts"
+  ]
+}

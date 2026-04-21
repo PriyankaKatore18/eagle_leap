@@ -1,0 +1,63 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="130" y1="80" x2="1020" y2="860" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0F2D68"/>
+      <stop offset="1" stop-color="#1C4AA8"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="279" y1="203" x2="895" y2="741" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF" stop-opacity="0.92"/>
+      <stop offset="1" stop-color="#EAF1FF"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="747" y1="191" x2="971" y2="348" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FDBA2D"/>
+      <stop offset="1" stop-color="#F47D1F"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" rx="48" fill="url(#bg)"/>
+  <circle cx="1002" cy="131" r="117" fill="#F59E0B" fill-opacity="0.12"/>
+  <circle cx="201" cy="738" r="154" fill="#FFFFFF" fill-opacity="0.08"/>
+  <rect x="140" y="133" width="920" height="634" rx="36" fill="url(#panel)"/>
+  <rect x="198" y="196" width="602" height="387" rx="26" fill="#163B82"/>
+  <rect x="232" y="230" width="534" height="319" rx="18" fill="#EFF4FF"/>
+  <rect x="264" y="258" width="186" height="129" rx="16" fill="#E0EAFF"/>
+  <rect x="287" y="284" width="92" height="12" rx="6" fill="#1C4AA8"/>
+  <rect x="287" y="309" width="126" height="10" rx="5" fill="#7E94C1"/>
+  <rect x="287" y="333" width="97" height="10" rx="5" fill="#7E94C1"/>
+  <rect x="287" y="359" width="136" height="10" rx="5" fill="#7E94C1"/>
+  <rect x="478" y="258" width="256" height="129" rx="16" fill="#0F2D68"/>
+  <path d="M523 349L571 302L615 331L661 282L709 322" stroke="#FDBA2D" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="523" cy="349" r="10" fill="#FDBA2D"/>
+  <circle cx="571" cy="302" r="10" fill="#FDBA2D"/>
+  <circle cx="615" cy="331" r="10" fill="#FDBA2D"/>
+  <circle cx="661" cy="282" r="10" fill="#FDBA2D"/>
+  <circle cx="709" cy="322" r="10" fill="#FDBA2D"/>
+  <rect x="264" y="419" width="470" height="102" rx="18" fill="#FFFFFF"/>
+  <rect x="291" y="445" width="152" height="13" rx="6.5" fill="#163B82"/>
+  <rect x="291" y="472" width="236" height="11" rx="5.5" fill="#90A4CE"/>
+  <rect x="291" y="495" width="188" height="11" rx="5.5" fill="#90A4CE"/>
+  <rect x="783" y="192" width="210" height="166" rx="28" fill="url(#accent)"/>
+  <rect x="820" y="232" width="94" height="12" rx="6" fill="#FFF5DB"/>
+  <rect x="820" y="258" width="131" height="12" rx="6" fill="#FFF5DB"/>
+  <rect x="820" y="286" width="74" height="62" rx="14" fill="#FFF5DB"/>
+  <path d="M835 331L859 308L874 320L897 294" stroke="#F47D1F" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="808" y="415" width="215" height="118" rx="24" fill="#0F2D68"/>
+  <rect x="840" y="448" width="120" height="11" rx="5.5" fill="#D9E5FF"/>
+  <rect x="840" y="472" width="151" height="11" rx="5.5" fill="#8AA4D6"/>
+  <rect x="840" y="496" width="97" height="11" rx="5.5" fill="#8AA4D6"/>
+  <rect x="206" y="635" width="252" height="86" rx="24" fill="#FFFFFF"/>
+  <circle cx="260" cy="678" r="22" fill="#E7EEFF"/>
+  <path d="M248 678L257 687L274 669" stroke="#F59E0B" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="297" y="657" width="122" height="12" rx="6" fill="#163B82"/>
+  <rect x="297" y="682" width="94" height="10" rx="5" fill="#90A4CE"/>
+  <rect x="484" y="635" width="252" height="86" rx="24" fill="#FFFFFF"/>
+  <circle cx="538" cy="678" r="22" fill="#E7EEFF"/>
+  <rect x="524" y="664" width="28" height="28" rx="8" fill="#1C4AA8"/>
+  <rect x="575" y="657" width="122" height="12" rx="6" fill="#163B82"/>
+  <rect x="575" y="682" width="110" height="10" rx="5" fill="#90A4CE"/>
+  <rect x="762" y="635" width="252" height="86" rx="24" fill="#FFFFFF"/>
+  <circle cx="816" cy="678" r="22" fill="#E7EEFF"/>
+  <path d="M806 686H826" stroke="#F59E0B" stroke-width="7" stroke-linecap="round"/>
+  <path d="M816 676V696" stroke="#F59E0B" stroke-width="7" stroke-linecap="round"/>
+  <rect x="853" y="657" width="122" height="12" rx="6" fill="#163B82"/>
+  <rect x="853" y="682" width="101" height="10" rx="5" fill="#90A4CE"/>
+</svg>

@@ -1,0 +1,17 @@
+export {
+  buildRedirectPath,
+  createDemoUser,
+  demoUsers,
+  findDemoUser,
+  findDemoUserById,
+  getDemoUsers,
+  getRegisteredPublicUsers,
+  getTestingFixtures,
+  hasDemoUser,
+  resetDemoUsers,
+  sanitizeDemoUser,
+  type DemoAuthRole,
+  type DemoSessionUser,
+  type DemoUser,
+  type PublicAuthRole,
+} from "@/lib/demo-auth";

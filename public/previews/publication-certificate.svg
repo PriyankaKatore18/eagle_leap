@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" fill="none">
+  <rect width="1200" height="900" fill="#0F2B66"/>
+  <rect x="48" y="48" width="1104" height="804" rx="34" fill="#FFF9ED" stroke="#F4C16B" stroke-width="10"/>
+  <rect x="84" y="84" width="1032" height="732" rx="26" stroke="#1A3778" stroke-width="4" stroke-dasharray="18 10"/>
+  <text x="600" y="190" fill="#F28A2E" font-family="Arial, sans-serif" font-size="24" font-weight="700" letter-spacing="8" text-anchor="middle">EAGLE LEAP PUBLICATION</text>
+  <text x="600" y="288" fill="#18377D" font-family="Georgia, serif" font-size="72" font-weight="700" text-anchor="middle">Certificate of Publication</text>
+  <text x="600" y="370" fill="#5F6E82" font-family="Arial, sans-serif" font-size="28" text-anchor="middle">Presented in recognition of publication, authorship, and academic contribution.</text>
+  <rect x="240" y="430" width="720" height="2" fill="#E2C585"/>
+  <text x="600" y="520" fill="#18377D" font-family="Georgia, serif" font-size="54" font-weight="700" text-anchor="middle">Recognized Author / Research Contributor</text>
+  <text x="600" y="592" fill="#5F6E82" font-family="Arial, sans-serif" font-size="28" text-anchor="middle">Issued with publication acknowledgment and certificate-ready presentation.</text>
+  <rect x="162" y="676" width="260" height="88" rx="20" fill="#FFFFFF" stroke="#D9E0EA"/>
+  <rect x="470" y="676" width="260" height="88" rx="20" fill="#FFFFFF" stroke="#D9E0EA"/>
+  <rect x="778" y="676" width="260" height="88" rx="20" fill="#FFFFFF" stroke="#D9E0EA"/>
+  <text x="292" y="724" fill="#8190A5" font-family="Arial, sans-serif" font-size="18" letter-spacing="3" text-anchor="middle">DATE</text>
+  <text x="292" y="753" fill="#18377D" font-family="Georgia, serif" font-size="28" font-weight="700" text-anchor="middle">Publication Day</text>
+  <text x="600" y="724" fill="#8190A5" font-family="Arial, sans-serif" font-size="18" letter-spacing="3" text-anchor="middle">ISSUER</text>
+  <text x="600" y="753" fill="#18377D" font-family="Georgia, serif" font-size="28" font-weight="700" text-anchor="middle">Eagle Leap Publication</text>
+  <text x="908" y="724" fill="#8190A5" font-family="Arial, sans-serif" font-size="18" letter-spacing="3" text-anchor="middle">STATUS</text>
+  <text x="908" y="753" fill="#18377D" font-family="Georgia, serif" font-size="28" font-weight="700" text-anchor="middle">Verified</text>
+</svg>
