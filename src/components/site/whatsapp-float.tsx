@@ -62,6 +62,9 @@ function createInitialForm(): ChatFormState {
   };
 }
 
+const actionButtonClass =
+  "inline-flex h-11 items-center justify-center gap-2 rounded-[1rem] border border-slate-200 bg-slate-50 px-4 text-sm font-semibold text-primary hover:border-accent/35 hover:bg-accent/10";
+
 export function WhatsAppFloat() {
   const [isOpen, setIsOpen] = useState(false);
   const [isPending, startTransition] = useTransition();
@@ -128,44 +131,37 @@ export function WhatsAppFloat() {
       {isOpen ? (
         <section
           aria-label="Publishing assistant"
-          className="w-[min(26rem,calc(100vw-1rem))] overflow-hidden rounded-[1.75rem] border border-border bg-background shadow-[0_28px_90px_-26px_rgba(15,23,42,0.45)]"
+          className="w-[min(24rem,calc(100vw-1rem))] overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white shadow-[0_32px_90px_-30px_rgba(15,23,42,0.45)]"
           role="dialog"
         >
-          <div className="gradient-brand px-5 py-5 text-white">
-            <div className="flex items-start justify-between gap-4">
+          <div className="bg-[linear-gradient(135deg,#1d4ed8_0%,#1e40af_55%,#2563eb_100%)] px-5 py-4 text-white">
+            <div className="flex items-start justify-between gap-3">
               <div>
-                <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-white/90">
+                <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-white/90">
                   <Sparkles className="h-3.5 w-3.5 text-accent" />
                   Live publishing help
                 </div>
-                <h3 className="mt-3 text-[1.9rem] font-extrabold leading-[1.12] text-white">Chat with Eagle Leap</h3>
-                <p className="mt-2 max-w-sm text-sm leading-relaxed text-white/80">
-                  Ask about book publishing, ISBN support, printing, or paper submission and we will guide you to the right next step.
+                <div className="mt-3 font-sans text-[1.3rem] font-extrabold leading-[1.15] tracking-[-0.02em] text-white">
+                  Chat with Eagle Leap
+                </div>
+                <p className="mt-2 max-w-sm text-[0.95rem] leading-relaxed text-white/85">
+                  Ask about book publishing, ISBN support, printing, or paper submission and we will guide you to the next step.
                 </p>
               </div>
               <button
                 type="button"
                 aria-label="Close chat"
                 onClick={() => setIsOpen(false)}
-                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white/90 hover:bg-white/20"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white/90 hover:bg-white/20"
               >
-                <X className="h-5 w-5" />
+                <X className="h-4.5 w-4.5" />
               </button>
             </div>
           </div>
 
-          <div className="max-h-[min(70vh,42rem)] space-y-5 overflow-y-auto bg-background p-4 sm:p-5">
-            <div className="space-y-3">
-              <div className="max-w-[88%] rounded-2xl rounded-bl-md bg-secondary px-4 py-3 text-sm leading-relaxed text-primary shadow-soft">
-                Hi, I am your publishing assistant. Tell me what you want to do and I will point you in the right direction.
-              </div>
-              <div className="max-w-[88%] rounded-2xl rounded-bl-md bg-secondary px-4 py-3 text-sm leading-relaxed text-primary shadow-soft">
-                Most visitors ask us about publishing a book, printing college material, journal help, or submitting a paper.
-              </div>
-            </div>
-
+          <div className="max-h-[min(72vh,36rem)] space-y-4 overflow-y-auto bg-white p-4 sm:p-5">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-accent">Choose a topic</p>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-accent">Choose a topic</p>
               <div className="mt-3 grid gap-2 sm:grid-cols-2">
                 {quickTopics.map((topic) => {
                   const Icon = topic.icon;
@@ -177,8 +173,10 @@ export function WhatsAppFloat() {
                       type="button"
                       onClick={() => handleTopicSelect(topic.service)}
                       className={cn(
-                        "rounded-2xl border px-3 py-3 text-left shadow-soft transition-smooth",
-                        isActive ? "border-accent bg-accent/10 text-primary" : "border-border bg-card text-primary hover:border-accent/50 hover:bg-secondary",
+                        "rounded-[1.35rem] border px-3.5 py-3.5 text-left shadow-[0_10px_24px_-18px_rgba(15,23,42,0.24)] transition-smooth",
+                        isActive
+                          ? "border-accent bg-orange-50 text-primary"
+                          : "border-slate-200 bg-white text-primary hover:border-accent/40 hover:bg-slate-50",
                       )}
                     >
                       <span className="flex items-center gap-2 text-sm font-semibold">
@@ -192,13 +190,13 @@ export function WhatsAppFloat() {
               </div>
             </div>
 
-            <div className="rounded-3xl border border-border bg-card p-4 shadow-soft">
+            <div className="rounded-[1.7rem] border border-slate-200 bg-white p-4 shadow-[0_16px_30px_-24px_rgba(15,23,42,0.35)]">
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.24em] text-accent">Recommended page</p>
-                  <p className="mt-2 text-base font-semibold text-primary">{activeTopic.label}</p>
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-accent">Recommended page</p>
+                  <p className="mt-2 text-[1.05rem] font-semibold text-primary">{activeTopic.label}</p>
                 </div>
-                <Button asChild variant="ghost" size="sm" className="h-9 px-3 text-primary">
+                <Button asChild variant="ghost" size="sm" className="h-9 rounded-full px-3 text-primary hover:bg-slate-100">
                   <Link href={activeTopic.href}>
                     Open
                     <ArrowRight className="h-4 w-4" />
@@ -212,23 +210,23 @@ export function WhatsAppFloat() {
                 href={whatsappHref}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex h-12 items-center justify-center gap-2 rounded-2xl border border-border bg-secondary px-4 text-sm font-semibold text-primary hover:border-accent/40 hover:bg-accent/10"
+                className={actionButtonClass}
               >
                 <MessageCircle className="h-4 w-4 text-accent" />
                 WhatsApp
               </a>
               <a
                 href={telHref}
-                className="inline-flex h-12 items-center justify-center gap-2 rounded-2xl border border-border bg-secondary px-4 text-sm font-semibold text-primary hover:border-accent/40 hover:bg-accent/10"
+                className={actionButtonClass}
               >
                 <Phone className="h-4 w-4 text-accent" />
                 Call us
               </a>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-4 rounded-[1.5rem] border border-border bg-card p-4 shadow-soft">
+            <form onSubmit={handleSubmit} className="space-y-4 rounded-[1.6rem] border border-slate-200 bg-slate-50/70 p-4 shadow-[0_16px_30px_-24px_rgba(15,23,42,0.35)]">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-accent">Start the conversation</p>
+                <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-accent">Start the conversation</p>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                   Share your details and requirement. We will follow up with the right package, submission path, or consultation.
                 </p>
@@ -239,14 +237,14 @@ export function WhatsAppFloat() {
                   value={form.name}
                   onChange={(event) => setForm((current) => ({ ...current, name: event.target.value }))}
                   placeholder="Full name"
-                  className="h-11 rounded-xl"
+                  className="h-11 rounded-[1rem] border-slate-200 bg-white shadow-none"
                 />
                 <Input
                   type="email"
                   value={form.email}
                   onChange={(event) => setForm((current) => ({ ...current, email: event.target.value }))}
                   placeholder="Email address"
-                  className="h-11 rounded-xl"
+                  className="h-11 rounded-[1rem] border-slate-200 bg-white shadow-none"
                 />
               </div>
 
@@ -255,9 +253,9 @@ export function WhatsAppFloat() {
                   value={form.phone}
                   onChange={(event) => setForm((current) => ({ ...current, phone: event.target.value }))}
                   placeholder="Mobile number"
-                  className="h-11 rounded-xl"
+                  className="h-11 rounded-[1rem] border-slate-200 bg-white shadow-none"
                 />
-                <div className="inline-flex h-11 items-center justify-center rounded-xl border border-accent/25 bg-accent/10 px-4 text-sm font-semibold text-accent">
+                <div className="inline-flex h-11 items-center justify-start rounded-[1rem] border border-accent/25 bg-orange-50 px-4 text-sm font-semibold text-accent sm:justify-center">
                   {form.service}
                 </div>
               </div>
@@ -265,12 +263,12 @@ export function WhatsAppFloat() {
               <Textarea
                 value={form.message}
                 onChange={(event) => setForm((current) => ({ ...current, message: event.target.value }))}
-                rows={4}
+                rows={3}
                 placeholder="Tell us what you need help with..."
-                className="rounded-2xl"
+                className="rounded-[1.2rem] border-slate-200 bg-white shadow-none"
               />
 
-              <Button type="submit" className="gradient-accent h-12 w-full rounded-2xl text-accent-foreground" disabled={isPending}>
+              <Button type="submit" className="gradient-accent h-12 w-full rounded-[1rem] text-accent-foreground" disabled={isPending}>
                 {isPending ? "Sending..." : "Send enquiry"}
                 <Send className="h-4 w-4" />
               </Button>
@@ -280,7 +278,12 @@ export function WhatsAppFloat() {
       ) : null}
 
       <div className="flex items-center gap-3">
-        <div className={cn("hidden rounded-full border border-border bg-white/95 px-4 py-2 text-sm font-semibold text-primary shadow-card backdrop-blur md:block", isOpen && "opacity-0")}>
+        <div
+          className={cn(
+            "hidden rounded-full border border-slate-200 bg-white/95 px-4 py-2 text-sm font-semibold text-primary shadow-card backdrop-blur md:block",
+            isOpen && "opacity-0",
+          )}
+        >
           Chat with us
         </div>
         <button
@@ -288,9 +291,9 @@ export function WhatsAppFloat() {
           onClick={() => setIsOpen((current) => !current)}
           aria-expanded={isOpen}
           aria-label="Open chat assistant"
-          className="group relative flex h-16 w-16 items-center justify-center rounded-full gradient-brand text-white shadow-elegant hover:scale-105"
+          className="group relative flex h-14 w-14 items-center justify-center rounded-full bg-[linear-gradient(135deg,#1d4ed8_0%,#1e3a8a_100%)] text-white shadow-elegant hover:scale-105 sm:h-16 sm:w-16"
         >
-          <span className="absolute inset-0 rounded-full bg-primary/35 animate-ping" />
+          <span className="absolute inset-0 rounded-full bg-blue-400/40 animate-ping" />
           <span className="absolute -right-1 top-0 inline-flex h-6 min-w-6 items-center justify-center rounded-full bg-accent px-1.5 text-[11px] font-bold text-white shadow-lg">
             1
           </span>
