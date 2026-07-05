@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { BadgeCheck, FileCheck2, Globe2, GraduationCap, Layers3 } from "lucide-react";
+import type { ComponentType } from "react";
 
 import { Button } from "@/components/ui/button";
 import { CtaBand } from "@/components/site/cta-band";
@@ -14,6 +16,40 @@ export const metadata = createMetadata({
   description: "Explore the current Eagle Leap journal, ISSN details, journal features, submission prompts, and upcoming academic journal expansions.",
   path: "/journal",
 });
+
+const journalHighlights: Array<{
+  title: string;
+  description: string;
+  icon: ComponentType<{ className?: string }>;
+  featured?: boolean;
+}> = [
+  {
+    title: "Peer-Reviewed Process",
+    description: "Editorial screening and subject review help maintain quality, consistency, and scholarly value.",
+    icon: FileCheck2,
+  },
+  {
+    title: "Open Access Publication",
+    description: "Built for wider discoverability so researchers, faculty, and readers can access published work easily.",
+    icon: Globe2,
+  },
+  {
+    title: "Multidisciplinary Coverage",
+    description: "Welcomes strong submissions across science, commerce, humanities, technology, and related fields.",
+    icon: Layers3,
+  },
+  {
+    title: "Academic Research Focus",
+    description: "Designed for authors, institutions, and scholars who want a credible platform for original research.",
+    icon: GraduationCap,
+  },
+  {
+    title: "ISSN Registered Journal",
+    description: "A registered journal identity that supports professional presentation and long-term continuity.",
+    icon: BadgeCheck,
+    featured: true,
+  },
+] as const;
 
 export default function JournalPage() {
   return (
@@ -70,12 +106,65 @@ export default function JournalPage() {
             ]}
             dark
           />
-          <div className="grid h-full auto-rows-fr gap-6 md:grid-cols-2">
-            {journalInfo.features.map((feature) => (
-              <div key={feature} className="flex h-full items-center rounded-3xl bg-card p-6 shadow-card">
-                <p className="text-lg font-semibold text-primary">{feature}</p>
+          <div className="flex h-full flex-col rounded-[2rem] border border-border bg-card p-8 shadow-card md:p-10">
+            <SectionHeading
+              eyebrow="Journal Highlights"
+              title="What this journal communicates to authors and readers."
+              description="The right side now gives visitors a clearer professional summary instead of empty cards."
+            />
+
+            <div className="mt-8 grid gap-4 md:grid-cols-2">
+              {journalHighlights.map((feature, index) => (
+                <div
+                  key={feature.title}
+                  className={`rounded-3xl border p-5 shadow-soft transition-smooth hover:-translate-y-1 hover:shadow-card ${
+                    feature.featured
+                      ? "md:col-span-2 border-transparent bg-gradient-to-br from-primary to-primary-glow text-white"
+                      : "border-border/80 bg-gradient-to-br from-white to-slate-50"
+                  }`}
+                >
+                  <div className="flex items-start gap-4">
+                    <div
+                      className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl ${
+                        feature.featured ? "bg-white/10 text-white" : "bg-primary/5 text-accent"
+                      }`}
+                    >
+                      <feature.icon className="h-5 w-5" />
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <span
+                          className={`rounded-full px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] ${
+                            feature.featured ? "bg-white/10 text-white/80" : "bg-accent/10 text-accent"
+                          }`}
+                        >
+                          {String(index + 1).padStart(2, "0")}
+                        </span>
+                        <h3 className={`text-lg font-bold leading-tight ${feature.featured ? "text-white" : "text-primary"}`}>
+                          {feature.title}
+                        </h3>
+                      </div>
+                      <p className={`mt-3 text-sm leading-relaxed ${feature.featured ? "text-white/82" : "text-muted-foreground"}`}>
+                        {feature.description}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-6 rounded-3xl bg-secondary/70 p-5">
+              <div className="flex flex-wrap items-center justify-between gap-4">
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.28em] text-accent">ISSN</p>
+                  <p className="mt-2 text-xl font-extrabold text-primary">{journalInfo.issn}</p>
+                  <p className="mt-1 text-sm text-muted-foreground">Professional journal identity for authors and institutions.</p>
+                </div>
+                <Button asChild className="gradient-accent text-accent-foreground">
+                  <Link href="/call-for-paper">Submit Paper</Link>
+                </Button>
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </section>

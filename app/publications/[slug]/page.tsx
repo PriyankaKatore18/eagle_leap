@@ -7,11 +7,13 @@ import { CtaBand } from "@/components/site/cta-band";
 import { PageHero } from "@/components/site/page-hero";
 import { SectionHeading } from "@/components/site/section-heading";
 import { SiteShell } from "@/components/site/site-shell";
-import { authorProfiles, getPublicationBySlug } from "@/data/catalog-data";
+import { buildAuthorProfiles } from "@/lib/cms-content";
+import { resolveCmsMediaSrc } from "@/lib/cms-media";
+import { getCmsPublicationBySlug, getCmsPublications } from "@/lib/cms-store";
 import { createMetadata } from "@/lib/seo";
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
-  const publication = getPublicationBySlug(params.slug);
+  const publication = await getCmsPublicationBySlug(params.slug);
 
   if (!publication) {
     return createMetadata({
@@ -28,12 +30,16 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   });
 }
 
-export default function PublicationDetailPage({ params }: { params: { slug: string } }) {
-  const publication = getPublicationBySlug(params.slug);
+export const dynamic = "force-dynamic";
+
+export default async function PublicationDetailPage({ params }: { params: { slug: string } }) {
+  const publication = await getCmsPublicationBySlug(params.slug);
 
   if (!publication) {
     notFound();
   }
+
+  const authorProfiles = buildAuthorProfiles(await getCmsPublications()).slice(0, 3);
 
   const pdfPreviewSrc = publication.pdfUrl ?? "/previews/publication-preview.svg";
   const certificatePreviewSrc = publication.certificateUrl ?? "/previews/publication-certificate.svg";
@@ -50,9 +56,11 @@ export default function PublicationDetailPage({ params }: { params: { slug: stri
         <div className="container-custom grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
           <div className="relative overflow-hidden rounded-[2rem] bg-secondary shadow-elegant">
             <Image
-              src={publication.cover}
+              src={resolveCmsMediaSrc(publication.cover)}
               alt={publication.title}
               priority
+              width={1200}
+              height={1500}
               sizes="(min-width: 1024px) 40vw, 100vw"
               className="w-full object-cover"
             />

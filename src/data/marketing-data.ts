@@ -94,16 +94,48 @@ export const serviceCards = [
     description: "End-to-end support from manuscript to published book with structured guidance at every stage.",
   },
   {
-    title: "ISBN Paper / Chapter Publication",
-    description: "Publish your research work in ISBN-based edited volumes with author recognition and certification.",
+    title: "Editing & Proofreading",
+    description: "Improve clarity, grammar, formatting, and overall quality with professional editing support.",
   },
   {
-    title: "Printing Services",
-    description: "Professional printing for institutions, authors, academic books, magazines, certificates, and event materials.",
+    title: "Cover Design",
+    description: "Custom-designed book covers that create a strong first impression and match your subject.",
   },
   {
-    title: "Distribution & Listing",
-    description: "Get your titles listed on major platforms with print-ready and reader-ready packaging.",
+    title: "Interior Formatting",
+    description: "Clean, print-ready layouts with professional typography and publishing standards.",
+  },
+  {
+    title: "ISBN & Copyright Support",
+    description: "Official ISBN registration, barcode generation, and publishing documentation guidance.",
+  },
+  {
+    title: "Premium Book Printing",
+    description: "High-quality paperback and hardcover printing using premium materials.",
+  },
+  {
+    title: "Online Distribution",
+    description: "Make your book available through Amazon, Flipkart, and other online platforms.",
+  },
+  {
+    title: "Edited Book Publication",
+    description: "Complete publication support for edited books, conference proceedings, and institutional volumes.",
+  },
+  {
+    title: "Journal Publication",
+    description: "Professional journal publishing with ISSN support, peer-review workflow, and online hosting.",
+  },
+  {
+    title: "Thesis to Book",
+    description: "Convert dissertations, research projects, and academic work into professionally published books.",
+  },
+  {
+    title: "Bulk Printing",
+    description: "Cost-effective printing solutions for universities, colleges, schools, and organizations.",
+  },
+  {
+    title: "Book Marketing",
+    description: "Promotional support through social media, author branding, launch campaigns, and digital marketing.",
   },
 ];
 
@@ -138,6 +170,36 @@ export const testimonials = [
     name: "Rohit Sharma",
     designation: "Institutional Client",
     review: "Printing quality, delivery coordination, and communication were excellent throughout the project.",
+  },
+  {
+    name: "Meera Nair",
+    designation: "First-Time Author",
+    review: "The design team transformed my rough draft into a polished, market-ready book I was proud to launch.",
+  },
+  {
+    name: "Prof. Sandeep Iyer",
+    designation: "University Faculty",
+    review: "ISBN support, formatting, and proofing were handled neatly, with clear updates at every stage.",
+  },
+  {
+    name: "Pooja Verma",
+    designation: "Research Scholar",
+    review: "I appreciated the transparent process and the way the team handled my academic book with care.",
+  },
+  {
+    name: "Dr. Arvind Joshi",
+    designation: "Editor",
+    review: "A dependable partner for edited volumes. The final output looked professional and consistent.",
+  },
+  {
+    name: "Kavita Rao",
+    designation: "School Publication Coordinator",
+    review: "Our printing order was completed on time with quality that matched our expectations perfectly.",
+  },
+  {
+    name: "Nikhil Patil",
+    designation: "Independent Author",
+    review: "From cover concepts to final publication, the journey felt smooth, supportive, and stress-free.",
   },
 ];
 
@@ -291,7 +353,7 @@ export const distributorDashboard = {
 };
 
 export const heroImages = {
-  homeHero: pexels(31390421),
+  homeHero: "/banners/home-hero-publishing-ai.png",
   homeEditorial: "/images/cd6fc9e5013ac7337d4634790f99bfa9.jpg",
   homeShowcase: "/images/7d881d0fec2c47fe6d052e42bcdc3e0e.jpg",
   homeResearch: "/images/3b0e82e82d74274a76cf9546f4fc0736.jpg",

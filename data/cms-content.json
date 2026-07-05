@@ -1,0 +1,173 @@
+{
+  "updatedAt": "2026-05-11T14:39:28.535Z",
+  "products": [
+    {
+      "id": "product-1",
+      "slug": "research-methods-for-applied-scholarship",
+      "title": "Research Methods for Applied Scholarship",
+      "author": "Prof. Sandesh D. Pahulakr",
+      "category": "Academic Books",
+      "format": "Both",
+      "price": "INR 699",
+      "stock": "In Stock",
+      "isbn": "978-93-00000-08-1",
+      "year": "2025",
+      "description": "Available in secure ebook access and printed format with academic-ready presentation, catalogue visibility, and institutional ordering support.",
+      "cover": "asset:book-1",
+      "featured": true,
+      "popular": true
+    },
+    {
+      "id": "product-2",
+      "slug": "multidisciplinary-perspectives-on-learning",
+      "title": "Multidisciplinary Perspectives on Learning",
+      "author": "Dr. Priya Kulkarni",
+      "category": "Edited Volumes",
+      "format": "Hard Copy",
+      "price": "INR 849",
+      "stock": "Low Stock",
+      "isbn": "978-93-00000-11-1",
+      "year": "2026",
+      "description": "A collaborative edited volume built for colleges, libraries, and research communities needing quality printed access.",
+      "cover": "asset:book-3",
+      "featured": true,
+      "newArrival": true
+    },
+    {
+      "id": "product-3",
+      "slug": "digital-literacy-and-academic-growth",
+      "title": "Digital Literacy and Academic Growth",
+      "author": "Shivprasad D. Pahukar",
+      "category": "Research Books",
+      "format": "Ebook",
+      "price": "INR 349",
+      "stock": "Secure Reader Access",
+      "isbn": "978-93-00000-06-7",
+      "year": "2025",
+      "description": "Secure reader delivery with watermarking, no direct download, and authenticated viewing access for academic readers.",
+      "cover": "asset:book-2",
+      "newArrival": true
+    },
+    {
+      "id": "product-4",
+      "slug": "contemporary-voices-in-commerce",
+      "title": "Contemporary Voices in Commerce",
+      "author": "Dr. Meera Joshi",
+      "category": "General Books",
+      "format": "Both",
+      "price": "INR 599",
+      "stock": "In Stock",
+      "isbn": "978-93-00000-04-3",
+      "year": "2024",
+      "description": "A management-focused release available for direct purchase, gifting, classroom use, and digital reference access.",
+      "cover": "asset:book-4",
+      "popular": true
+    },
+    {
+      "id": "product-5",
+      "slug": "knowledge-systems-and-community-impact",
+      "title": "Knowledge Systems and Community Impact",
+      "author": "Dr. R. Patil",
+      "category": "Featured Titles",
+      "format": "Hard Copy",
+      "price": "INR 749",
+      "stock": "In Stock",
+      "isbn": "978-93-00000-03-6",
+      "year": "2024",
+      "description": "A premium printed title for readers looking for community-based research, knowledge systems, and applied social impact references.",
+      "cover": "asset:book-3",
+      "featured": true
+    }
+  ],
+  "publications": [
+    {
+      "id": "publication-1",
+      "slug": "multidisciplinary-perspectives-on-learning",
+      "title": "Multidisciplinary Perspectives on Learning",
+      "author": "Dr. Priya Kulkarni",
+      "year": "2026",
+      "edition": "First Edition",
+      "publicationType": "Edited Book",
+      "category": "Edited Books",
+      "isbn": "978-93-00000-11-1",
+      "publicationDate": "March 14, 2026",
+      "description": "A curated edited volume featuring research on education, humanities, commerce, and social innovation with ISBN certification and author recognition.",
+      "cover": "asset:book-3",
+      "featured": true
+    },
+    {
+      "id": "publication-2",
+      "slug": "research-methods-for-applied-scholarship",
+      "title": "Research Methods for Applied Scholarship",
+      "author": "Prof. Sandesh D. Pahulakr",
+      "year": "2025",
+      "edition": "Second Edition",
+      "publicationType": "Book",
+      "category": "Books",
+      "isbn": "978-93-00000-08-1",
+      "publicationDate": "December 18, 2025",
+      "description": "A practice-oriented academic title designed for students and researchers seeking structured guidance in manuscript preparation and publication readiness.",
+      "cover": "asset:book-1",
+      "featured": true
+    },
+    {
+      "id": "publication-3",
+      "slug": "digital-literacy-and-academic-growth",
+      "title": "Digital Literacy and Academic Growth",
+      "author": "Shivprasad D. Pahukar",
+      "year": "2025",
+      "edition": "First Edition",
+      "publicationType": "ISBN Paper",
+      "category": "Papers",
+      "isbn": "978-93-00000-06-7",
+      "publicationDate": "October 6, 2025",
+      "description": "An ISBN paper exploring the impact of digital transformation, publishing access, and online dissemination for modern academic communities.",
+      "cover": "asset:book-2"
+    },
+    {
+      "id": "publication-4",
+      "slug": "contemporary-voices-in-commerce",
+      "title": "Contemporary Voices in Commerce",
+      "author": "Dr. Meera Joshi",
+      "year": "2024",
+      "edition": "First Edition",
+      "publicationType": "Edited Book",
+      "category": "Edited Books",
+      "isbn": "978-93-00000-04-3",
+      "publicationDate": "July 11, 2024",
+      "description": "A multidisciplinary commerce and management volume covering finance, entrepreneurship, human resources, and business analytics.",
+      "cover": "asset:book-4",
+      "featured": true
+    },
+    {
+      "id": "publication-5",
+      "slug": "knowledge-systems-and-community-impact",
+      "title": "Knowledge Systems and Community Impact",
+      "author": "Dr. R. Patil",
+      "year": "2024",
+      "edition": "First Edition",
+      "publicationType": "Book",
+      "category": "Books",
+      "isbn": "978-93-00000-03-6",
+      "publicationDate": "February 27, 2024",
+      "description": "A publication focused on research-led community impact models, capacity building, and applied social sciences.",
+      "cover": "asset:book-3"
+    }
+  ],
+  "homeFeatureSection": {
+    "leftEyebrow": "Publishing Ecosystem",
+    "leftTitle": "A cleaner corporate presentation for publishing, printing, journals, and store operations.",
+    "leftHighlights": [
+      "Publishing, printing, store, and journal flows in one ecosystem",
+      "Structured support from manuscript intake to final distribution"
+    ],
+    "rightHighlights": [
+      "Academic-first presentation with premium corporate credibility",
+      "Role-based access for buyers, authors, distributors, and admins"
+    ],
+    "rightEyebrow": "Why It Works",
+    "rightTitle": "Built for authors, researchers, institutions, and distribution partners.",
+    "rightDescription": "The website now frames Eagle Leap as a full academic publishing ecosystem instead of just a brochure site, helping visitors trust the process faster.",
+    "imageSrc": "/images/cd6fc9e5013ac7337d4634790f99bfa9.jpg"
+  }
+}

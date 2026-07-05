@@ -1,6 +1,7 @@
 export const siteConfig = {
   name: "Eagle Leap Publication",
   shortName: "Eagle Leap",
+  bookStoreUrl: "https://book.xilvoraink.com/",
   description:
     "Professional ISBN book publishing, ISSN journal support, secure ebooks, academic printing, and distribution services from Pune.",
   email: "hello@eagleleap.in",
@@ -17,18 +18,6 @@ export const navigation = [
   { href: "/packages", label: "Packages" },
   { href: "/printing", label: "Printing" },
   { href: "/call-for-paper", label: "Call for Paper" },
-  {
-    href: "/publications",
-    label: "Publications",
-    children: [
-      { href: "/journal", label: "Journal" },
-      { href: "/publications", label: "All Publications" },
-      { href: "/publications?category=Edited%20Books", label: "Edited Books" },
-      { href: "/publications?category=Papers", label: "Papers & Chapters" },
-    ],
-  },
   { href: "/journal", label: "Journal" },
-  { href: "/store", label: "Store" },
   { href: "/contact", label: "Contact" },
-  { href: "/login", label: "Login" },
 ];

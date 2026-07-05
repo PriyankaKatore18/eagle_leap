@@ -1,23 +1,64 @@
-import Image from "next/image";
 import Link from "next/link";
-import { BookText, CheckCircle2, Target, Telescope } from "lucide-react";
+import { Instagram, Linkedin, Mail, Target, Telescope } from "lucide-react";
 
 import { CountUpMetricGrid } from "@/components/site/count-up-metric-grid";
 import { CtaBand } from "@/components/site/cta-band";
 import { PageHero } from "@/components/site/page-hero";
 import { SectionHeading } from "@/components/site/section-heading";
 import { SiteShell } from "@/components/site/site-shell";
-import { blogPosts, founderProfiles, heroImages, siteMetrics } from "@/data/site-data";
+import { heroImages, siteMetrics } from "@/data/site-data";
 import { createMetadata } from "@/lib/seo";
 
 export const metadata = createMetadata({
   title: "About Us",
   description:
-    "Learn about Eagle Leap Publication, our mission, vision, journey, founders, and our academic-focused publishing and printing ecosystem.",
+    "Learn how Eagle Leap Publication supports authors, researchers, and institutions with ISBN book publishing, ISSN journals, printing, and distribution.",
   path: "/about",
 });
 
 export default function AboutPage() {
+  const leadershipTeam = [
+    {
+      initials: "AM",
+      name: "Arjun Mehta",
+      role: "Director",
+      bio: "Guides our publishing direction, brand standards, and strategic partnerships with a steady focus on quality and consistency.",
+    },
+    {
+      initials: "NK",
+      name: "Nisha Kulkarni",
+      role: "Chief Executive Officer",
+      bio: "Leads the company vision, customer experience, and growth strategy across publishing, printing, and digital services.",
+    },
+  ];
+
+  const teamMembers = [
+    {
+      initials: "RK",
+      name: "Rohan Khatri",
+      role: "Operations Manager",
+      bio: "Coordinates timelines, author communication, and delivery workflows to keep every project moving smoothly.",
+    },
+    {
+      initials: "PS",
+      name: "Pooja Sharma",
+      role: "Chief Technology Officer",
+      bio: "Builds the digital systems, internal tools, and automation that support a cleaner publishing workflow.",
+    },
+    {
+      initials: "AS",
+      name: "Amit Solanki",
+      role: "Marketing Head",
+      bio: "Shapes launch campaigns, visibility plans, and outreach strategies for books, journals, and institutional work.",
+    },
+    {
+      initials: "MR",
+      name: "Meera Reddy",
+      role: "Design Head",
+      bio: "Creates cover concepts, page layouts, and visual systems that give each project a polished, professional finish.",
+    },
+  ];
+
   return (
     <SiteShell>
       <PageHero
@@ -29,54 +70,45 @@ export default function AboutPage() {
       />
 
       <section className="py-24">
-        <div className="container-custom grid items-stretch gap-8 lg:grid-cols-[1.04fr_0.96fr]">
-          <article className="flex h-full flex-col rounded-[2rem] border border-border bg-card p-8 shadow-card md:p-10 lg:p-12">
-            <SectionHeading
-              eyebrow="Who We Are"
-              title="A professional publishing and printing platform built to simplify the journey."
-              description="Eagle Leap Publication is a professional publishing and printing platform based in India, dedicated to supporting authors, researchers, academicians, and institutions in bringing their ideas to life."
-            />
-            <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-              We specialize in ISBN-based book and research publication as well as ISSN journal publishing, along with
-              printing services and distribution across major platforms such as Amazon and Flipkart. Our goal is to
-              simplify the publishing journey and provide complete support from manuscript submission to final
-              publication and distribution.
+        <div className="container-custom">
+          <div className="section-reveal mx-auto max-w-4xl text-center">
+            <p className="text-xs font-semibold uppercase tracking-[0.34em] text-accent sm:text-sm">Who We Are</p>
+            <h2 className="mt-3 font-display text-[2.2rem] font-extrabold leading-[1.34] text-primary md:text-[2.6rem] lg:text-[2.85rem]">
+              A professional publishing platform built for authors who value quality, transparency, and reach.
+            </h2>
+            <p className="mt-5 text-base leading-relaxed text-muted-foreground md:text-lg">
+              Eagle Leap Publication helps authors, researchers, academicians, and institutions bring manuscripts to
+              life through a clear, collaborative publishing journey.
             </p>
-            <div className="mt-8 grid gap-3 sm:grid-cols-2">
-              {[
-                "ISBN and ISSN publication guidance",
-                "Printing and marketplace distribution support",
-                "Academic, institutional, and author-first workflows",
-                "Professional support from submission to final release",
-              ].map((item) => (
-                <div key={item} className="rounded-2xl bg-secondary px-5 py-4 text-sm font-semibold leading-relaxed text-primary">
-                  {item}
-                </div>
-              ))}
-            </div>
-          </article>
+          </div>
 
-          <article className="flex h-full flex-col overflow-hidden rounded-[2rem] border border-border bg-card shadow-card">
-            <div className="relative min-h-[24rem] flex-1">
-              <Image
-                src={heroImages.aboutFeature}
-                alt="Publishing team collaborating over books and academic content"
-                fill
-                sizes="(min-width: 1024px) 42vw, 100vw"
-                className="object-cover object-center"
-              />
-              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(8,24,69,0.08)_0%,rgba(9,26,71,0.26)_34%,rgba(8,24,69,0.82)_100%)]" />
-              <div className="absolute inset-x-0 bottom-0 p-6 text-white md:p-8">
-                <p className="text-xs font-semibold uppercase tracking-[0.32em] text-accent">Academic Publishing Identity</p>
-                <h2 className="mt-3 max-w-xl font-display text-3xl font-extrabold leading-[1.28] md:text-[2.35rem]">
-                  A stronger visual story for trust, leadership, and academic credibility.
-                </h2>
-                <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/82">
-                  The About page now presents Eagle Leap as a credible publishing brand with a clearer academic and professional identity.
-                </p>
-              </div>
-            </div>
-          </article>
+          <div className="mx-auto mt-12 max-w-4xl space-y-6 text-lg leading-relaxed text-foreground md:text-xl">
+            <p>
+              <strong className="font-semibold text-primary">Eagle Leap Publication</strong> is a professional
+              publishing and printing platform based in India, dedicated to helping independent authors, researchers,
+              and academic institutions turn ideas into polished books and journals.
+            </p>
+            <p>
+              Our <span className="font-semibold text-accent">comprehensive publishing services</span> include editing,
+              cover design, ISBN and ISSN support, print production, and distribution across major marketplaces. Every
+              service is shaped around an <span className="font-semibold text-accent">author-first workflow</span> that
+              keeps the process clear, consistent, and easy to follow.
+            </p>
+            <p>
+              Whether you are publishing your first title or expanding an academic catalogue, our{" "}
+              <span className="font-semibold text-accent">flexible publishing packages</span> are designed to support
+              you at every stage of the journey. From manuscript submission to final release, we manage the technical
+              work so you can stay focused on your writing and research.
+            </p>
+            <p>
+              Authors who publish with us also gain access to our{" "}
+              <Link href="/store" className="font-semibold text-accent hover:underline">
+                Book Store
+              </Link>
+              , helping their work reach readers, institutions, and communities with stronger visibility and
+              credibility.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -112,95 +144,63 @@ export default function AboutPage() {
       </section>
 
       <section className="py-24">
-        <div className="container-custom grid gap-12 xl:grid-cols-[0.9fr_1.1fr]">
-          <div>
-            <SectionHeading eyebrow="What We Do" title="Publishing, journal, printing, and distribution support in one ecosystem." />
-            <div className="mt-8 space-y-4">
-              {[
-                "Book Publishing (ISBN)",
-                "Research Paper / Chapter / Article Publication (ISBN)",
-                "Journal Publication (ISSN)",
-                "Printing Services for Institutions",
-                "Book Distribution & Online Listing",
-              ].map((item) => (
-                <div key={item} className="flex items-center gap-3 rounded-2xl bg-secondary px-5 py-4 text-primary">
-                  <BookText className="h-5 w-5 text-accent" />
-                  <span className="font-semibold">{item}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div>
-            <SectionHeading eyebrow="Why Choose Us" title="Why Choose Eagle Leap Publication" />
-            <div className="mt-8 grid gap-4 sm:grid-cols-2">
-              {[
-                "Expertise in ISBN & ISSN Publications",
-                "Fast & Reliable Publishing Process",
-                "Affordable and Transparent Pricing",
-                "Academic & Research-Oriented Approach",
-                "End-to-End Support (Publishing to Distribution)",
-              ].map((item) => (
-                <div key={item} className="rounded-2xl border border-border bg-card p-5 shadow-card">
-                  <CheckCircle2 className="h-8 w-8 text-accent" />
-                  <p className="mt-4 font-semibold text-primary">{item}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-secondary py-24">
-        <div className="container-custom grid gap-10 lg:grid-cols-[1.05fr_0.95fr]">
-          <div className="rounded-3xl bg-card p-10 shadow-card">
-            <SectionHeading eyebrow="Our Journey" title="Built on decades of printing strength and expanded into publishing in 2021." />
-            <p className="mt-6 leading-relaxed text-muted-foreground">
-              Eagle Leap Publication began its journey with a clear vision to simplify the publishing process and make
-              it accessible for authors, researchers, and institutions across India. Our roots are strongly built in
-              the printing industry, where we have been delivering reliable and high-quality printing services for the
-              past 23-24 years.
-            </p>
-            <p className="mt-4 leading-relaxed text-muted-foreground">
-              Building on this strong foundation, we expanded into the field of publishing in 2021, focusing on
-              ISBN-based book publication and research paper and edited volume publication. With growing demand and
-              trust, we further extended our services into ISSN journal publication, creating a comprehensive academic
-              publishing platform.
-            </p>
-          </div>
-          <div className="rounded-3xl gradient-brand p-10 text-white shadow-elegant">
-            <SectionHeading eyebrow="Founder & Leadership" title="Leadership committed to a stronger academic publishing ecosystem." invert />
-            <div className="mt-8 space-y-5">
-              {founderProfiles.map((founder) => (
-                <div key={founder.name} className="rounded-2xl border border-white/10 bg-white/5 p-5">
-                  <h3 className="text-xl font-bold">{founder.name}</h3>
-                  <p className="mt-3 text-white/80">{founder.bio}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-24">
         <div className="container-custom">
-          <div className="flex flex-wrap items-end justify-between gap-4">
-            <SectionHeading
-              eyebrow="Latest Insights & Publishing Knowledge"
-              title="Expert insights on book publishing, ISBN & ISSN processes, research writing, and printing solutions."
-            />
-            <Link href="/blog" className="text-sm font-semibold text-accent">
-              View All Insights
-            </Link>
+          <SectionHeading
+            centered
+            eyebrow="Team"
+            title="Our Leadership & Team"
+            description="The people shaping our publishing and printing services. Our leadership team brings together years of combined experience in publishing, technology, and author services."
+          />
+
+          <div className="mt-12 grid gap-6 lg:grid-cols-2">
+            {leadershipTeam.map((person) => (
+              <article
+                key={person.name}
+                className="card-reveal flex h-full flex-col rounded-[2rem] border border-border bg-card p-8 text-center shadow-card md:p-10"
+              >
+                <div className="mx-auto flex h-24 w-24 items-center justify-center rounded-full border-4 border-gold bg-primary text-2xl font-extrabold text-gold shadow-[0_18px_36px_-20px_rgba(15,23,42,0.55)]">
+                  {person.initials}
+                </div>
+                <p className="mt-6 text-xs font-semibold uppercase tracking-[0.32em] text-accent">{person.role}</p>
+                <h3 className="mt-3 font-display text-2xl font-extrabold leading-[1.28] text-primary md:text-[2.1rem]">
+                  {person.name}
+                </h3>
+                <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">{person.bio}</p>
+                <div className="mt-6 flex items-center justify-center gap-3 text-slate-500">
+                  <span className="grid h-9 w-9 place-items-center rounded-full border border-border bg-background">
+                    <Linkedin className="h-4 w-4" />
+                  </span>
+                  <span className="grid h-9 w-9 place-items-center rounded-full border border-border bg-background">
+                    <Instagram className="h-4 w-4" />
+                  </span>
+                  <span className="grid h-9 w-9 place-items-center rounded-full border border-border bg-background">
+                    <Mail className="h-4 w-4" />
+                  </span>
+                </div>
+              </article>
+            ))}
           </div>
-          <div className="mt-12 grid gap-6 lg:grid-cols-3">
-            {blogPosts.map((post) => (
-              <article key={post.slug} className="rounded-3xl border border-border bg-card p-8 shadow-card">
-                <p className="text-sm font-semibold uppercase tracking-[0.3em] text-accent">{post.category}</p>
-                <h3 className="mt-4 text-2xl font-bold text-primary">{post.title}</h3>
-                <p className="mt-4 leading-relaxed text-muted-foreground">{post.excerpt}</p>
-                <Link href={`/blog/${post.slug}`} className="mt-6 inline-flex text-sm font-semibold text-accent">
-                  Read More
-                </Link>
+
+          <div className="mt-8 grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
+            {teamMembers.map((person) => (
+              <article
+                key={person.name}
+                className="card-reveal flex h-full flex-col rounded-2xl border border-border bg-card p-6 text-center shadow-card"
+              >
+                <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full border-4 border-gold bg-primary text-xl font-bold text-gold shadow-[0_14px_28px_-18px_rgba(15,23,42,0.48)]">
+                  {person.initials}
+                </div>
+                <h3 className="mt-4 font-display text-xl font-extrabold text-primary">{person.name}</h3>
+                <p className="mt-1 text-xs font-semibold uppercase tracking-[0.28em] text-accent">{person.role}</p>
+                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{person.bio}</p>
+                <div className="mt-5 flex items-center justify-center gap-3 text-slate-500">
+                  <span className="grid h-8 w-8 place-items-center rounded-full border border-border bg-background">
+                    <Linkedin className="h-3.5 w-3.5" />
+                  </span>
+                  <span className="grid h-8 w-8 place-items-center rounded-full border border-border bg-background">
+                    <Instagram className="h-3.5 w-3.5" />
+                  </span>
+                </div>
               </article>
             ))}
           </div>

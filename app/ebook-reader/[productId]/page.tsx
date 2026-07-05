@@ -1,11 +1,11 @@
 import { notFound } from "next/navigation";
 
 import { ProtectedReader } from "@/components/site/protected-reader";
-import { getProductBySlug } from "@/data/catalog-data";
+import { getCmsProductBySlug } from "@/lib/cms-store";
 import { createMetadata } from "@/lib/seo";
 
 export async function generateMetadata({ params }: { params: { productId: string } }) {
-  const product = getProductBySlug(params.productId);
+  const product = await getCmsProductBySlug(params.productId);
 
   if (!product) {
     return createMetadata({
@@ -22,8 +22,10 @@ export async function generateMetadata({ params }: { params: { productId: string
   });
 }
 
-export default function EbookReaderPage({ params }: { params: { productId: string } }) {
-  const product = getProductBySlug(params.productId);
+export const dynamic = "force-dynamic";
+
+export default async function EbookReaderPage({ params }: { params: { productId: string } }) {
+  const product = await getCmsProductBySlug(params.productId);
 
   if (!product) {
     notFound();

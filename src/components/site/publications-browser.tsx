@@ -2,28 +2,35 @@
 
 import { useMemo, useState } from "react";
 
-import { publicationCategories, publications } from "@/data/catalog-data";
+import { publicationCategories, type PublicationRecord } from "@/data/catalog-data";
 
 import { PublicationCard } from "./publication-card";
 
-export function PublicationsBrowser({ initialCategory = "All" }: { initialCategory?: string }) {
+export function PublicationsBrowser({
+  items,
+  initialCategory = "All",
+}: {
+  items: PublicationRecord[];
+  initialCategory?: string;
+}) {
   const [category, setCategory] = useState(initialCategory);
   const [year, setYear] = useState("All");
 
-  const years = useMemo(() => ["All", ...Array.from(new Set(publications.map((item) => item.year)))], []);
+  const categoryOptions = useMemo(() => Array.from(new Set([...publicationCategories, ...items.map((item) => item.category)])), [items]);
+  const years = useMemo(() => ["All", ...Array.from(new Set(items.map((item) => item.year)))], [items]);
 
   const filtered = useMemo(() => {
-    return publications.filter((item) => {
+    return items.filter((item) => {
       const categoryMatch = category === "All" || item.category === category;
       const yearMatch = year === "All" || item.year === year;
       return categoryMatch && yearMatch;
     });
-  }, [category, year]);
+  }, [category, items, year]);
 
   return (
     <div className="space-y-8">
       <div className="flex flex-wrap items-center gap-3 rounded-3xl border border-border bg-card p-5 shadow-card">
-        {publicationCategories.map((item) => (
+        {categoryOptions.map((item) => (
           <button
             key={item}
             type="button"

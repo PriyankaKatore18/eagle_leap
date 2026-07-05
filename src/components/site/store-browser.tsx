@@ -2,23 +2,24 @@
 
 import { useDeferredValue, useMemo, useState } from "react";
 
-import { storeCategories, storeProducts } from "@/data/catalog-data";
+import { storeCategories, type ProductRecord } from "@/data/catalog-data";
 
 import { ProductCard } from "./product-card";
 
-export function StoreBrowser() {
+export function StoreBrowser({ products }: { products: ProductRecord[] }) {
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("All");
   const [format, setFormat] = useState("All");
   const [sort, setSort] = useState("Latest");
   const deferredQuery = useDeferredValue(query);
 
-  const authors = useMemo(() => ["All", ...Array.from(new Set(storeProducts.map((item) => item.author)))], []);
+  const categoryOptions = useMemo(() => Array.from(new Set([...storeCategories, ...products.map((item) => item.category)])), [products]);
+  const authors = useMemo(() => ["All", ...Array.from(new Set(products.map((item) => item.author)))], [products]);
   const [author, setAuthor] = useState("All");
 
   const filtered = useMemo(() => {
     const normalized = deferredQuery.trim().toLowerCase();
-    const items = storeProducts.filter((item) => {
+    const items = products.filter((item) => {
       const categoryMatch =
         category === "All" ||
         item.category === category ||
@@ -38,19 +39,19 @@ export function StoreBrowser() {
     });
 
     if (sort === "Popular") {
-      return items.sort((left, right) => Number(Boolean(right.popular)) - Number(Boolean(left.popular)));
+      return [...items].sort((left, right) => Number(Boolean(right.popular)) - Number(Boolean(left.popular)));
     }
 
     if (sort === "Price: Low to High") {
-      return items.sort((left, right) => Number(left.price.replace(/\D/g, "")) - Number(right.price.replace(/\D/g, "")));
+      return [...items].sort((left, right) => Number(left.price.replace(/\D/g, "")) - Number(right.price.replace(/\D/g, "")));
     }
 
     if (sort === "Price: High to Low") {
-      return items.sort((left, right) => Number(right.price.replace(/\D/g, "")) - Number(left.price.replace(/\D/g, "")));
+      return [...items].sort((left, right) => Number(right.price.replace(/\D/g, "")) - Number(left.price.replace(/\D/g, "")));
     }
 
-    return items.sort((left, right) => Number(right.year) - Number(left.year));
-  }, [author, category, deferredQuery, format, sort]);
+    return [...items].sort((left, right) => Number(right.year) - Number(left.year));
+  }, [author, category, deferredQuery, format, products, sort]);
 
   return (
     <div className="grid gap-8 lg:grid-cols-[300px_minmax(0,1fr)]">
@@ -67,7 +68,7 @@ export function StoreBrowser() {
         <div>
           <label className="mb-2 block text-sm font-semibold text-primary">Category</label>
           <div className="flex flex-wrap gap-2">
-            {storeCategories.map((item) => (
+            {categoryOptions.map((item) => (
               <button
                 key={item}
                 type="button"
