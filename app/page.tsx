@@ -155,18 +155,37 @@ export default function HomePage() {
             centered
           />
 
-          <div className="relative mt-16">
-            <div className="absolute left-10 right-10 top-8 hidden h-px bg-accent/25 lg:block" />
-            <div className="grid gap-8 lg:grid-cols-5">
-              {publishingJourney.map((step, index) => (
-                <article key={step.title} className="relative flex flex-col items-center text-center">
-                  <div className="z-10 flex h-16 w-16 items-center justify-center rounded-full border-4 border-white bg-accent text-lg font-extrabold text-white shadow-glow">
-                    {String(index + 1).padStart(2, "0")}
+          <div className="relative mt-12">
+            <div className="absolute inset-y-0 left-1/2 hidden w-[3px] -translate-x-1/2 rounded-full bg-slate-900/35 shadow-[0_0_0_1px_rgba(15,23,42,0.08)] lg:block" />
+            <div className="space-y-6">
+              {publishingJourney.map((step, index) => {
+                const isLeft = index % 2 === 0;
+
+                return (
+                  <div key={step.title} className="grid items-center gap-4 lg:grid-cols-[minmax(0,1fr)_4.5rem_minmax(0,1fr)]">
+                    <article
+                      className={`rounded-[2rem] border border-border bg-card p-5 shadow-card transition-smooth hover:-translate-y-1 hover:shadow-elegant sm:p-6 ${
+                        isLeft ? "lg:col-start-1 lg:justify-self-end lg:max-w-xl" : "lg:col-start-3 lg:justify-self-start lg:max-w-xl"
+                      }`}
+                    >
+                      <div className="flex items-center gap-3">
+                        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-accent text-sm font-extrabold text-white shadow-glow">
+                          {String(index + 1).padStart(2, "0")}
+                        </span>
+                        <p className="text-xs font-semibold uppercase tracking-[0.28em] text-accent">Publishing Step</p>
+                      </div>
+                      <h3 className="mt-4 text-[1.45rem] font-bold leading-[1.18] text-primary">{step.title}</h3>
+                      <p className="mt-2.5 text-[0.98rem] leading-relaxed text-muted-foreground">{step.description}</p>
+                    </article>
+
+                    <div className="relative z-10 flex justify-center lg:col-start-2">
+                      <div className="hidden h-4 w-4 rounded-full border-4 border-white bg-accent shadow-glow lg:block" />
+                    </div>
+
+                    <div className="hidden lg:block" />
                   </div>
-                  <h3 className="mt-6 text-xl font-bold text-primary">{step.title}</h3>
-                  <p className="mt-3 max-w-xs text-base leading-relaxed text-muted-foreground">{step.description}</p>
-                </article>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>
