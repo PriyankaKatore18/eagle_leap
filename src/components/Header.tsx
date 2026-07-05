@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { Menu, X, Languages } from "lucide-react";
+
 import Logo from "./Logo";
 import { useLang } from "@/contexts/LanguageContext";
 import { Button } from "@/components/ui/button";
+import { siteConfig } from "@/data/site-config";
 
 const Header = () => {
   const { t, lang, setLang } = useLang();
@@ -22,7 +24,6 @@ const Header = () => {
     { to: "/about", label: t.nav.about },
     { to: "/services", label: t.nav.services },
     { to: "/packages", label: t.nav.packages },
-    { to: "/store", label: t.nav.store },
     { to: "/contact", label: t.nav.contact },
   ];
 
@@ -65,6 +66,9 @@ const Header = () => {
             <Languages className="w-4 h-4" />
             {lang === "en" ? "मराठी" : "English"}
           </button>
+          <Button asChild className="hidden md:inline-flex rounded-full border border-accent/20 bg-white text-accent shadow-soft font-semibold hover:bg-accent/5">
+            <a href={siteConfig.bookStoreUrl}>Book Store</a>
+          </Button>
           <Button asChild className="hidden md:inline-flex gradient-accent text-accent-foreground hover:opacity-90 shadow-soft font-semibold">
             <Link to="/contact">{t.nav.cta}</Link>
           </Button>
@@ -103,8 +107,15 @@ const Header = () => {
               <Languages className="w-4 h-4" />
               {lang === "en" ? "मराठी" : "English"}
             </button>
+            <Button asChild className="mt-2 rounded-full border border-accent/20 bg-white text-accent shadow-soft font-semibold hover:bg-accent/5">
+              <a href={siteConfig.bookStoreUrl} onClick={() => setOpen(false)}>
+                Book Store
+              </a>
+            </Button>
             <Button asChild className="mt-2 gradient-accent text-accent-foreground font-semibold">
-              <Link to="/contact" onClick={() => setOpen(false)}>{t.nav.cta}</Link>
+              <Link to="/contact" onClick={() => setOpen(false)}>
+                {t.nav.cta}
+              </Link>
             </Button>
           </nav>
         </div>

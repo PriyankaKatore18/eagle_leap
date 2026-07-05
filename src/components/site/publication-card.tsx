@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import type { PublicationRecord } from "@/data/catalog-data";
+import { resolveCmsMediaSrc } from "@/lib/cms-media";
 
 import { Button } from "../ui/button";
 
@@ -10,7 +11,7 @@ export function PublicationCard({ item }: { item: PublicationRecord }) {
     <article className="card-reveal group flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-card shadow-card hover-lift">
       <div className="relative aspect-[4/5] overflow-hidden bg-secondary">
         <Image
-          src={item.cover}
+          src={resolveCmsMediaSrc(item.cover)}
           alt={item.title}
           fill
           sizes="(min-width: 1280px) 24vw, (min-width: 1024px) 29vw, (min-width: 768px) 44vw, 92vw"

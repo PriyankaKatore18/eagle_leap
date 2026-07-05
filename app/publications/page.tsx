@@ -1,14 +1,15 @@
-import dynamic from "next/dynamic";
+import nextDynamic from "next/dynamic";
 
 import { AsyncSectionPlaceholder } from "@/components/site/async-section-placeholder";
 import { CtaBand } from "@/components/site/cta-band";
 import { PageHero } from "@/components/site/page-hero";
 import { SectionHeading } from "@/components/site/section-heading";
 import { SiteShell } from "@/components/site/site-shell";
-import { authorProfiles } from "@/data/catalog-data";
+import { buildAuthorProfiles } from "@/lib/cms-content";
+import { getCmsPublications } from "@/lib/cms-store";
 import { createMetadata } from "@/lib/seo";
 
-const PublicationsBrowser = dynamic(
+const PublicationsBrowser = nextDynamic(
   () => import("@/components/site/publications-browser").then((module) => module.PublicationsBrowser),
   {
     ssr: false,
@@ -22,13 +23,18 @@ export const metadata = createMetadata({
   path: "/publications",
 });
 
-export default function PublicationsPage({
+export const dynamic = "force-dynamic";
+
+export default async function PublicationsPage({
   searchParams,
 }: {
   searchParams: {
     category?: string;
   };
 }) {
+  const publications = await getCmsPublications();
+  const authorProfiles = buildAuthorProfiles(publications).slice(0, 3);
+
   return (
     <SiteShell>
       <PageHero
@@ -45,7 +51,7 @@ export default function PublicationsPage({
             description="Use the filters to explore edited books, papers, and year-wise releases while keeping the grid ready for future admin-managed updates."
           />
           <div className="mt-12">
-            <PublicationsBrowser initialCategory={searchParams.category ?? "All"} />
+            <PublicationsBrowser items={publications} initialCategory={searchParams.category ?? "All"} />
           </div>
         </div>
       </section>

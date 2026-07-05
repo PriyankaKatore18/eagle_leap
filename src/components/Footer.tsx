@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
-import { Facebook, Instagram, Linkedin, Twitter, Youtube, Mail, MapPin, Phone } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone, Twitter, Youtube } from "lucide-react";
 import Logo from "./Logo";
 import { useLang } from "@/contexts/LanguageContext";
 import { useState } from "react";
 import { toast } from "sonner";
+import { siteConfig } from "@/data/site-config";
 
 const Footer = () => {
   const { t } = useLang();
@@ -50,24 +51,37 @@ const Footer = () => {
                 ["/about", "About Us"],
                 ["/services", "Services"],
                 ["/packages", "Packages"],
-                ["/store", "Book Store"],
                 ["/contact", "Contact"],
               ].map(([to, label]) => (
                 <li key={to}>
                   <Link to={to} className="hover:text-accent transition-smooth inline-block hover:translate-x-1">
-                    → {label}
+                    {'→'} {label}
                   </Link>
                 </li>
               ))}
+              <li>
+                <a
+                  href={siteConfig.bookStoreUrl}
+                  className="hover:text-accent transition-smooth inline-block hover:translate-x-1"
+                >
+                  {'→'} Book Store
+                </a>
+              </li>
             </ul>
           </div>
 
           <div>
             <h4 className="font-bold mb-5 text-accent">Contact</h4>
             <ul className="space-y-3 text-white/70 text-sm">
-              <li className="flex gap-3"><MapPin className="w-4 h-4 mt-0.5 flex-shrink-0 text-accent" /> Shivajinagar, Pune, Maharashtra 411005</li>
-              <li className="flex gap-3"><Phone className="w-4 h-4 mt-0.5 flex-shrink-0 text-accent" /> +91 98765 43210</li>
-              <li className="flex gap-3"><Mail className="w-4 h-4 mt-0.5 flex-shrink-0 text-accent" /> hello@eagleleap.in</li>
+              <li className="flex gap-3">
+                <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0 text-accent" /> Shivajinagar, Pune, Maharashtra 411005
+              </li>
+              <li className="flex gap-3">
+                <Phone className="w-4 h-4 mt-0.5 flex-shrink-0 text-accent" /> +91 98765 43210
+              </li>
+              <li className="flex gap-3">
+                <Mail className="w-4 h-4 mt-0.5 flex-shrink-0 text-accent" /> hello@eagleleap.in
+              </li>
             </ul>
           </div>
 
@@ -95,7 +109,7 @@ const Footer = () => {
 
         <div className="mt-12 pt-6 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-white/60">
           <p>© {new Date().getFullYear()} Eagle Leap Publication. {t.footer.rights}</p>
-          <p>Made with ❤ in Pune, India</p>
+          <p>Made with ♥ in Pune, India</p>
         </div>
       </div>
     </footer>

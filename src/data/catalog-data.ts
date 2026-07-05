@@ -1,9 +1,5 @@
-import book1 from "@/assets/book-1.jpg";
-import book2 from "@/assets/book-2.jpg";
-import book3 from "@/assets/book-3.jpg";
-import book4 from "@/assets/book-4.jpg";
-
 export type PublicationRecord = {
+  id: string;
   slug: string;
   title: string;
   author: string;
@@ -14,7 +10,7 @@ export type PublicationRecord = {
   isbn: string;
   publicationDate: string;
   description: string;
-  cover: typeof book1;
+  cover: string;
   featured?: boolean;
   pdfUrl?: string;
   certificateUrl?: string;
@@ -22,6 +18,7 @@ export type PublicationRecord = {
 
 export const publications: PublicationRecord[] = [
   {
+    id: "publication-1",
     slug: "multidisciplinary-perspectives-on-learning",
     title: "Multidisciplinary Perspectives on Learning",
     author: "Dr. Priya Kulkarni",
@@ -33,10 +30,11 @@ export const publications: PublicationRecord[] = [
     publicationDate: "March 14, 2026",
     description:
       "A curated edited volume featuring research on education, humanities, commerce, and social innovation with ISBN certification and author recognition.",
-    cover: book3,
+    cover: "asset:book-3",
     featured: true,
   },
   {
+    id: "publication-2",
     slug: "research-methods-for-applied-scholarship",
     title: "Research Methods for Applied Scholarship",
     author: "Prof. Sandesh D. Pahulakr",
@@ -48,10 +46,11 @@ export const publications: PublicationRecord[] = [
     publicationDate: "December 18, 2025",
     description:
       "A practice-oriented academic title designed for students and researchers seeking structured guidance in manuscript preparation and publication readiness.",
-    cover: book1,
+    cover: "asset:book-1",
     featured: true,
   },
   {
+    id: "publication-3",
     slug: "digital-literacy-and-academic-growth",
     title: "Digital Literacy and Academic Growth",
     author: "Shivprasad D. Pahukar",
@@ -63,9 +62,10 @@ export const publications: PublicationRecord[] = [
     publicationDate: "October 6, 2025",
     description:
       "An ISBN paper exploring the impact of digital transformation, publishing access, and online dissemination for modern academic communities.",
-    cover: book2,
+    cover: "asset:book-2",
   },
   {
+    id: "publication-4",
     slug: "contemporary-voices-in-commerce",
     title: "Contemporary Voices in Commerce",
     author: "Dr. Meera Joshi",
@@ -77,10 +77,11 @@ export const publications: PublicationRecord[] = [
     publicationDate: "July 11, 2024",
     description:
       "A multidisciplinary commerce and management volume covering finance, entrepreneurship, human resources, and business analytics.",
-    cover: book4,
+    cover: "asset:book-4",
     featured: true,
   },
   {
+    id: "publication-5",
     slug: "knowledge-systems-and-community-impact",
     title: "Knowledge Systems and Community Impact",
     author: "Dr. R. Patil",
@@ -92,7 +93,7 @@ export const publications: PublicationRecord[] = [
     publicationDate: "February 27, 2024",
     description:
       "A publication focused on research-led community impact models, capacity building, and applied social sciences.",
-    cover: book3,
+    cover: "asset:book-3",
   },
 ];
 
@@ -120,6 +121,7 @@ export const authorProfiles = [
 ];
 
 export type ProductRecord = {
+  id: string;
   slug: string;
   title: string;
   author: string;
@@ -130,7 +132,7 @@ export type ProductRecord = {
   isbn: string;
   year: string;
   description: string;
-  cover: typeof book1;
+  cover: string;
   featured?: boolean;
   newArrival?: boolean;
   popular?: boolean;
@@ -138,6 +140,7 @@ export type ProductRecord = {
 
 export const storeProducts: ProductRecord[] = [
   {
+    id: "product-1",
     slug: "research-methods-for-applied-scholarship",
     title: "Research Methods for Applied Scholarship",
     author: "Prof. Sandesh D. Pahulakr",
@@ -149,11 +152,12 @@ export const storeProducts: ProductRecord[] = [
     year: "2025",
     description:
       "Available in secure ebook access and printed format with academic-ready presentation, catalogue visibility, and institutional ordering support.",
-    cover: book1,
+    cover: "asset:book-1",
     featured: true,
     popular: true,
   },
   {
+    id: "product-2",
     slug: "multidisciplinary-perspectives-on-learning",
     title: "Multidisciplinary Perspectives on Learning",
     author: "Dr. Priya Kulkarni",
@@ -165,11 +169,12 @@ export const storeProducts: ProductRecord[] = [
     year: "2026",
     description:
       "A collaborative edited volume built for colleges, libraries, and research communities needing quality printed access.",
-    cover: book3,
+    cover: "asset:book-3",
     featured: true,
     newArrival: true,
   },
   {
+    id: "product-3",
     slug: "digital-literacy-and-academic-growth",
     title: "Digital Literacy and Academic Growth",
     author: "Shivprasad D. Pahukar",
@@ -181,10 +186,11 @@ export const storeProducts: ProductRecord[] = [
     year: "2025",
     description:
       "Secure reader delivery with watermarking, no direct download, and authenticated viewing access for academic readers.",
-    cover: book2,
+    cover: "asset:book-2",
     newArrival: true,
   },
   {
+    id: "product-4",
     slug: "contemporary-voices-in-commerce",
     title: "Contemporary Voices in Commerce",
     author: "Dr. Meera Joshi",
@@ -196,10 +202,11 @@ export const storeProducts: ProductRecord[] = [
     year: "2024",
     description:
       "A management-focused release available for direct purchase, gifting, classroom use, and digital reference access.",
-    cover: book4,
+    cover: "asset:book-4",
     popular: true,
   },
   {
+    id: "product-5",
     slug: "knowledge-systems-and-community-impact",
     title: "Knowledge Systems and Community Impact",
     author: "Dr. R. Patil",
@@ -211,7 +218,7 @@ export const storeProducts: ProductRecord[] = [
     year: "2024",
     description:
       "A premium printed title for readers looking for community-based research, knowledge systems, and applied social impact references.",
-    cover: book3,
+    cover: "asset:book-3",
     featured: true,
   },
 ];

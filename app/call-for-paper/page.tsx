@@ -1,4 +1,4 @@
-import dynamic from "next/dynamic";
+import nextDynamic from "next/dynamic";
 import Link from "next/link";
 import { ArrowRight, Award, BookCopy, CalendarDays, FileBadge2, FileText } from "lucide-react";
 
@@ -6,7 +6,6 @@ import { AsyncSectionPlaceholder } from "@/components/site/async-section-placeho
 import { Button } from "@/components/ui/button";
 import { CtaBand } from "@/components/site/cta-band";
 import { PageHero } from "@/components/site/page-hero";
-import { PublicationCard } from "@/components/site/publication-card";
 import { SectionHeading } from "@/components/site/section-heading";
 import { SiteShell } from "@/components/site/site-shell";
 import {
@@ -16,11 +15,10 @@ import {
   paperFaqs,
   paperGuidelines,
   paperSubjects,
-  publications,
 } from "@/data/site-data";
 import { createMetadata } from "@/lib/seo";
 
-const PaperSubmissionForm = dynamic(
+const PaperSubmissionForm = nextDynamic(
   () => import("@/components/site/forms/paper-submission-form").then((module) => module.PaperSubmissionForm),
   {
     ssr: false,
@@ -28,7 +26,7 @@ const PaperSubmissionForm = dynamic(
   },
 );
 
-const FaqList = dynamic(() => import("@/components/site/faq-list").then((module) => module.FaqList), {
+const FaqList = nextDynamic(() => import("@/components/site/faq-list").then((module) => module.FaqList), {
   ssr: false,
   loading: () => <AsyncSectionPlaceholder variant="faq" />,
 });
@@ -61,7 +59,9 @@ const paperInfoCards = [
   },
 ] as const;
 
-export default function CallForPaperPage() {
+export const dynamic = "force-dynamic";
+
+export default async function CallForPaperPage() {
   return (
     <SiteShell>
       <PageHero
@@ -173,22 +173,6 @@ export default function CallForPaperPage() {
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-secondary py-24">
-        <div className="container-custom">
-          <div className="flex flex-wrap items-end justify-between gap-4">
-            <SectionHeading eyebrow="Our Previous Publications" title="A trust-building preview of earlier work." />
-            <Button asChild variant="outline">
-              <Link href="/publications">View Publications</Link>
-            </Button>
-          </div>
-          <div className="mt-12 grid gap-6 lg:grid-cols-3">
-            {publications.slice(0, 3).map((item) => (
-              <PublicationCard key={item.slug} item={item} />
-            ))}
           </div>
         </div>
       </section>

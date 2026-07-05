@@ -1,4 +1,4 @@
-import dynamic from "next/dynamic";
+import nextDynamic from "next/dynamic";
 import Link from "next/link";
 import { Shield, ShoppingBag, Sparkles, Truck } from "lucide-react";
 
@@ -10,11 +10,12 @@ import { PageHero } from "@/components/site/page-hero";
 import { ProductCard } from "@/components/site/product-card";
 import { SectionHeading } from "@/components/site/section-heading";
 import { SiteShell } from "@/components/site/site-shell";
-import { storeCategoryHighlights, storeProducts } from "@/data/catalog-data";
+import { storeCategoryHighlights } from "@/data/catalog-data";
 import { heroImages } from "@/data/site-data";
+import { getCmsProducts } from "@/lib/cms-store";
 import { createMetadata } from "@/lib/seo";
 
-const StoreBrowser = dynamic(() => import("@/components/site/store-browser").then((module) => module.StoreBrowser), {
+const StoreBrowser = nextDynamic(() => import("@/components/site/store-browser").then((module) => module.StoreBrowser), {
   ssr: false,
   loading: () => <AsyncSectionPlaceholder variant="browser" />,
 });
@@ -25,13 +26,17 @@ export const metadata = createMetadata({
   path: "/store",
 });
 
-export default function StorePage() {
-  const ebookReadyCount = storeProducts.filter((item) => item.format === "Ebook" || item.format === "Both").length;
-  const printReadyCount = storeProducts.filter((item) => item.format === "Hard Copy" || item.format === "Both").length;
-  const startingPrice = Math.min(...storeProducts.map((item) => Number(item.price.replace(/[^0-9]/g, "")))).toLocaleString("en-IN");
+export const dynamic = "force-dynamic";
+
+export default async function StorePage() {
+  const products = await getCmsProducts();
+  const ebookReadyCount = products.filter((item) => item.format === "Ebook" || item.format === "Both").length;
+  const printReadyCount = products.filter((item) => item.format === "Hard Copy" || item.format === "Both").length;
+  const numericPrices = products.map((item) => Number(item.price.replace(/[^0-9]/g, ""))).filter((value) => Number.isFinite(value) && value > 0);
+  const startingPrice = numericPrices.length > 0 ? Math.min(...numericPrices).toLocaleString("en-IN") : "0";
 
   const storeSnapshot = [
-    { icon: ShoppingBag, value: `${storeProducts.length}+`, label: "Titles ready to browse" },
+    { icon: ShoppingBag, value: `${products.length}+`, label: "Titles ready to browse" },
     { icon: Sparkles, value: `${storeCategoryHighlights.length}`, label: "Curated discovery categories" },
     { icon: Shield, value: `${ebookReadyCount}+`, label: "Secure ebook-ready titles" },
     { icon: Truck, value: `${printReadyCount}+`, label: "Print editions with delivery support" },
@@ -143,7 +148,7 @@ export default function StorePage() {
             centered
           />
           <div className="mt-14 grid gap-6 lg:grid-cols-3">
-            {storeProducts.filter((item) => item.featured).slice(0, 3).map((item) => (
+            {products.filter((item) => item.featured).slice(0, 3).map((item) => (
               <ProductCard key={item.slug} item={item} />
             ))}
           </div>
@@ -177,7 +182,7 @@ export default function StorePage() {
         <div className="container-custom">
           <SectionHeading eyebrow="Search and Filter" title="Find titles by category, format, author, and popularity." />
           <div className="mt-12">
-            <StoreBrowser />
+            <StoreBrowser products={products} />
           </div>
         </div>
       </section>
@@ -186,7 +191,7 @@ export default function StorePage() {
         <div className="container-custom">
           <SectionHeading eyebrow="New Arrivals" title="Recently added books surfaced for quick discovery." centered />
           <div className="mt-12 grid gap-6 lg:grid-cols-3">
-            {storeProducts.filter((item) => item.newArrival).map((item) => (
+            {products.filter((item) => item.newArrival).map((item) => (
               <ProductCard key={item.slug} item={item} />
             ))}
           </div>
@@ -197,7 +202,7 @@ export default function StorePage() {
         <div className="container-custom">
           <SectionHeading eyebrow="Popular Titles" title="Trust-building books with stronger visibility and demand." centered />
           <div className="mt-12 grid gap-6 lg:grid-cols-3">
-            {storeProducts.filter((item) => item.popular).map((item) => (
+            {products.filter((item) => item.popular).map((item) => (
               <ProductCard key={item.slug} item={item} />
             ))}
           </div>

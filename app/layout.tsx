@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Manrope, Source_Serif_4 } from "next/font/google";
 import type { ReactNode } from "react";
 
+import { CartProvider } from "@/contexts/cart-context";
 import { ToasterProvider } from "@/components/providers/toaster-provider";
 import { siteConfig } from "@/data/site-config";
 
@@ -28,8 +29,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <body className={`${manrope.variable} ${sourceSerif.variable} bg-background font-sans text-foreground antialiased`}>
-        <ToasterProvider />
-        {children}
+        <CartProvider>
+          <ToasterProvider />
+          {children}
+        </CartProvider>
       </body>
     </html>
   );

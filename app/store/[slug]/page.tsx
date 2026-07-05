@@ -1,17 +1,17 @@
 import Image from "next/image";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { Button } from "@/components/ui/button";
 import { CtaBand } from "@/components/site/cta-band";
 import { PageHero } from "@/components/site/page-hero";
 import { SectionHeading } from "@/components/site/section-heading";
 import { SiteShell } from "@/components/site/site-shell";
-import { getProductBySlug } from "@/data/catalog-data";
+import { StoreProductActions } from "@/components/site/store-product-actions";
+import { resolveCmsMediaSrc } from "@/lib/cms-media";
+import { getCmsProductBySlug } from "@/lib/cms-store";
 import { createMetadata } from "@/lib/seo";
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
-  const product = getProductBySlug(params.slug);
+  const product = await getCmsProductBySlug(params.slug);
 
   if (!product) {
     return createMetadata({
@@ -28,8 +28,10 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   });
 }
 
-export default function StoreDetailPage({ params }: { params: { slug: string } }) {
-  const product = getProductBySlug(params.slug);
+export const dynamic = "force-dynamic";
+
+export default async function StoreDetailPage({ params }: { params: { slug: string } }) {
+  const product = await getCmsProductBySlug(params.slug);
 
   if (!product) {
     notFound();
@@ -50,9 +52,11 @@ export default function StoreDetailPage({ params }: { params: { slug: string } }
         <div className="container-custom grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
           <div className="overflow-hidden rounded-[2rem] bg-secondary shadow-elegant">
             <Image
-              src={product.cover}
+              src={resolveCmsMediaSrc(product.cover)}
               alt={product.title}
               priority
+              width={1200}
+              height={1500}
               sizes="(min-width: 1024px) 40vw, 100vw"
               className="w-full object-cover"
             />
@@ -74,24 +78,7 @@ export default function StoreDetailPage({ params }: { params: { slug: string } }
                 </div>
               ))}
             </div>
-            <div className="mt-8 flex flex-wrap gap-4">
-              {isHardCopy ? (
-                <>
-                  <Button className="gradient-accent text-accent-foreground">Buy Now</Button>
-                  <Button variant="outline">Add to Cart</Button>
-                </>
-              ) : null}
-              {isEbook ? (
-                <>
-                  <Button asChild className="gradient-accent text-accent-foreground">
-                    <Link href={`/ebook-reader/${product.slug}`}>Read Now</Link>
-                  </Button>
-                  <Button asChild variant="outline">
-                    <Link href={`/ebook-reader/${product.slug}`}>Preview</Link>
-                  </Button>
-                </>
-              ) : null}
-            </div>
+            <StoreProductActions productSlug={product.slug} isEbook={isEbook} isHardCopy={isHardCopy} />
           </div>
         </div>
       </section>
