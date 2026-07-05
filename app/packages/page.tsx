@@ -54,6 +54,16 @@ const comparisonRows: Array<
   { type: "row", label: "Ideal For", values: ["First-time authors", "Print and digital authors", "Serious authors", "Flagship titles"] },
 ];
 
+function formatPackagePrice(price: string) {
+  const normalized = price.replace(/\s+/g, " ").trim();
+  const [amount, ...suffixParts] = normalized.split(" ");
+
+  return {
+    amount,
+    suffix: suffixParts.join(" "),
+  };
+}
+
 const packageFaqs = [
   {
     question: "What is included in each package?",
@@ -104,90 +114,128 @@ export default function PackagesPage() {
           />
 
           <div className="mt-14 grid gap-6 xl:grid-cols-4">
-            {packagePlans.map((plan) => (
-              <article
-                key={plan.name}
-                className={cn(
-                  "flex h-full flex-col rounded-[2rem] border p-7 shadow-card transition-smooth hover:-translate-y-1",
-                  plan.highlighted
-                    ? "gradient-brand border-accent text-white shadow-elegant"
-                    : "border-border bg-card text-foreground hover:shadow-elegant",
-                )}
-              >
-                <div className="flex items-start justify-between gap-4">
-                  <p className={cn("text-sm font-medium leading-relaxed", plan.highlighted ? "text-white/85" : "text-muted-foreground")}>
-                    {plan.tag}
-                  </p>
-                  {plan.highlighted ? (
-                    <span className="rounded-full bg-white/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.24em] text-white">
-                      Most Popular
-                    </span>
-                  ) : null}
-                </div>
+            {packagePlans.map((plan) => {
+              const priceParts = formatPackagePrice(plan.price);
+              const visibleFeatures = plan.features.slice(0, 5);
+              const extraFeatures = plan.features.length - visibleFeatures.length;
 
-                <h2 className="mt-4 text-3xl font-display font-extrabold leading-tight tracking-tight">{plan.name}</h2>
-                <p
+              return (
+                <article
+                  key={plan.name}
                   className={cn(
-                    "mt-4 whitespace-nowrap font-display text-[2.55rem] font-extrabold leading-none tracking-[-0.04em] md:text-[2.8rem]",
-                    plan.highlighted ? "text-white" : "text-primary",
+                    "flex h-full flex-col rounded-[2rem] border p-6 shadow-card transition-smooth hover:-translate-y-1 sm:p-7",
+                    plan.highlighted
+                      ? "gradient-brand border-accent text-white shadow-elegant"
+                      : "border-border bg-card text-foreground hover:shadow-elegant",
                   )}
                 >
-                  {plan.price}
-                </p>
-                <p className={cn("mt-2 text-xs font-semibold uppercase tracking-[0.3em] md:text-sm", plan.highlighted ? "text-white/70" : "text-accent")}>
-                  {plan.timeline}
-                </p>
+                  <div className="flex min-h-[3.5rem] items-start justify-between gap-4">
+                    <p
+                      className={cn(
+                        "max-w-[11rem] text-xs font-medium leading-snug sm:text-sm",
+                        plan.highlighted ? "text-white/85" : "text-muted-foreground",
+                      )}
+                    >
+                      {plan.tag}
+                    </p>
+                    {plan.highlighted ? (
+                      <span className="rounded-full bg-white/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.24em] text-white">
+                        Most Popular
+                      </span>
+                    ) : null}
+                  </div>
 
-                <p className={cn("mt-5 text-sm leading-relaxed", plan.highlighted ? "text-white/80" : "text-muted-foreground")}>
-                  {plan.summary}
-                </p>
+                  <h2 className="mt-4 text-[2rem] font-display font-extrabold leading-[1.06] tracking-tight sm:text-[2.15rem]">{plan.name}</h2>
+                  <div className="mt-4 flex items-end gap-2">
+                    <p
+                      className={cn(
+                        "font-display text-[clamp(1.95rem,4vw,2.65rem)] font-extrabold leading-none tracking-[-0.04em]",
+                        plan.highlighted ? "text-white" : "text-primary",
+                      )}
+                    >
+                      {priceParts.amount}
+                    </p>
+                    {priceParts.suffix ? (
+                      <span
+                        className={cn(
+                          "pb-1 text-[11px] font-semibold uppercase tracking-[0.24em] sm:text-xs",
+                          plan.highlighted ? "text-white/75" : "text-accent",
+                        )}
+                      >
+                        {priceParts.suffix}
+                      </span>
+                    ) : null}
+                  </div>
+                  <p
+                    className={cn(
+                      "mt-2 text-xs font-semibold uppercase tracking-[0.26em] sm:text-[0.8rem]",
+                      plan.highlighted ? "text-white/70" : "text-accent",
+                    )}
+                  >
+                    {plan.timeline}
+                  </p>
 
-                <div className={cn("mt-6 space-y-3 border-t pt-6", plan.highlighted ? "border-white/10" : "border-border")}>
-                  {plan.features.map((feature) => (
-                    <div key={feature} className="flex items-start gap-3">
-                      <div className={cn("mt-0.5 flex h-5 w-5 items-center justify-center rounded-full", plan.highlighted ? "bg-white/10" : "bg-accent/10")}>
-                        <CheckCircle2 className="h-3.5 w-3.5 text-accent" />
+                  <p
+                    className={cn(
+                      "mt-5 line-clamp-3 text-sm leading-relaxed",
+                      plan.highlighted ? "text-white/80" : "text-muted-foreground",
+                    )}
+                  >
+                    {plan.summary}
+                  </p>
+
+                  <div className={cn("mt-6 space-y-3 border-t pt-6", plan.highlighted ? "border-white/10" : "border-border")}>
+                    {visibleFeatures.map((feature) => (
+                      <div key={feature} className="flex items-start gap-3">
+                        <div className={cn("mt-0.5 flex h-5 w-5 items-center justify-center rounded-full", plan.highlighted ? "bg-white/10" : "bg-accent/10")}>
+                          <CheckCircle2 className="h-3.5 w-3.5 text-accent" />
+                        </div>
+                        <p className={cn("text-sm leading-snug", plan.highlighted ? "text-white/85" : "text-muted-foreground")}>{feature}</p>
                       </div>
-                      <p className={cn("text-sm leading-relaxed", plan.highlighted ? "text-white/85" : "text-muted-foreground")}>{feature}</p>
-                    </div>
-                  ))}
-                </div>
+                    ))}
+                    {extraFeatures > 0 ? (
+                      <p className={cn("pt-1 text-xs font-medium", plan.highlighted ? "text-white/65" : "text-muted-foreground")}>
+                        +{extraFeatures} more features in the full package
+                      </p>
+                    ) : null}
+                  </div>
 
-                <div className={cn("mt-6 rounded-2xl p-4", plan.highlighted ? "bg-white/5" : "bg-secondary/70")}>
-                  <p className={cn("text-xs font-semibold uppercase tracking-[0.24em]", plan.highlighted ? "text-accent" : "text-accent")}>Ideal for</p>
-                  <p className={cn("mt-2 text-sm leading-relaxed", plan.highlighted ? "text-white/80" : "text-primary")}>{plan.idealFor}</p>
-                </div>
+                  <div className={cn("mt-6 rounded-2xl p-4", plan.highlighted ? "bg-white/5" : "bg-secondary/70")}>
+                    <p className={cn("text-xs font-semibold uppercase tracking-[0.24em]", plan.highlighted ? "text-accent" : "text-accent")}>Ideal for</p>
+                    <p className={cn("mt-2 text-sm leading-relaxed", plan.highlighted ? "text-white/80" : "text-primary")}>{plan.idealFor}</p>
+                  </div>
 
-                <div className="mt-7 space-y-4">
-                  <Button
-                    asChild
-                    size="lg"
-                    className={cn(
-                      "w-full",
-                      plan.highlighted ? "gradient-accent text-accent-foreground" : "bg-primary text-primary-foreground hover:bg-primary/90",
-                    )}
-                  >
-                    <Link href="/publish-my-book">Choose This Package</Link>
-                  </Button>
-                  <Button
-                    asChild
-                    size="lg"
-                    className={cn(
-                      "w-full border-2",
-                      plan.highlighted
-                        ? "border-white/25 bg-white/10 text-white hover:bg-white hover:text-primary"
-                        : "border-border bg-white text-primary hover:border-accent hover:bg-accent/5",
-                    )}
-                    variant="outline"
-                  >
-                    <Link href={`/packages/${plan.slug}`}>
-                      <Info className="h-4 w-4" />
-                      View Full Details
-                    </Link>
-                  </Button>
-                </div>
-              </article>
-            ))}
+                  <div className="mt-7 space-y-4">
+                    <Button
+                      asChild
+                      size="lg"
+                      className={cn(
+                        "w-full",
+                        plan.highlighted ? "gradient-accent text-accent-foreground" : "bg-primary text-primary-foreground hover:bg-primary/90",
+                      )}
+                    >
+                      <Link href="/publish-my-book">Choose This Package</Link>
+                    </Button>
+                    <Button
+                      asChild
+                      size="lg"
+                      className={cn(
+                        "w-full border-2",
+                        plan.highlighted
+                          ? "border-white/25 bg-white/10 text-white hover:bg-white hover:text-primary"
+                          : "border-border bg-white text-primary hover:border-accent hover:bg-accent/5",
+                      )}
+                      variant="outline"
+                    >
+                      <Link href={`/packages/${plan.slug}`}>
+                        <Info className="h-4 w-4" />
+                        View Full Details
+                      </Link>
+                    </Button>
+                  </div>
+                </article>
+              );
+            })}
           </div>
 
           <p className="mx-auto mt-8 max-w-4xl text-center text-sm leading-relaxed text-muted-foreground">
