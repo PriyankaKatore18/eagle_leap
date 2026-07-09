@@ -1,66 +1,65 @@
 import "server-only";
 
-import { mkdir, readFile, writeFile } from "node:fs/promises";
-import path from "node:path";
-
 import { unstable_noStore as noStore } from "next/cache";
 
-import { cmsContentSchema, createDefaultCmsContent, normalizeCmsContent, type CmsContent } from "./cms-content";
+import { normalizeCmsContent, type CmsContent } from "./cms-content";
+import { getMysqlCmsConfig, getMysqlCmsContent, saveMysqlCmsContent } from "./mysql-cms-store";
 
-const CMS_DIRECTORY = path.join(process.cwd(), "data");
-const CMS_FILE_PATH = path.join(CMS_DIRECTORY, "cms-content.json");
-
-async function ensureCmsFile() {
-  await mkdir(CMS_DIRECTORY, { recursive: true });
-
-  try {
-    await readFile(CMS_FILE_PATH, "utf8");
-  } catch {
-    const defaults = createDefaultCmsContent();
-    await writeFile(CMS_FILE_PATH, JSON.stringify(defaults, null, 2), "utf8");
-  }
+export function getCmsStorageLabel() {
+  const config = getMysqlCmsConfig();
+  return `MySQL: ${config.database}`;
 }
 
 export async function getCmsContent(): Promise<CmsContent> {
   noStore();
-  await ensureCmsFile();
-
-  try {
-    const raw = await readFile(CMS_FILE_PATH, "utf8");
-    const parsed = cmsContentSchema.safeParse(JSON.parse(raw));
-
-    if (parsed.success) {
-      return parsed.data as CmsContent;
-    }
-  } catch {
-    // Fall through to rewrite the file with defaults.
-  }
-
-  const defaults = createDefaultCmsContent();
-  await writeFile(CMS_FILE_PATH, JSON.stringify(defaults, null, 2), "utf8");
-  return defaults;
+  return getMysqlCmsContent();
 }
 
 export async function saveCmsContent(input: CmsContent) {
   noStore();
-  await ensureCmsFile();
-
-  const normalized = normalizeCmsContent(input);
-  const parsed = cmsContentSchema.parse(normalized);
-
-  await writeFile(CMS_FILE_PATH, JSON.stringify(parsed, null, 2), "utf8");
-
-  return parsed;
+  return saveMysqlCmsContent(normalizeCmsContent(input));
 }
 
 export async function getCmsProducts() {
   const content = await getCmsContent();
-  return content.products;
+  return content.products.filter((product) => product.status !== "draft" && product.status !== "archived");
+}
+
+export async function getCmsFeaturedProducts(limit = 7) {
+  const products = await getCmsProducts();
+  return products.filter((product) => product.featured).slice(0, limit);
 }
 
 export async function getCmsPublications() {
   const content = await getCmsContent();
   return content.publications;
+}
+
+export async function getCmsBlogs() {
+  const content = await getCmsContent();
+  return content.blogs;
+}
+
+export async function getCmsFeaturedBlogs(limit = 3) {
+  const blogs = await getCmsBlogs();
+  return blogs.filter((blog) => blog.featured !== false && blog.status === "published").slice(0, limit);
+}
+
+export async function getCmsAuthors() {
+  const content = await getCmsContent();
+  return content.authors;
+}
+
+export async function getCmsTestimonials(placement: "home" | "packages" | "about" = "home", limit = 9) {
+  const content = await getCmsContent();
+  return content.testimonials
+    .filter((testimonial) => testimonial.status === "published" && testimonial[placement] !== false)
+    .slice(0, limit);
+}
+
+export async function getCmsFeaturedAuthors(limit = 3) {
+  const authors = await getCmsAuthors();
+  return authors.filter((author) => author.featured !== false && author.status !== "draft").slice(0, limit);
 }
 
 export async function getCmsProductBySlug(slug: string) {
@@ -71,4 +70,14 @@ export async function getCmsProductBySlug(slug: string) {
 export async function getCmsPublicationBySlug(slug: string) {
   const publications = await getCmsPublications();
   return publications.find((publication) => publication.slug === slug);
+}
+
+export async function getCmsAuthorBySlug(slug: string) {
+  const authors = await getCmsAuthors();
+  return authors.find((author) => author.slug === slug);
+}
+
+export async function getCmsBlogBySlug(slug: string) {
+  const blogs = await getCmsBlogs();
+  return blogs.find((blog) => blog.slug === slug);
 }

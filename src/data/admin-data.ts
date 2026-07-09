@@ -237,9 +237,9 @@ export const adminModules: AdminModuleRecord[] = [
     table: {
       columns: ["Title", "Author", "Type", "Visibility"],
       rows: [
-        ["Multidisciplinary Perspectives on Learning", "Dr. Priya Kulkarni", "Edited Book", "Featured"],
-        ["Digital Literacy and Academic Growth", "Shivprasad D. Pahukar", "ISBN Paper", "Published"],
-        ["Contemporary Voices in Commerce", "Dr. Meera Joshi", "Edited Book", "Published"],
+        ["Banking and Insurance Service", "Dr. Nandkishor N. Dhondge", "Book", "Featured"],
+        ["Dynamics of Management - II", "Dr. Bhushan S. Mangte", "Book", "Published"],
+        ["Manures and Organic Farming", "Dr. V.S. Pawar", "Book", "Published"],
       ],
     },
   },
@@ -305,9 +305,9 @@ export const adminModules: AdminModuleRecord[] = [
     table: {
       columns: ["Product", "Format", "Price", "Stock"],
       rows: [
-        ["Research Methods for Applied Scholarship", "Both", "699", "28"],
-        ["Digital Literacy and Academic Growth", "Ebook", "349", "Secure Reader"],
-        ["Contemporary Voices in Commerce", "Both", "599", "42"],
+        ["Banking and Insurance Service", "Hard Copy", "Contact", "In Stock"],
+        ["Manures and Organic Farming", "Hard Copy", "250", "In Stock"],
+        ["Basics of Electrical and Electronics Engineering", "Hard Copy", "499", "In Stock"],
       ],
     },
   },

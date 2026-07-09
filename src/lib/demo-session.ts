@@ -33,11 +33,7 @@ function decodeSessionCookie(value?: string | null) {
 }
 
 export function buildLoginPath(role?: DemoAuthRole) {
-  if (!role) {
-    return "/login";
-  }
-
-  return `/login?role=${role}`;
+  return "/login?role=admin";
 }
 
 export function getDemoSessionUser(): DemoSessionUser | null {
@@ -92,5 +88,5 @@ export function clearDemoSession(response: NextResponse) {
 }
 
 export function getLogoutRedirect(role?: DemoAuthRole) {
-  return role ? buildLoginPath(role) : buildRedirectPath("buyer");
+  return buildLoginPath(role);
 }

@@ -1,3 +1,5 @@
+import Link from "next/link";
+import Image from "next/image";
 import nextDynamic from "next/dynamic";
 
 import { AsyncSectionPlaceholder } from "@/components/site/async-section-placeholder";
@@ -5,8 +7,9 @@ import { CtaBand } from "@/components/site/cta-band";
 import { PageHero } from "@/components/site/page-hero";
 import { SectionHeading } from "@/components/site/section-heading";
 import { SiteShell } from "@/components/site/site-shell";
-import { buildAuthorProfiles } from "@/lib/cms-content";
-import { getCmsPublications } from "@/lib/cms-store";
+import { getAuthorInitials } from "@/lib/cms-content";
+import { getCmsFeaturedAuthors, getCmsPublications } from "@/lib/cms-store";
+import { canRenderCmsImageSrc } from "@/lib/cms-media";
 import { createMetadata } from "@/lib/seo";
 
 const PublicationsBrowser = nextDynamic(
@@ -33,7 +36,7 @@ export default async function PublicationsPage({
   };
 }) {
   const publications = await getCmsPublications();
-  const authorProfiles = buildAuthorProfiles(publications).slice(0, 3);
+  const authors = await getCmsFeaturedAuthors(3);
 
   return (
     <SiteShell>
@@ -58,18 +61,29 @@ export default async function PublicationsPage({
 
       <section className="bg-secondary py-24">
         <div className="container-custom">
-          <SectionHeading eyebrow="Our Authors" title="Recognizing the people behind the publications." centered />
+          <SectionHeading
+            eyebrow="Our Authors"
+            title="Recognizing the people behind the publications."
+            description="Explore the same author roster that powers the connected admin and store experiences."
+            centered
+          />
           <div className="mt-12 grid gap-6 md:grid-cols-3">
-            {authorProfiles.map((author) => (
-              <div key={author.name} className="card-reveal rounded-3xl bg-card p-8 text-center shadow-card">
-                <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full gradient-brand text-2xl font-extrabold text-white">
-                  {author.initials}
+            {authors.map((author) => (
+              <div key={author.id} className="card-reveal rounded-3xl bg-card p-8 text-center shadow-card">
+                <div className="relative mx-auto flex h-20 w-20 items-center justify-center overflow-hidden rounded-full bg-secondary text-2xl font-extrabold text-white">
+                  {canRenderCmsImageSrc(author.image) ? (
+                    <Image src={author.image} alt={author.name} fill unoptimized className="object-cover" />
+                  ) : (
+                    <span className="gradient-brand flex h-full w-full items-center justify-center">
+                      {getAuthorInitials(author.name)}
+                    </span>
+                  )}
                 </div>
                 <p className="mt-5 text-xl font-bold text-primary">{author.name}</p>
-                <p className="mt-2 text-muted-foreground">{author.role}</p>
-                <a href={`/publications/${author.slug}`} className="mt-5 inline-flex text-sm font-semibold text-accent">
-                  View Their Books
-                </a>
+                <p className="mt-2 text-muted-foreground">{author.designation}</p>
+                <Link href="/authors" className="mt-5 inline-flex text-sm font-semibold text-accent">
+                  View Author Directory
+                </Link>
               </div>
             ))}
           </div>

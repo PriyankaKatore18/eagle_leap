@@ -23,18 +23,18 @@ export default function AuthorDashboardPage() {
         <div className="rounded-3xl bg-card p-8 shadow-card">
           <h2 className="text-2xl font-bold text-primary">Published Works</h2>
           <div className="mt-6 space-y-4 text-muted-foreground">
-            <p>• Multidisciplinary Perspectives on Learning</p>
-            <p>• Research Methods for Applied Scholarship</p>
-            <p>• Digital Literacy and Academic Growth</p>
+            <p>- Banking and Insurance Service</p>
+            <p>- Dynamics of Management - II</p>
+            <p>- Fundamentals of Financial Accounting</p>
           </div>
         </div>
         <div className="rounded-3xl bg-card p-8 shadow-card">
           <h2 className="text-2xl font-bold text-primary">Dashboard Controls</h2>
           <div className="mt-6 space-y-4 text-muted-foreground">
-            <p>• Review manuscript status</p>
-            <p>• Access certificates and PDFs</p>
-            <p>• View royalty and earning details</p>
-            <p>• Manage profile and account settings</p>
+            <p>- Review manuscript status</p>
+            <p>- Access certificates and PDFs</p>
+            <p>- View royalty and earning details</p>
+            <p>- Manage profile and account settings</p>
           </div>
         </div>
       </div>

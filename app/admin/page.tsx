@@ -1,5 +1,5 @@
-import { AdminOverview } from "@/components/site/admin/admin-overview";
+import { redirect } from "next/navigation";
 
 export default function AdminPage() {
-  return <AdminOverview />;
+  redirect("/admin/cms");
 }

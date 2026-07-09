@@ -2,10 +2,9 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ArrowLeft, FlaskConical, ShieldCheck } from "lucide-react";
+import { ArrowLeft, LayoutTemplate } from "lucide-react";
 import type { ReactNode } from "react";
 
-import { adminModules } from "@/data/admin-data";
 import type { DemoSessionUser } from "@/lib/demo-auth";
 import { cn } from "@/lib/utils";
 
@@ -29,7 +28,7 @@ export function AdminShell({ children, user }: AdminShellProps) {
               <p className="text-sm font-semibold uppercase tracking-[0.28em] text-accent">Admin Panel</p>
               <h1 className="mt-4 text-3xl font-extrabold">Eagle Leap Control Room</h1>
               <p className="mt-3 text-sm text-white/80">
-                CMS, commerce, publications, leads, and role-based operations inside the same brand-safe system.
+                CMS-only management for books, authors, blogs, publications, and homepage content.
               </p>
               <Link href="/" className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-accent">
                 <ArrowLeft className="h-4 w-4" /> Back to website
@@ -59,52 +58,25 @@ export function AdminShell({ children, user }: AdminShellProps) {
               <p className="text-xs font-semibold uppercase tracking-[0.24em] text-muted-foreground">Modules</p>
               <nav className="mt-4 grid gap-2">
                 <Link
-                  href="/admin"
+                  href="/admin/cms"
                   className={cn(
-                    "flex items-center justify-between rounded-2xl border px-4 py-3 text-sm font-semibold transition-colors",
-                    pathname === "/admin"
+                    "flex items-center gap-3 rounded-2xl border px-4 py-3 text-sm transition-colors",
+                    pathname === "/admin/cms"
                       ? "border-primary/30 bg-primary text-primary-foreground"
                       : "border-border bg-background text-primary hover:border-primary/20 hover:bg-secondary",
                   )}
                 >
-                  <span>Overview</span>
-                  <ShieldCheck className="h-4 w-4" />
+                  <LayoutTemplate className="h-4 w-4 shrink-0" />
+                  <span className="font-semibold">CMS</span>
                 </Link>
-                <Link
-                  href="/admin/testing"
-                  className={cn(
-                    "flex items-center justify-between rounded-2xl border px-4 py-3 text-sm font-semibold transition-colors",
-                    pathname === "/admin/testing"
-                      ? "border-primary/30 bg-primary text-primary-foreground"
-                      : "border-border bg-background text-primary hover:border-primary/20 hover:bg-secondary",
-                  )}
-                >
-                  <span>Testing</span>
-                  <FlaskConical className="h-4 w-4" />
-                </Link>
-                {adminModules.map((item) => (
-                  <Link
-                    key={item.slug}
-                    href={`/admin/${item.slug}`}
-                    className={cn(
-                      "flex items-center gap-3 rounded-2xl border px-4 py-3 text-sm transition-colors",
-                      pathname === `/admin/${item.slug}`
-                        ? "border-primary/30 bg-primary text-primary-foreground"
-                        : "border-border bg-background text-primary hover:border-primary/20 hover:bg-secondary",
-                    )}
-                  >
-                    <item.icon className="h-4 w-4 shrink-0" />
-                    <span className="font-semibold">{item.label}</span>
-                  </Link>
-                ))}
               </nav>
             </div>
 
             <div className="mt-6 rounded-3xl border border-primary/10 bg-secondary p-5">
-              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-muted-foreground">RBAC</p>
-              <h2 className="mt-3 text-lg font-bold text-primary">Role-based access ready</h2>
+              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-muted-foreground">Scope</p>
+              <h2 className="mt-3 text-lg font-bold text-primary">CMS only</h2>
               <p className="mt-2 text-sm text-muted-foreground">
-                Backend APIs already support JWT and scoped admin roles for content, publication, store, and operational access.
+                This admin area is limited to website content management.
               </p>
             </div>
           </div>

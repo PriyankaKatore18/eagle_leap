@@ -1,8 +1,8 @@
-CREATE DATABASE IF NOT EXISTS `eagleleap`
+CREATE DATABASE IF NOT EXISTS `eagle_leap_main`
   CHARACTER SET utf8mb4
   COLLATE utf8mb4_unicode_ci;
 
-USE `eagleleap`;
+USE `eagle_leap_main`;
 
 CREATE TABLE IF NOT EXISTS roles (
   id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -806,4 +806,123 @@ CREATE TABLE IF NOT EXISTS analytics_page_views (
   UNIQUE KEY uq_analytics_page_views_slug (page_slug),
   KEY idx_analytics_page_views_view_count (view_count),
   KEY idx_analytics_page_views_last_viewed_at (last_viewed_at)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS cms_products (
+  id VARCHAR(64) NOT NULL,
+  slug VARCHAR(160) NOT NULL,
+  title VARCHAR(255) NOT NULL,
+  author_name VARCHAR(191) NOT NULL,
+  category VARCHAR(120) NOT NULL,
+  format ENUM('Ebook', 'Hard Copy', 'Both') NOT NULL DEFAULT 'Both',
+  price VARCHAR(80) NOT NULL,
+  offer_price VARCHAR(80) NULL,
+  stock VARCHAR(120) NOT NULL,
+  isbn VARCHAR(80) NOT NULL,
+  publication_year VARCHAR(12) NOT NULL,
+  description LONGTEXT NOT NULL,
+  cover VARCHAR(255) NOT NULL,
+  featured TINYINT(1) NOT NULL DEFAULT 0,
+  new_arrival TINYINT(1) NOT NULL DEFAULT 0,
+  popular TINYINT(1) NOT NULL DEFAULT 0,
+  status ENUM('draft', 'active', 'out_of_stock', 'archived') NOT NULL DEFAULT 'active',
+  created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  UNIQUE KEY uq_cms_products_slug (slug),
+  KEY idx_cms_products_flags (featured, new_arrival, popular),
+  KEY idx_cms_products_status (status)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS cms_publications (
+  id VARCHAR(64) NOT NULL,
+  slug VARCHAR(160) NOT NULL,
+  title VARCHAR(255) NOT NULL,
+  author_name VARCHAR(191) NOT NULL,
+  publication_year VARCHAR(12) NOT NULL,
+  edition VARCHAR(100) NOT NULL,
+  publication_type ENUM('Book', 'ISBN Paper', 'Edited Book') NOT NULL DEFAULT 'Book',
+  category ENUM('Books', 'Edited Books', 'Articles', 'Chapters', 'Papers') NOT NULL DEFAULT 'Books',
+  isbn VARCHAR(80) NOT NULL,
+  publication_date VARCHAR(80) NOT NULL,
+  description LONGTEXT NOT NULL,
+  cover VARCHAR(255) NOT NULL,
+  featured TINYINT(1) NOT NULL DEFAULT 0,
+  pdf_url VARCHAR(255) NULL,
+  certificate_url VARCHAR(255) NULL,
+  created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  UNIQUE KEY uq_cms_publications_slug (slug),
+  KEY idx_cms_publications_type_category (publication_type, category),
+  KEY idx_cms_publications_featured (featured)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS cms_authors (
+  id VARCHAR(64) NOT NULL,
+  slug VARCHAR(160) NOT NULL,
+  name VARCHAR(191) NOT NULL,
+  designation VARCHAR(150) NOT NULL,
+  bio TEXT NOT NULL,
+  image VARCHAR(255) NOT NULL,
+  website VARCHAR(255) NULL,
+  featured TINYINT(1) NOT NULL DEFAULT 0,
+  status ENUM('draft', 'published') NOT NULL DEFAULT 'published',
+  created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  UNIQUE KEY uq_cms_authors_slug (slug),
+  KEY idx_cms_authors_featured_status (featured, status)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS cms_blogs (
+  id VARCHAR(64) NOT NULL,
+  slug VARCHAR(160) NOT NULL,
+  title VARCHAR(255) NOT NULL,
+  excerpt TEXT NOT NULL,
+  content LONGTEXT NOT NULL,
+  featured_image VARCHAR(255) NOT NULL,
+  author_name VARCHAR(191) NOT NULL,
+  category VARCHAR(120) NOT NULL,
+  publish_at VARCHAR(32) NOT NULL,
+  featured TINYINT(1) NOT NULL DEFAULT 0,
+  status ENUM('draft', 'review', 'published', 'scheduled') NOT NULL DEFAULT 'published',
+  created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  UNIQUE KEY uq_cms_blogs_slug (slug),
+  KEY idx_cms_blogs_status_date (status, publish_at),
+  FULLTEXT KEY ft_cms_blogs_title_content (title, content)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS cms_testimonials (
+  id VARCHAR(64) NOT NULL,
+  slug VARCHAR(160) NOT NULL,
+  name VARCHAR(191) NOT NULL,
+  designation VARCHAR(191) NOT NULL,
+  review TEXT NOT NULL,
+  rating TINYINT UNSIGNED NOT NULL DEFAULT 5,
+  home TINYINT(1) NOT NULL DEFAULT 1,
+  packages TINYINT(1) NOT NULL DEFAULT 1,
+  about TINYINT(1) NOT NULL DEFAULT 1,
+  status ENUM('draft', 'published', 'archived') NOT NULL DEFAULT 'published',
+  created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  UNIQUE KEY uq_cms_testimonials_slug (slug),
+  KEY idx_cms_testimonials_status_home (status, home)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS cms_home_feature (
+  id TINYINT UNSIGNED NOT NULL DEFAULT 1,
+  left_eyebrow VARCHAR(120) NOT NULL,
+  left_title TEXT NOT NULL,
+  left_highlights_json TEXT NOT NULL,
+  right_highlights_json TEXT NOT NULL,
+  right_eyebrow VARCHAR(120) NOT NULL,
+  right_title TEXT NOT NULL,
+  right_description TEXT NOT NULL,
+  image_src VARCHAR(255) NOT NULL,
+  updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

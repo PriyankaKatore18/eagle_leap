@@ -5,7 +5,7 @@ import { buildRedirectPath, findDemoUser, sanitizeDemoUser } from "@/lib/demo-au
 import { setDemoSession } from "@/lib/demo-session";
 
 const loginSchema = z.object({
-  role: z.enum(["buyer", "author", "distributor", "admin"]),
+  role: z.literal("admin"),
   email: z.string().email(),
   password: z.string().min(6),
 });
@@ -15,7 +15,7 @@ export async function POST(request: Request) {
   const parsed = loginSchema.safeParse(body);
 
   if (!parsed.success) {
-    return NextResponse.json({ message: "Missing or invalid login credentials." }, { status: 400 });
+    return NextResponse.json({ message: "Only admin login is enabled." }, { status: 400 });
   }
 
   const user = findDemoUser(parsed.data.email, parsed.data.role);
@@ -23,10 +23,7 @@ export async function POST(request: Request) {
   if (!user) {
     return NextResponse.json(
       {
-        message:
-          parsed.data.role === "admin"
-            ? "Admin testing account not found."
-            : `No ${parsed.data.role} account exists for this email. Please register first.`,
+        message: "Admin account not found.",
       },
       { status: 401 },
     );

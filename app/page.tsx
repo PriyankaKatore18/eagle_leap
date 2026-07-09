@@ -10,6 +10,7 @@ import { SiteShell } from "@/components/site/site-shell";
 import { SectionHeading } from "@/components/site/section-heading";
 import { serviceCards } from "@/data/site-data";
 import { TestimonialsCarousel } from "@/components/site/testimonials-carousel";
+import { getCmsContent } from "@/lib/cms-store";
 import { createMetadata } from "@/lib/seo";
 
 export const metadata = createMetadata({
@@ -75,7 +76,13 @@ const publishingJourney = [
   },
 ];
 
-export default function HomePage() {
+export const dynamic = "force-dynamic";
+
+export default async function HomePage() {
+  const content = await getCmsContent();
+  const books = content.products.filter((product) => product.status !== "draft" && product.status !== "archived");
+  const testimonials = content.testimonials.filter((testimonial) => testimonial.status === "published" && testimonial.home !== false);
+
   return (
     <SiteShell>
       <HomeHeroCarousel />
@@ -112,7 +119,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <FeaturedBooksCarousel />
+      <FeaturedBooksCarousel books={books} />
 
       <section className="bg-secondary py-24">
         <div className="container-custom">
@@ -191,7 +198,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <TestimonialsCarousel />
+      <TestimonialsCarousel testimonials={testimonials} />
 
       <CtaBand
         title="Ready to Publish Your Work?"

@@ -2,7 +2,7 @@
 
 Primary database connection for this project:
 
-- Database: `eagleleap`
+- Database: `eagle_leap_main`
 - Host: `localhost`
 - Port: `3306`
 - Username: `root`
@@ -19,6 +19,7 @@ Notes:
 
 - `schema.sql` is idempotent and uses `CREATE DATABASE IF NOT EXISTS` / `CREATE TABLE IF NOT EXISTS`.
 - `seed.sql` inserts baseline roles, permissions, CMS pages, sample content, and default users.
+- The Next.js admin panel uses compact `cms_*` tables in `eagle_leap_main` for books, publications, authors, blogs, and homepage content.
 - The backend Node service reads matching defaults from `apps/api-node/.env.example`.
 - The Spring Boot reference backend reads matching defaults from `apps/api-spring/src/main/resources/application.yml`.
 

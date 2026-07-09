@@ -16,7 +16,7 @@ describe("demo auth fixtures", () => {
     expect(users[0]?.email).toBe("admin@eagleleap.in");
   });
 
-  it("requires public roles to be registered before login works", () => {
+  it("keeps public users out of the seeded login set", () => {
     expect(findDemoUser("buyer.testing@eagleleap.in", "buyer")).toBeUndefined();
 
     const buyer = createDemoUser({
@@ -36,17 +36,15 @@ describe("demo auth fixtures", () => {
     expect(buildRedirectPath("buyer")).toBe("/buyer");
     expect(buildRedirectPath("author")).toBe("/author");
     expect(buildRedirectPath("distributor")).toBe("/distributor");
-    expect(buildRedirectPath("admin")).toBe("/admin");
+    expect(buildRedirectPath("admin")).toBe("/admin/cms");
   });
 });
 
 describe("admin testing bundle", () => {
-  it("includes the protected testing json link and registration rules", () => {
+  it("includes the protected testing json link and admin credentials", () => {
     const bundle = getAdminTestingBundle();
 
-    expect(bundle.auth.publicRegistrationRequired).toBe(true);
     expect(bundle.links.some((link) => link.href === "/api/testing-data")).toBe(true);
     expect(bundle.auth.fixtures.admin.loginPayload.email).toBe("admin@eagleleap.in");
-    expect(bundle.auth.fixtures.buyer.registerPayload?.email).toBe("buyer.testing@eagleleap.in");
   });
 });

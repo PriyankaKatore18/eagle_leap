@@ -8,6 +8,7 @@ type PageHeroProps = {
   title: string;
   subtitle?: string;
   breadcrumbs?: { label: string; href?: string }[];
+  showBreadcrumbs?: boolean;
   backgroundSrc?: string | StaticImageData;
   backgroundAlt?: string;
   backgroundImageClassName?: string;
@@ -17,6 +18,7 @@ export function PageHero({
   title,
   subtitle,
   breadcrumbs = [],
+  showBreadcrumbs = true,
   backgroundSrc,
   backgroundAlt = "",
   backgroundImageClassName,
@@ -41,24 +43,26 @@ export function PageHero({
         <div className="absolute bottom-0 right-10 h-96 w-96 rounded-full bg-primary-glow blur-3xl" />
       </div>
       <div className="container-custom relative z-10 section-reveal">
-        <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-2 text-sm text-white/80">
-          <Link href="/" className="flex items-center gap-1 hover:text-accent">
-            <Home className="h-4 w-4" /> Home
-          </Link>
-          {breadcrumbs.map((item) => (
-            <span key={item.label} className="flex items-center gap-2">
-              <ChevronRight className="h-4 w-4 opacity-60" />
-              {item.href ? (
-                <Link href={item.href} className="hover:text-accent">
-                  {item.label}
-                </Link>
-              ) : (
-                <span className="font-medium text-accent">{item.label}</span>
-              )}
-            </span>
-          ))}
-        </nav>
-        <h1 className="mt-4 text-[2.4rem] font-extrabold leading-[1.3] text-white md:text-[3rem] lg:text-[3.6rem]">{title}</h1>
+        {showBreadcrumbs ? (
+          <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-2 text-sm text-white/80">
+            <Link href="/" className="flex items-center gap-1 hover:text-accent">
+              <Home className="h-4 w-4" /> Home
+            </Link>
+            {breadcrumbs.map((item) => (
+              <span key={item.label} className="flex items-center gap-2">
+                <ChevronRight className="h-4 w-4 opacity-60" />
+                {item.href ? (
+                  <Link href={item.href} className="hover:text-accent">
+                    {item.label}
+                  </Link>
+                ) : (
+                  <span className="font-medium text-accent">{item.label}</span>
+                )}
+              </span>
+            ))}
+          </nav>
+        ) : null}
+        <h1 className={cn(showBreadcrumbs ? "mt-4" : "mt-0", "text-[2.4rem] font-extrabold leading-[1.3] text-white md:text-[3rem] lg:text-[3.6rem]")}>{title}</h1>
         {subtitle ? <p className="mt-4 max-w-3xl text-lg text-white/80">{subtitle}</p> : null}
       </div>
     </section>

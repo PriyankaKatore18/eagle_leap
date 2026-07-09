@@ -17,8 +17,8 @@ export function AdminTestingPage() {
         </Badge>
         <h1 className="mt-4 text-4xl font-extrabold">Protected testing links, fixtures, and JSON export.</h1>
         <p className="mt-4 max-w-3xl text-white/80">
-          Buyer, author, and distributor users must register first. Use this page to test those flows, access the admin
-          panel, and download the current JSON snapshot.
+          Use this page to verify the single admin login, access the management panel, and download the current JSON
+          snapshot.
         </p>
         <div className="mt-6 flex flex-wrap gap-3">
           <Link
@@ -41,8 +41,8 @@ export function AdminTestingPage() {
           <CardContent className="p-8">
             <div className="flex items-center justify-between gap-4">
               <div>
-                <p className="text-sm font-semibold uppercase tracking-[0.24em] text-muted-foreground">Auth Fixtures</p>
-                <h2 className="mt-3 text-3xl font-bold text-primary">Role-by-role testing data</h2>
+                <p className="text-sm font-semibold uppercase tracking-[0.24em] text-muted-foreground">Auth Fixture</p>
+                <h2 className="mt-3 text-3xl font-bold text-primary">Admin login data</h2>
               </div>
               <Badge variant="outline" className="border-primary/20 text-primary">
                 {fixtureEntries.length} roles
@@ -54,7 +54,6 @@ export function AdminTestingPage() {
                 <TableHeader>
                   <TableRow>
                     <TableHead>Role</TableHead>
-                    <TableHead>Register First</TableHead>
                     <TableHead>Email</TableHead>
                     <TableHead>Password</TableHead>
                     <TableHead>Redirect</TableHead>
@@ -64,7 +63,6 @@ export function AdminTestingPage() {
                   {fixtureEntries.map((fixture) => (
                     <TableRow key={fixture.role}>
                       <TableCell className="font-semibold text-primary">{fixture.role}</TableCell>
-                      <TableCell className="text-muted-foreground">{fixture.registerFirst ? "Yes" : "No"}</TableCell>
                       <TableCell className="text-muted-foreground">{fixture.loginPayload.email}</TableCell>
                       <TableCell className="text-muted-foreground">{fixture.loginPayload.password}</TableCell>
                       <TableCell className="text-muted-foreground">{fixture.redirectTo}</TableCell>
@@ -118,40 +116,33 @@ export function AdminTestingPage() {
           <CardContent className="p-8">
             <div className="flex items-center justify-between gap-4">
               <div>
-                <p className="text-sm font-semibold uppercase tracking-[0.24em] text-muted-foreground">Registered Users</p>
-                <h2 className="mt-3 text-3xl font-bold text-primary">Current public accounts</h2>
+                <p className="text-sm font-semibold uppercase tracking-[0.24em] text-muted-foreground">Access Mode</p>
+                <h2 className="mt-3 text-3xl font-bold text-primary">Public registration disabled</h2>
               </div>
               <Badge variant="outline" className="border-primary/20 text-primary">
-                {testingData.currentRegisteredUsers.length} accounts
+                Admin only
               </Badge>
             </div>
             <div className="mt-6 overflow-hidden rounded-3xl border border-border">
               <Table>
                 <TableHeader>
                   <TableRow>
-                    <TableHead>Name</TableHead>
-                    <TableHead>Role</TableHead>
-                    <TableHead>Email</TableHead>
-                    <TableHead>Created</TableHead>
+                    <TableHead>Area</TableHead>
+                    <TableHead>Status</TableHead>
+                    <TableHead>Notes</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
-                  {testingData.currentRegisteredUsers.length ? (
-                    testingData.currentRegisteredUsers.map((user) => (
-                      <TableRow key={user.id}>
-                        <TableCell className="font-semibold text-primary">{user.name}</TableCell>
-                        <TableCell className="text-muted-foreground">{user.role}</TableCell>
-                        <TableCell className="text-muted-foreground">{user.email}</TableCell>
-                        <TableCell className="text-muted-foreground">{new Date(user.createdAt).toLocaleString("en-IN")}</TableCell>
-                      </TableRow>
-                    ))
-                  ) : (
-                    <TableRow>
-                      <TableCell colSpan={4} className="py-10 text-center text-muted-foreground">
-                        No buyer, author, or distributor accounts have been registered yet.
-                      </TableCell>
-                    </TableRow>
-                  )}
+                  <TableRow>
+                    <TableCell className="font-semibold text-primary">Login</TableCell>
+                    <TableCell className="text-muted-foreground">Admin only</TableCell>
+                    <TableCell className="text-muted-foreground">Use admin@eagleleap.in with password admin123.</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-semibold text-primary">Registration</TableCell>
+                    <TableCell className="text-muted-foreground">Disabled</TableCell>
+                    <TableCell className="text-muted-foreground">/register redirects to the admin login.</TableCell>
+                  </TableRow>
                 </TableBody>
               </Table>
             </div>

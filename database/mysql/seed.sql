@@ -1,4 +1,4 @@
-USE `eagleleap`;
+USE `eagle_leap_main`;
 
 SET @now = NOW();
 
@@ -155,12 +155,12 @@ INSERT INTO publications (
   meta_description,
   created_by_user_id
 )
-SELECT UUID(), 'multidisciplinary-perspectives-on-learning', 'Multidisciplinary Perspectives on Learning', 'Dr. Priya Kulkarni', au.id, 'Edited Book', 'Edited Books', '978-93-00000-11-1', 'First Edition', '2026-03-14', 2026, 'A curated edited volume featuring multidisciplinary research on education, management, and humanities.', 1, 'Multidisciplinary Perspectives on Learning', 'Edited book publication detail page.', admin.id
+SELECT UUID(), 'banking-and-insurance-service', 'Banking and Insurance Service', 'Dr. Nandkishor N. Dhondge, Prof. Pooja P. Ghulaxe, Prof. Apeksha G. Dubey, Prof. Vishakha V. Patil', au.id, 'Book', 'Books', '978-81-996327-5-2', 'First Edition', '2026-01-01', 2026, 'A Sant Gadge Baba Amravati University NEP 2020 commerce textbook for M.Com first year semester I, focused on banking and insurance services.', 1, 'Banking and Insurance Service', 'Banking and insurance service publication detail page.', admin.id
 FROM users au
 JOIN users admin ON admin.email = 'admin@eagleleap.in'
 WHERE au.email = 'author@eagleleap.in'
   AND NOT EXISTS (
-    SELECT 1 FROM publications WHERE slug = 'multidisciplinary-perspectives-on-learning'
+    SELECT 1 FROM publications WHERE slug = 'banking-and-insurance-service'
   );
 
 INSERT INTO products (
@@ -185,11 +185,11 @@ INSERT INTO products (
   purchase_required,
   created_by_user_id
 )
-SELECT UUID(), 'research-methods-for-applied-scholarship', 'Research Methods for Applied Scholarship', 'Prof. Sandesh D. Pahulakr', NULL, 'Academic Books', 'Both', 699.00, 'Printed and secure ebook format with academic-ready presentation.', '978-93-00000-08-1', 2025, 28, 1, 0, 1, 1, 1, 1, 1, admin.id
+SELECT UUID(), 'banking-and-insurance-service', 'Banking and Insurance Service', 'Dr. Nandkishor N. Dhondge, Prof. Pooja P. Ghulaxe, Prof. Apeksha G. Dubey, Prof. Vishakha V. Patil', NULL, 'Commerce', 'Hard Copy', 250.00, 'A Sant Gadge Baba Amravati University NEP 2020 commerce textbook for M.Com first year semester I, focused on banking and insurance services.', '978-81-996327-5-2', 2026, 28, 1, 0, 1, 1, 1, 1, 1, admin.id
 FROM users admin
 WHERE admin.email = 'admin@eagleleap.in'
   AND NOT EXISTS (
-    SELECT 1 FROM products WHERE slug = 'research-methods-for-applied-scholarship'
+    SELECT 1 FROM products WHERE slug = 'banking-and-insurance-service'
   );
 
 INSERT INTO blogs (

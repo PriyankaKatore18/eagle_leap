@@ -1,38 +1,18 @@
 import { adminModules } from "@/data/admin-data";
 
-import { getRegisteredPublicUsers, getTestingFixtures } from "./demo-auth";
+import { getTestingFixtures } from "./demo-auth";
 
 export function getAdminTestingLinks() {
   return [
     {
-      label: "Register Portal",
-      href: "/register",
-      description: "Create buyer, author, and distributor accounts before login.",
+      label: "Admin Login",
+      href: "/login?role=admin",
+      description: "Single admin login for the management panel.",
     },
     {
-      label: "Login Portal",
-      href: "/login",
-      description: "Login for buyer, author, distributor, or admin testing.",
-    },
-    {
-      label: "Buyer Dashboard",
-      href: "/buyer",
-      description: "Protected buyer area. Requires a registered buyer login.",
-    },
-    {
-      label: "Author Dashboard",
-      href: "/author",
-      description: "Protected author area. Requires a registered author login.",
-    },
-    {
-      label: "Distributor Dashboard",
-      href: "/distributor",
-      description: "Protected distributor area. Requires a registered distributor login.",
-    },
-    {
-      label: "Admin Panel",
-      href: "/admin",
-      description: "Protected admin workspace.",
+      label: "CMS Manager",
+      href: "/admin/cms",
+      description: "Protected admin workspace for books, authors, blogs, publications, and homepage content.",
     },
     {
       label: "Admin Testing Page",
@@ -53,23 +33,25 @@ export function getAdminTestingBundle() {
   return {
     generatedAt: new Date().toISOString(),
     auth: {
-      publicRegistrationRequired: true,
+      publicRegistrationRequired: false,
       notes: [
-        "Buyer, author, and distributor accounts are not pre-seeded anymore.",
-        "Admin access is available through the seeded testing account.",
-        "Public role dashboards redirect back to login until the user signs in with the matching role.",
+        "Only the seeded admin account can sign in.",
+        "Buyer, author, and distributor login and registration are disabled.",
+        "Admin access opens the MySQL-backed management panel.",
       ],
       fixtures,
     },
     links: getAdminTestingLinks(),
-    currentRegisteredUsers: getRegisteredPublicUsers(),
-    adminModules: adminModules.map((module) => ({
-      slug: module.slug,
-      label: module.label,
-      title: module.title,
-      href: `/admin/${module.slug}`,
-      access: module.access,
-      sampleRows: module.table.rows.length,
-    })),
+    currentRegisteredUsers: [],
+    adminModules: adminModules
+      .filter((module) => module.slug === "cms")
+      .map((module) => ({
+        slug: module.slug,
+        label: module.label,
+        title: module.title,
+        href: "/admin/cms",
+        access: module.access,
+        sampleRows: module.table.rows.length,
+      })),
   };
 }
