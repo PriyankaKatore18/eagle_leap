@@ -1,5 +1,5 @@
 import dynamic from "next/dynamic";
-import { LockKeyhole, ShieldCheck, ShoppingCart, UserRound } from "lucide-react";
+import { Database, LockKeyhole, ShieldCheck } from "lucide-react";
 
 import { AsyncSectionPlaceholder } from "@/components/site/async-section-placeholder";
 import { PageHero } from "@/components/site/page-hero";
@@ -13,65 +13,44 @@ const AuthPortal = dynamic(() => import("@/components/site/forms/auth-portal").t
 });
 
 export const metadata = createMetadata({
-  title: "Login and Registration",
-  description: "Buyer, author, and distributor registration and login with a clean role-based access experience.",
+  title: "Admin Login",
+  description: "Secure Eagle Leap admin login for managing books, authors, blogs, publications, and CMS content.",
   path: "/login",
 });
 
-type LoginPageProps = {
-  searchParams?: {
-    role?: string;
-  };
-};
-
-function resolveRole(role?: string) {
-  if (role === "author" || role === "buyer" || role === "distributor" || role === "admin") {
-    return role;
-  }
-
-  return "buyer";
-}
-
-export default function LoginPage({ searchParams }: LoginPageProps) {
-  const defaultRole = resolveRole(searchParams?.role);
-
+export default function LoginPage() {
   return (
     <SiteShell>
       <PageHero
-        title="Login and Registration System"
-        subtitle="Buyers, authors, and distributors must create accounts first, then access their role-based dashboards."
-        breadcrumbs={[{ label: "Login" }]}
+        title="Admin Login"
+        subtitle="Sign in once to manage Eagle Leap books, authors, blogs, publications, homepage content, and store records."
+        showBreadcrumbs={false}
       />
 
       <section className="py-24">
         <div className="container-custom grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
           <div className="space-y-6">
             <SectionHeading
-              eyebrow="Access Portals"
-              title="Three focused account journeys, one consistent UI."
-              description="Register and log in as a buyer, author, or distributor while keeping the same premium Eagle Leap experience across all roles."
+              eyebrow="Management Access"
+              title="One secure admin account for the whole CMS."
+              description="Use the admin login to update MySQL-backed content across the public frontend without buyer, author, or distributor account options."
             />
             <div className="grid gap-6">
               {[
                 {
-                  icon: ShoppingCart,
-                  title: "Buyer Login",
-                  text: "Order history, saved address, wishlist, and invoice access.",
-                },
-                {
-                  icon: UserRound,
-                  title: "Author Dashboard",
-                  text: "Published books and papers, sales reports, royalty details, certificates, and manuscript status.",
+                  icon: ShieldCheck,
+                  title: "Single Admin Login",
+                  text: "Only the seeded admin account can access the management panel.",
                 },
                 {
                   icon: LockKeyhole,
-                  title: "Distributor Login",
-                  text: "Discount visibility, 10-20 copy ordering, catalogue access, stock view, and account section.",
+                  title: "Protected Management",
+                  text: "Admin pages redirect here until the correct account is signed in.",
                 },
                 {
-                  icon: ShieldCheck,
-                  title: "Admin Testing",
-                  text: "Use the seeded admin test account to review the admin panel, JSON fixtures, and protected links.",
+                  icon: Database,
+                  title: "MySQL CMS",
+                  text: "Manage books, publications, authors, blogs, and homepage content from one database-backed panel.",
                 },
               ].map((item) => (
                 <div key={item.title} className="rounded-3xl border border-border bg-card p-8 shadow-card">
@@ -82,7 +61,7 @@ export default function LoginPage({ searchParams }: LoginPageProps) {
               ))}
             </div>
           </div>
-          <AuthPortal defaultRole={defaultRole} />
+          <AuthPortal />
         </div>
       </section>
     </SiteShell>

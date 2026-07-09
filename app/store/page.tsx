@@ -148,7 +148,7 @@ export default async function StorePage() {
             centered
           />
           <div className="mt-14 grid gap-6 lg:grid-cols-3">
-            {products.filter((item) => item.featured).slice(0, 3).map((item) => (
+            {products.slice(0, 7).map((item) => (
               <ProductCard key={item.slug} item={item} />
             ))}
           </div>

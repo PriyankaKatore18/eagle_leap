@@ -121,7 +121,7 @@ if (!globalStore.__eagleLeapDemoUsers__) {
 }
 
 export function buildRedirectPath(role: DemoAuthRole) {
-  return role === "admin" ? "/admin" : `/${role}`;
+  return role === "admin" ? "/admin/cms" : `/${role}`;
 }
 
 export function sanitizeDemoUser(user: DemoUser): DemoSessionUser {
@@ -138,7 +138,9 @@ export function getRegisteredPublicUsers() {
 }
 
 export function getTestingFixtures() {
-  return structuredClone(registrationFixtures);
+  return structuredClone({
+    admin: registrationFixtures.admin,
+  });
 }
 
 export function findDemoUser(email: string, role: DemoAuthRole) {

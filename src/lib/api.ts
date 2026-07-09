@@ -1,5 +1,5 @@
 type LoginPayload = {
-  role?: "buyer" | "author" | "distributor" | "admin";
+  role?: "admin";
   email?: string;
   password?: string;
 };

@@ -39,7 +39,7 @@ export const paperSubmissionSchema = z.object({
 });
 
 export const loginSchema = z.object({
-  role: z.enum(["buyer", "author", "distributor", "admin"]),
+  role: z.literal("admin"),
   email: z.string().email("Enter a valid email address."),
   password: z.string().min(6, "Password should be at least 6 characters."),
 });

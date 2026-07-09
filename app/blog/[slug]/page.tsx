@@ -1,15 +1,29 @@
+import Image from "next/image";
 import { notFound } from "next/navigation";
 
 import { CtaBand } from "@/components/site/cta-band";
 import { PageHero } from "@/components/site/page-hero";
 import { SiteShell } from "@/components/site/site-shell";
-import { getBlogBySlug } from "@/data/site-data";
+import { resolveCmsMediaSrcOrFallback } from "@/lib/cms-media";
+import { getCmsBlogBySlug } from "@/lib/cms-store";
 import { createMetadata } from "@/lib/seo";
 
-export async function generateMetadata({ params }: { params: { slug: string } }) {
-  const post = getBlogBySlug(params.slug);
+function formatBlogDate(value: string) {
+  const parsed = new Date(value);
+  if (Number.isNaN(parsed.getTime())) {
+    return value;
+  }
 
-  if (!post) {
+  return new Intl.DateTimeFormat("en-IN", {
+    dateStyle: "medium",
+    timeZone: "Asia/Kolkata",
+  }).format(parsed);
+}
+
+export async function generateMetadata({ params }: { params: { slug: string } }) {
+  const post = await getCmsBlogBySlug(params.slug);
+
+  if (!post || post.status !== "published") {
     return createMetadata({
       title: "Blog Not Found",
       description: "The requested article could not be found.",
@@ -24,41 +38,43 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   });
 }
 
-export default function BlogDetailPage({ params }: { params: { slug: string } }) {
-  const post = getBlogBySlug(params.slug);
+export const dynamic = "force-dynamic";
 
-  if (!post) {
+export default async function BlogDetailPage({ params }: { params: { slug: string } }) {
+  const post = await getCmsBlogBySlug(params.slug);
+
+  if (!post || post.status !== "published") {
     notFound();
   }
 
   return (
     <SiteShell>
-      <PageHero
-        title={post.title}
-        subtitle={post.excerpt}
-        breadcrumbs={[{ label: "Blog", href: "/blog" }, { label: post.title }]}
-      />
+      <PageHero title={post.title} subtitle={post.excerpt} breadcrumbs={[{ label: "Blog", href: "/blog" }, { label: post.title }]} />
 
       <section className="py-24">
-        <div className="container-custom max-w-4xl">
-          <article className="rounded-[2rem] border border-border bg-card p-10 shadow-card">
-            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-accent">{post.category}</p>
-            <p className="mt-3 text-sm text-muted-foreground">{post.publishDate}</p>
-            <div className="prose prose-slate mt-8 max-w-none">
-              <p>
-                Eagle Leap Publication structures its publishing and printing ecosystem around clarity, credibility,
-                and reader-ready execution. This article expands on that approach with practical takeaways for authors,
-                researchers, and institutions planning their next release.
+        <div className="container-custom max-w-5xl">
+          <article className="overflow-hidden rounded-[2rem] border border-border bg-card shadow-card">
+            <div className="relative aspect-[16/9] bg-secondary">
+              <Image
+                src={resolveCmsMediaSrcOrFallback(post.featuredImage)}
+                alt={post.title}
+                fill
+                priority
+                sizes="(min-width: 1024px) 960px, 100vw"
+                className="object-cover"
+              />
+            </div>
+            <div className="p-8 md:p-10">
+              <div className="flex flex-wrap items-center gap-3 text-xs font-semibold uppercase tracking-[0.24em]">
+                <span className="text-accent">{post.category}</span>
+                {post.featured ? <span className="rounded-full bg-accent/10 px-3 py-1 text-accent">Featured</span> : null}
+              </div>
+              <p className="mt-3 text-sm text-muted-foreground">
+                {formatBlogDate(post.publishAt)} · {post.author}
               </p>
-              <p>
-                From ISBN and ISSN workflows to manuscript preparation, discovery, printing quality, and catalogue
-                visibility, the goal is always the same: reduce friction while keeping the process professional and
-                transparent.
-              </p>
-              <p>
-                As the platform grows, articles like this will connect directly to the CMS-driven blog system so the
-                team can publish updated knowledge resources without changing the frontend architecture.
-              </p>
+              <div className="mt-8 space-y-5 whitespace-pre-line text-base leading-relaxed text-muted-foreground">
+                {post.content}
+              </div>
             </div>
           </article>
         </div>

@@ -1,5 +1,5 @@
-import { AdminTestingPage } from "@/components/site/admin/admin-testing-page";
+import { redirect } from "next/navigation";
 
 export default function AdminTestingRoute() {
-  return <AdminTestingPage />;
+  redirect("/admin/cms");
 }

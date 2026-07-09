@@ -5,14 +5,23 @@ import Image, { type StaticImageData } from "next/image";
 
 import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "@/components/ui/carousel";
 import { SectionHeading } from "@/components/site/section-heading";
+import type { ProductRecord } from "@/data/catalog-data";
+import { resolveCmsMediaSrc } from "@/lib/cms-media";
 import featuredBook1 from "@/assets/featured-books/featured-book-1.jpg";
 import featuredBook2 from "@/assets/featured-books/featured-book-2.jpg";
 import featuredBook3 from "@/assets/featured-books/featured-book-3.jpg";
 import featuredBook4 from "@/assets/featured-books/featured-book-4.png";
 import featuredBook5 from "@/assets/featured-books/featured-book-5.jpg";
 import featuredBook6 from "@/assets/featured-books/featured-book-6.jpg";
+import featuredBook7 from "@/assets/featured-books/featured-book-7.jpg";
 
-const featuredBooks = [
+type FeaturedBook = {
+  title: string;
+  cover: string | StaticImageData;
+  description: string;
+};
+
+const staticFeaturedBooks = [
   {
     title: "Banking and Insurance Service",
     cover: featuredBook1,
@@ -43,10 +52,22 @@ const featuredBooks = [
     cover: featuredBook6,
     description: "A clear guide to bookkeeping, financial statements, and essential accounting principles.",
   },
-] as const satisfies ReadonlyArray<{ title: string; cover: StaticImageData; description: string }>;
+  {
+    title: "The Meaning We Withhold: Terrorism, Crisis, and the Cost of Ambiguity",
+    cover: featuredBook7,
+    description: "A strategic studies book examining terrorism, ambiguity, and the cost of crisis-driven silence.",
+  },
+] as const satisfies ReadonlyArray<FeaturedBook>;
 
-export function FeaturedBooksCarousel() {
+export function FeaturedBooksCarousel({ books = [] }: { books?: ProductRecord[] }) {
   const [carouselApi, setCarouselApi] = React.useState<CarouselApi | null>(null);
+  const featuredBooks: FeaturedBook[] = books.length
+    ? books.map((book) => ({
+        title: book.title,
+        cover: resolveCmsMediaSrc(book.cover),
+        description: book.description,
+      }))
+    : [...staticFeaturedBooks];
 
   React.useEffect(() => {
     if (!carouselApi || typeof window === "undefined") {
@@ -67,7 +88,7 @@ export function FeaturedBooksCarousel() {
           centered
           eyebrow="Featured Books"
           title="Selected covers from recent publications"
-          description="A rotating showcase of six book covers from our latest titles."
+          description="A rotating showcase of seven book covers from our latest titles."
         />
 
         <Carousel opts={{ align: "start", loop: true }} setApi={setCarouselApi} className="mt-12">

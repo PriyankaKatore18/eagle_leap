@@ -1,6 +1,8 @@
 import type { MetadataRoute } from "next";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+import { getCmsBlogs } from "@/lib/cms-store";
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const routes = [
     "",
     "/about",
@@ -13,7 +15,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/contact",
     "/publish-my-book",
     "/login",
-    "/register",
     "/blog",
     "/privacy-policy",
     "/terms-conditions",
@@ -21,10 +22,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/shipping-policy",
   ];
 
-  return routes.map((route) => ({
-    url: `https://www.eagleleappublication.com${route}`,
-    lastModified: new Date(),
-    changeFrequency: "weekly",
-    priority: route === "" ? 1 : 0.8,
-  }));
+  const blogs = await getCmsBlogs();
+  const blogRoutes = blogs
+    .filter((post) => post.status === "published" && post.featured !== false)
+    .map((post) => ({
+      url: `https://www.eagleleappublication.com/blog/${post.slug}`,
+      lastModified: new Date(post.publishAt),
+      changeFrequency: "weekly" as const,
+      priority: 0.7,
+    }));
+
+  return [
+    ...routes.map((route) => ({
+      url: `https://www.eagleleappublication.com${route}`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: route === "" ? 1 : 0.8,
+    })),
+    ...blogRoutes,
+  ];
 }
