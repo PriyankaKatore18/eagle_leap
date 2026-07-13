@@ -944,7 +944,7 @@ export function AdminCmsPage({ initialContent, storageLabel }: AdminCmsPageProps
           <Card className="rounded-[28px] border-border shadow-card">
             <CardHeader>
               <CardTitle className="text-2xl text-primary">{content.authors.some((item) => item.id === authorDraft.id) ? "Edit author" : "Add author"}</CardTitle>
-              <CardDescription>Author records appear on the authors page and featured author sections.</CardDescription>
+              <CardDescription>Author records support publication, store, and CMS content.</CardDescription>
             </CardHeader>
             <CardContent>
               <form

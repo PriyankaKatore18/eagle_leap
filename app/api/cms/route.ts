@@ -5,7 +5,7 @@ import { getDemoSessionUser } from "@/lib/demo-session";
 import { cmsContentSchema, type CmsContent } from "@/lib/cms-content";
 import { getCmsContent, getCmsSaveSuccessMessage, saveCmsContent } from "@/lib/cms-store";
 
-const CMS_REVALIDATE_PATHS = ["/", "/store", "/publications", "/authors", "/blog", "/about", "/packages"] as const;
+const CMS_REVALIDATE_PATHS = ["/", "/store", "/publications", "/blog", "/about", "/packages"] as const;
 
 function revalidateCmsFrontend() {
   CMS_REVALIDATE_PATHS.forEach((path) => revalidatePath(path));
