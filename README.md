@@ -60,6 +60,8 @@ cp .env.example .env.local
 Frontend variables:
 
 - `NEXT_PUBLIC_API_BASE_URL`: optional. Leave empty to use the built-in Next.js demo routes. Set it to your deployed or local backend URL, for example `http://localhost:4000`.
+- `CMS_STORAGE`: optional. Defaults to `auto`, which uses MySQL only when `MYSQL_*` values are configured and otherwise serves bundled fallback CMS content.
+- `MYSQL_HOST`, `MYSQL_PORT`, `MYSQL_DATABASE`, `MYSQL_USER`, `MYSQL_PASSWORD`: optional for the Next.js CMS/admin layer. Set these only when you have a real MySQL host for durable CMS saves.
 
 If you want to run the standalone Node API, create its env file too:
 
@@ -158,6 +160,7 @@ You can also deploy the frontend as a Node web service on Render, but the simple
 
 - The frontend works without the standalone API because the `app/api/*` routes provide demo behavior for forms and auth.
 - `NEXT_PUBLIC_API_BASE_URL` switches the frontend from demo routes to the external backend.
+- The Next.js CMS works on Vercel without MySQL in `CMS_STORAGE=auto` mode by serving bundled fallback content. Admin changes in fallback mode are in-memory only and can reset on redeploys or serverless cold starts.
 - MySQL is optional in the Node API. If `MYSQL_*` values are omitted, database-backed features stay unconfigured and the health check reports that status.
 - A Spring Boot API scaffold also exists in `apps/api-spring`, but the Express API is the most deployment-ready backend in this repo today.
 

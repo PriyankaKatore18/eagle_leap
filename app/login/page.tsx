@@ -33,7 +33,7 @@ export default function LoginPage() {
             <SectionHeading
               eyebrow="Management Access"
               title="One secure admin account for the whole CMS."
-              description="Use the admin login to update MySQL-backed content across the public frontend without buyer, author, or distributor account options."
+              description="Use the admin login to update CMS content across the public frontend without buyer, author, or distributor account options."
             />
             <div className="grid gap-6">
               {[
@@ -49,8 +49,8 @@ export default function LoginPage() {
                 },
                 {
                   icon: Database,
-                  title: "MySQL CMS",
-                  text: "Manage books, publications, authors, blogs, and homepage content from one database-backed panel.",
+                  title: "CMS Content",
+                  text: "Manage books, publications, authors, blogs, and homepage content from one protected panel.",
                 },
               ].map((item) => (
                 <div key={item.title} className="rounded-3xl border border-border bg-card p-8 shadow-card">
