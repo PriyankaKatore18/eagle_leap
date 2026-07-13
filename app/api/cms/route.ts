@@ -3,7 +3,7 @@ import { revalidatePath } from "next/cache";
 
 import { getDemoSessionUser } from "@/lib/demo-session";
 import { cmsContentSchema, type CmsContent } from "@/lib/cms-content";
-import { getCmsContent, saveCmsContent } from "@/lib/cms-store";
+import { getCmsContent, getCmsSaveSuccessMessage, saveCmsContent } from "@/lib/cms-store";
 
 const CMS_REVALIDATE_PATHS = ["/", "/store", "/publications", "/authors", "/blog", "/about", "/packages"] as const;
 
@@ -20,7 +20,7 @@ export async function GET() {
     return NextResponse.json(content);
   } catch (error) {
     return NextResponse.json(
-      { message: error instanceof Error ? error.message : "The MySQL CMS could not be loaded." },
+      { message: error instanceof Error ? error.message : "The CMS content could not be loaded." },
       { status: 500 },
     );
   }
@@ -45,12 +45,12 @@ export async function PUT(request: Request) {
     revalidateCmsFrontend();
 
     return NextResponse.json({
-      message: "CMS content saved to MySQL and published.",
+      message: getCmsSaveSuccessMessage(),
       content: saved,
     });
   } catch (error) {
     return NextResponse.json(
-      { message: error instanceof Error ? error.message : "The MySQL CMS could not be saved." },
+      { message: error instanceof Error ? error.message : "The CMS content could not be saved." },
       { status: 500 },
     );
   }

@@ -599,14 +599,14 @@ export function AdminCmsPage({ initialContent, storageLabel }: AdminCmsPageProps
         const payload = (await response.json()) as { message?: string; content?: CmsContent };
 
         if (!response.ok || !payload.content) {
-          setStatusMessage(payload.message ?? "MySQL CMS save failed.");
+          setStatusMessage(payload.message ?? "CMS save failed.");
           return;
         }
 
         setSavedContent(payload.content);
         setContent(payload.content);
         setHasUnsavedChanges(false);
-        setStatusMessage(payload.message ?? "CMS content saved to MySQL.");
+        setStatusMessage(payload.message ?? "CMS content saved.");
         loadProductDraft(payload.content.products.find((item) => item.id === selectedProductId) ?? payload.content.products[0]);
         loadPublicationDraft(payload.content.publications.find((item) => item.id === selectedPublicationId) ?? payload.content.publications[0]);
         loadAuthorDraft(payload.content.authors.find((item) => item.id === selectedAuthorId) ?? payload.content.authors[0]);
@@ -615,7 +615,7 @@ export function AdminCmsPage({ initialContent, storageLabel }: AdminCmsPageProps
         window.dispatchEvent(new Event("eagle-leap-cms-updated"));
         router.refresh();
       } catch {
-        setStatusMessage("The MySQL CMS request failed.");
+        setStatusMessage("The CMS request failed.");
       }
     });
   };
@@ -628,10 +628,10 @@ export function AdminCmsPage({ initialContent, storageLabel }: AdminCmsPageProps
             <Badge variant="secondary" className="bg-white/10 text-white">
               Admin CMS
             </Badge>
-            <h1 className="mt-5 max-w-4xl text-4xl font-extrabold leading-tight">Manage Eagle Leap content from MySQL.</h1>
+            <h1 className="mt-5 max-w-4xl text-4xl font-extrabold leading-tight">Manage Eagle Leap website content.</h1>
             <p className="mt-4 max-w-3xl text-sm leading-relaxed text-white/78 sm:text-base">
-              Books, publications, authors, blogs, testimonials, and homepage highlights now save to the same database-backed
-              content layer used by the website.
+              Books, publications, authors, blogs, testimonials, and homepage highlights save to the active content layer used by
+              the website.
             </p>
           </div>
           <div className="grid gap-3 sm:grid-cols-2 xl:min-w-[420px]">
