@@ -54,7 +54,7 @@ export function StoreBrowser({ products }: { products: ProductRecord[] }) {
   }, [author, category, deferredQuery, format, products, sort]);
 
   return (
-    <div className="grid gap-8 lg:grid-cols-[300px_minmax(0,1fr)]">
+    <div className="grid gap-8 lg:grid-cols-[280px_minmax(0,1fr)] xl:grid-cols-[300px_minmax(0,1fr)]">
       <aside className="space-y-5 rounded-3xl border border-border bg-card p-6 shadow-card">
         <div>
           <label className="mb-2 block text-sm font-semibold text-primary">Search</label>
@@ -121,7 +121,7 @@ export function StoreBrowser({ products }: { products: ProductRecord[] }) {
       </aside>
 
       <div className="space-y-8">
-        <div className="flex items-center justify-between rounded-3xl border border-border bg-card px-6 py-4 shadow-card">
+        <div className="flex flex-col items-start gap-2 rounded-3xl border border-border bg-card px-5 py-4 shadow-card sm:flex-row sm:items-center sm:justify-between sm:px-6">
           <p className="text-sm text-muted-foreground">
             Showing <span className="font-bold text-primary">{filtered.length}</span> titles
           </p>

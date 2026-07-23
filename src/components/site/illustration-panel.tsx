@@ -29,14 +29,14 @@ export function IllustrationPanel({
   return (
     <div
       className={cn(
-        "card-reveal flex h-full flex-col overflow-hidden rounded-[2rem] border p-8 shadow-elegant md:p-10",
+        "card-reveal flex h-full flex-col overflow-hidden rounded-[2rem] border p-6 shadow-elegant sm:p-8 md:p-10",
         dark ? "border-white/10 gradient-brand text-white" : "border-border bg-card",
         className,
       )}
     >
       <p className="text-sm font-semibold uppercase tracking-[0.28em] text-accent">{eyebrow}</p>
-      <h3 className={cn("mt-4 text-[2.15rem] font-extrabold leading-[1.28] md:text-[2.45rem]", dark ? "text-white" : "text-primary")}>{title}</h3>
-      {description ? <p className={cn("mt-4 text-base leading-relaxed", dark ? "text-white/80" : "text-muted-foreground")}>{description}</p> : null}
+      <h3 className={cn("mt-4 text-[1.85rem] font-extrabold leading-[1.18] sm:text-[2.15rem] md:text-[2.45rem]", dark ? "text-white" : "text-primary")}>{title}</h3>
+      {description ? <p className={cn("mt-4 text-sm leading-relaxed sm:text-base", dark ? "text-white/80" : "text-muted-foreground")}>{description}</p> : null}
 
       <div
         className={cn(

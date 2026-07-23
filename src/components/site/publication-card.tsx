@@ -28,11 +28,11 @@ export function PublicationCard({ item }: { item: PublicationRecord }) {
           <p className="mt-2 text-sm text-muted-foreground">{item.author}</p>
         </div>
         <p className="flex-1 text-sm leading-relaxed text-muted-foreground">{item.description}</p>
-        <div className="mt-6 flex flex-wrap items-center gap-3 sm:flex-nowrap">
-          <Button asChild size="lg" className="min-h-12 min-w-[8.75rem] justify-center gradient-accent text-accent-foreground">
+        <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+          <Button asChild size="lg" className="min-h-12 w-full justify-center gradient-accent text-accent-foreground sm:min-w-0 sm:flex-1">
             <Link href={`/publications/${item.slug}`}>View Details</Link>
           </Button>
-          <Button asChild size="lg" variant="outline" className="min-h-12 min-w-[8.75rem] justify-center">
+          <Button asChild size="lg" variant="outline" className="min-h-12 w-full justify-center sm:min-w-0 sm:flex-1">
             <Link href={`/publications/${item.slug}#reader`}>View PDF</Link>
           </Button>
         </div>

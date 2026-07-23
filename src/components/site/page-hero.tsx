@@ -24,7 +24,7 @@ export function PageHero({
   backgroundImageClassName,
 }: PageHeroProps) {
   return (
-    <section className="gradient-dark relative overflow-hidden pb-20 pt-32">
+    <section className="gradient-dark relative overflow-hidden pb-16 pt-28 sm:pb-20 sm:pt-32">
       {backgroundSrc ? (
         <div className="absolute inset-0">
           <Image
@@ -62,8 +62,8 @@ export function PageHero({
             ))}
           </nav>
         ) : null}
-        <h1 className={cn(showBreadcrumbs ? "mt-4" : "mt-0", "text-[2.4rem] font-extrabold leading-[1.3] text-white md:text-[3rem] lg:text-[3.6rem]")}>{title}</h1>
-        {subtitle ? <p className="mt-4 max-w-3xl text-lg text-white/80">{subtitle}</p> : null}
+        <h1 className={cn(showBreadcrumbs ? "mt-4" : "mt-0", "text-[2rem] font-extrabold leading-[1.18] text-white sm:text-[2.4rem] md:text-[3rem] lg:text-[3.6rem]")}>{title}</h1>
+        {subtitle ? <p className="mt-4 max-w-3xl text-base text-white/80 sm:text-lg">{subtitle}</p> : null}
       </div>
     </section>
   );

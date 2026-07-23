@@ -1,12 +1,11 @@
-import Link from "next/link";
-import { Instagram, Linkedin, Mail, Target, Telescope } from "lucide-react";
+import { Instagram, Linkedin, Mail } from "lucide-react";
 
+import { AboutStoryShowcase } from "@/components/site/about-story-showcase";
 import { CountUpMetricGrid } from "@/components/site/count-up-metric-grid";
 import { CtaBand } from "@/components/site/cta-band";
-import { PageHero } from "@/components/site/page-hero";
 import { SectionHeading } from "@/components/site/section-heading";
 import { SiteShell } from "@/components/site/site-shell";
-import { heroImages, siteMetrics } from "@/data/site-data";
+import { siteMetrics } from "@/data/site-data";
 import { createMetadata } from "@/lib/seo";
 
 export const metadata = createMetadata({
@@ -61,85 +60,11 @@ export default function AboutPage() {
 
   return (
     <SiteShell>
-      <PageHero
-        title="About Eagle Leap Publication"
-        subtitle="Empowering authors, researchers, and institutions through professional ISBN book publishing and ISSN journal publication, along with complete printing and distribution solutions."
-        breadcrumbs={[{ label: "About Us" }]}
-        backgroundSrc={heroImages.aboutHero}
-        backgroundAlt="Eagle Leap team and publishing collaboration"
-      />
-
-      <section className="py-24">
-        <div className="container-custom">
-          <div className="section-reveal mx-auto max-w-4xl text-center">
-            <p className="text-xs font-semibold uppercase tracking-[0.34em] text-accent sm:text-sm">Who We Are</p>
-            <h2 className="mt-3 font-display text-[2.2rem] font-extrabold leading-[1.34] text-primary md:text-[2.6rem] lg:text-[2.85rem]">
-              A professional publishing platform built for authors who value quality, transparency, and reach.
-            </h2>
-            <p className="mt-5 text-base leading-relaxed text-muted-foreground md:text-lg">
-              Eagle Leap Publication helps authors, researchers, academicians, and institutions bring manuscripts to
-              life through a clear, collaborative publishing journey.
-            </p>
-          </div>
-
-          <div className="mx-auto mt-12 max-w-4xl space-y-6 text-lg leading-relaxed text-foreground md:text-xl">
-            <p>
-              <strong className="font-semibold text-primary">Eagle Leap Publication</strong> is a professional
-              publishing and printing platform based in India, dedicated to helping independent authors, researchers,
-              and academic institutions turn ideas into polished books and journals.
-            </p>
-            <p>
-              Our <span className="font-semibold text-accent">comprehensive publishing services</span> include editing,
-              cover design, ISBN and ISSN support, print production, and distribution across major marketplaces. Every
-              service is shaped around an <span className="font-semibold text-accent">author-first workflow</span> that
-              keeps the process clear, consistent, and easy to follow.
-            </p>
-            <p>
-              Whether you are publishing your first title or expanding an academic catalogue, our{" "}
-              <span className="font-semibold text-accent">flexible publishing packages</span> are designed to support
-              you at every stage of the journey. From manuscript submission to final release, we manage the technical
-              work so you can stay focused on your writing and research.
-            </p>
-            <p>
-              Authors who publish with us also gain access to our{" "}
-              <Link href="/store" className="font-semibold text-accent hover:underline">
-                Book Store
-              </Link>
-              , helping their work reach readers, institutions, and communities with stronger visibility and
-              credibility.
-            </p>
-          </div>
-        </div>
-      </section>
+      <AboutStoryShowcase />
 
       <section className="pb-24">
         <div className="container-custom">
           <CountUpMetricGrid metrics={siteMetrics} />
-        </div>
-      </section>
-
-      <section className="bg-secondary py-24">
-        <div className="container-custom grid gap-6 lg:grid-cols-2">
-          <div className="card-reveal h-full rounded-3xl bg-card p-10 shadow-card">
-            <Target className="h-12 w-12 text-accent" />
-            <h2 className="mt-6 text-3xl font-extrabold leading-[1.28] text-primary">Our Mission</h2>
-            <p className="mt-4 leading-relaxed text-muted-foreground">
-              At Eagle Leap Publication, our mission is to simplify and professionalize the publishing process for
-              authors, researchers, academicians, and institutions across India. We are committed to providing
-              structured and reliable ISBN-based book publication and ISSN journal publication services that enable
-              individuals to share their knowledge, research, and creative work with a wider audience.
-            </p>
-          </div>
-          <div className="card-reveal h-full rounded-3xl bg-card p-10 shadow-card">
-            <Telescope className="h-12 w-12 text-accent" />
-            <h2 className="mt-6 text-3xl font-extrabold leading-[1.28] text-primary">Our Vision</h2>
-            <p className="mt-4 leading-relaxed text-muted-foreground">
-              Our vision is to establish Eagle Leap Publication as a trusted and recognized name in the field of
-              academic and professional publishing in India. We aspire to build a comprehensive ecosystem that supports
-              both book publishing and journal publishing while encouraging innovation, research excellence, and
-              knowledge sharing across disciplines.
-            </p>
-          </div>
         </div>
       </section>
 
