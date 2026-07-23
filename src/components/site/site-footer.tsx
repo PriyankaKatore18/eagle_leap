@@ -8,14 +8,14 @@ import { SiteLogo } from "./site-logo";
 
 export function SiteFooter() {
   return (
-    <footer className="gradient-dark relative mt-20 overflow-hidden pb-8 pt-20 text-white">
+    <footer className="gradient-dark relative mt-16 overflow-hidden pb-8 pt-16 text-white sm:mt-20 sm:pt-20">
       <div className="pointer-events-none absolute inset-0 opacity-10">
         <div className="absolute right-0 top-0 h-96 w-96 rounded-full bg-accent blur-3xl" />
         <div className="absolute bottom-0 left-0 h-96 w-96 rounded-full bg-primary-glow blur-3xl" />
       </div>
 
       <div className="container-custom relative">
-        <div className="grid gap-10 md:grid-cols-2 xl:grid-cols-4">
+        <div className="grid gap-10 sm:grid-cols-2 xl:grid-cols-4">
           <div>
             <SiteLogo light size="md" variant="stacked" />
             <p className="mt-4 text-sm leading-relaxed text-white/70">
@@ -42,7 +42,7 @@ export function SiteFooter() {
               {navigation.slice(0, 9).map((item) => (
                 <li key={item.href}>
                   <Link href={item.href} className="inline-block hover:translate-x-1 hover:text-accent">
-                    → {item.label}
+                    {"->"} {item.label}
                   </Link>
                 </li>
               ))}
@@ -88,8 +88,8 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-6 text-sm text-white/60 md:flex-row">
-          <p>© {new Date().getFullYear()} {siteConfig.name}. All rights reserved.</p>
+        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-6 text-center text-sm text-white/60 md:flex-row md:text-left">
+          <p>(c) {new Date().getFullYear()} {siteConfig.name}. All rights reserved.</p>
           <p>Designed for a clean, premium publishing experience.</p>
         </div>
       </div>

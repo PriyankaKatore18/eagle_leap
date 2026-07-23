@@ -71,17 +71,17 @@ export function CountUpMetricGrid({ metrics, className }: CountUpMetricGridProps
   }, [parsedMetrics, visible]);
 
   return (
-    <div ref={ref} className={className ?? "grid gap-5 md:grid-cols-2 xl:grid-cols-4"}>
+    <div ref={ref} className={className ?? "grid gap-4 sm:gap-5 md:grid-cols-2 xl:grid-cols-4"}>
       {metrics.map((metric, index) => (
         <article
           key={metric.label}
-          className="flex h-full min-h-[12rem] flex-col justify-between rounded-[2rem] border border-border/80 bg-card p-8 shadow-[0_24px_54px_-38px_rgba(15,23,42,0.28)]"
+          className="flex h-full min-h-[10rem] flex-col justify-between rounded-[2rem] border border-border/80 bg-card p-6 shadow-[0_24px_54px_-38px_rgba(15,23,42,0.28)] sm:min-h-[12rem] sm:p-8"
         >
-          <p className="font-display text-4xl font-extrabold leading-none text-accent md:text-[2.9rem]">
+          <p className="font-display text-[2rem] font-extrabold leading-none text-accent sm:text-4xl md:text-[2.9rem]">
             {animatedValues[index]}
             {parsedMetrics[index]?.suffix}
           </p>
-          <p className="mt-6 max-w-[18rem] text-lg leading-relaxed text-muted-foreground">{metric.label}</p>
+          <p className="mt-5 max-w-[18rem] text-base leading-relaxed text-muted-foreground sm:mt-6 sm:text-lg">{metric.label}</p>
         </article>
       ))}
     </div>

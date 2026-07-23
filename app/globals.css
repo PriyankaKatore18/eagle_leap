@@ -53,11 +53,13 @@
 
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
 
   body {
     @apply bg-background text-foreground font-sans antialiased;
     font-family: var(--font-manrope), system-ui, sans-serif;
+    overflow-x: hidden;
   }
 
   h1,

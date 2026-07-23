@@ -254,7 +254,7 @@ export default function PackagesPage() {
           />
 
           <div className="mt-14 overflow-hidden rounded-[2rem] border border-border bg-card shadow-card">
-            <Table>
+            <Table className="min-w-[760px]">
               <TableHeader>
                 <TableRow className="bg-secondary/60 hover:bg-secondary/60">
                   <TableHead className="min-w-[220px] text-primary">Features & Services</TableHead>
