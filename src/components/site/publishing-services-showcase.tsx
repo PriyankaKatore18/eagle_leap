@@ -29,11 +29,11 @@ const serviceIcons: ServiceIconMap = {
   "Editing & Proofreading": FilePenLine,
   "Cover Design": PenTool,
   "Interior Formatting": Type,
-  "ISBN & Copyright Support": Award,
+  "ISBN & Publishing Support": Award,
   "Premium Book Printing": Printer,
-  "Online Distribution": Globe,
+  "Global Book Distribution": Globe,
   "Edited Book Publication": Files,
-  "Journal Publication": BookMarked,
+  "Journal Publication Services": BookMarked,
   "Thesis to Book": GraduationCap,
   "Bulk Printing": Boxes,
   "Book Marketing": Megaphone,
@@ -230,15 +230,15 @@ export function PublishingServicesShowcase() {
           </div>
 
           <h2 className="mx-auto mt-5 max-w-6xl text-balance font-display text-[2.1rem] font-extrabold leading-[1.04] tracking-[-0.04em] text-primary sm:text-[3rem] lg:text-[4.65rem]">
-            <span className="block">Everything an Author</span>
+            <span className="block">Everything Your Book Needs —</span>
             <span className="block">
-              Needs - <span className="text-accent">All in One Place</span>
+              <span className="text-accent">All in One Place</span>
             </span>
           </h2>
 
           <p className="mx-auto mt-6 max-w-4xl text-base leading-relaxed text-slate-500 sm:text-xl">
-            From editorial support and design to ISBN, printing, distribution, and marketing, our publishing services
-            are built to help every manuscript become a polished, market-ready book.
+            From editorial refinement and professional design to ISBN support, premium printing, global distribution, and
+            book marketing — everything you need to publish with confidence, under one roof.
           </p>
         </div>
 
@@ -265,7 +265,7 @@ export function PublishingServicesShowcase() {
               <span className="flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-white/8">
                 <BookOpenText className="h-5 w-5" />
               </span>
-              <span className="text-center font-display text-base font-bold tracking-[-0.03em] sm:text-[1.45rem]">Explore All Packages</span>
+              <span className="text-center font-display text-base font-bold tracking-[-0.03em] sm:text-[1.45rem]">Explore Publishing Packages</span>
               <span className="flex h-11 w-11 items-center justify-center rounded-full bg-accent text-white">
                 <ArrowRight className="h-5 w-5" />
               </span>

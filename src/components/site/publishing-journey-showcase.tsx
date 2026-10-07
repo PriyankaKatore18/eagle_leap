@@ -29,7 +29,7 @@ const publishingJourney: JourneyStep[] = [
     number: "01",
     side: "left",
     title: "Submit Your Manuscript",
-    description: "Upload your completed manuscript securely through our guided submission flow.",
+    description: "Share your completed manuscript with us to begin your publishing journey. Our team reviews the project and guides you through the next steps.",
     icon: CloudUpload,
     tone: {
       border: "border-[#f5d8be]",
@@ -47,7 +47,7 @@ const publishingJourney: JourneyStep[] = [
     number: "02",
     side: "right",
     title: "Editing & Proofreading",
-    description: "Professional editors polish language, structure, and readability for a polished finish.",
+    description: "Your manuscript is carefully refined for language, clarity, consistency, and readability while preserving your original voice.",
     icon: FilePenLine,
     tone: {
       border: "border-[#ddd0f7]",
@@ -64,8 +64,8 @@ const publishingJourney: JourneyStep[] = [
   {
     number: "03",
     side: "left",
-    title: "Cover Design & Formatting",
-    description: "We create a strong cover and a clean interior layout aligned with your subject.",
+    title: "Design & Formatting",
+    description: "We create a distinctive cover and professionally format the interior to give your book a polished, publication-ready identity.",
     icon: BookOpenText,
     tone: {
       border: "border-[#c6e9ea]",
@@ -82,8 +82,8 @@ const publishingJourney: JourneyStep[] = [
   {
     number: "04",
     side: "right",
-    title: "ISBN & Publishing",
-    description: "ISBN registration, production coordination, and final publishing approvals are handled for you.",
+    title: "ISBN, Printing & Publication",
+    description: "We assist with ISBN allocation, prepare the final files, coordinate quality printing, and bring your book to publication.",
     icon: ScanBarcode,
     tone: {
       border: "border-[#f3deb2]",
@@ -101,7 +101,7 @@ const publishingJourney: JourneyStep[] = [
     number: "05",
     side: "left",
     title: "Global Distribution",
-    description: "Your book is prepared for wider reach through online and direct distribution channels.",
+    description: "Your published book is prepared for wider reach through leading online marketplaces and available distribution channels.",
     icon: Globe,
     tone: {
       border: "border-[#f7cade]",
@@ -272,7 +272,7 @@ export function PublishingJourneyShowcase() {
           </h2>
 
           <p className="mx-auto mt-6 max-w-3xl text-base leading-relaxed text-slate-500 sm:text-xl">
-            From manuscript to marketplace - we guide you every step.
+            From manuscript to marketplace, we guide your book through every stage with care, clarity, and professional support.
           </p>
 
           <div className="mt-6 flex items-center justify-center gap-3">
@@ -362,11 +362,11 @@ export function PublishingJourneyShowcase() {
 
             <div>
               <h3 className="text-[1.55rem] font-extrabold leading-[1.12] text-primary sm:text-[2.2rem]">
-                We don&apos;t just publish books,
-                <br className="hidden sm:block" /> we help create legacies.
+                We don&apos;t just publish books.
+                <br className="hidden sm:block" /> We help bring ideas to life.
               </h3>
               <p className="mt-2 text-base leading-relaxed text-slate-500 sm:text-lg">
-                Your story matters. Let&apos;s bring it to the world.
+                Your manuscript. Your vision. Our publishing expertise.
               </p>
             </div>
           </div>

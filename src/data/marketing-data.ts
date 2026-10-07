@@ -91,51 +91,51 @@ export const ecosystemHighlights = [
 export const serviceCards = [
   {
     title: "Book Publishing",
-    description: "End-to-end support from manuscript to published book with structured guidance at every stage.",
+    description: "End-to-end publishing support, guiding your manuscript from preparation to a professionally published book.",
   },
   {
     title: "Editing & Proofreading",
-    description: "Improve clarity, grammar, formatting, and overall quality with professional editing support.",
+    description: "Professional editorial support to improve clarity, language, consistency, and overall manuscript quality.",
   },
   {
     title: "Cover Design",
-    description: "Custom-designed book covers that create a strong first impression and match your subject.",
+    description: "Distinctive, professionally crafted covers designed to give your book a strong and memorable identity.",
   },
   {
     title: "Interior Formatting",
-    description: "Clean, print-ready layouts with professional typography and publishing standards.",
+    description: "Clean, reader-friendly layouts with professional typography, structure, and print-ready formatting.",
   },
   {
-    title: "ISBN & Copyright Support",
-    description: "Official ISBN registration, barcode generation, and publishing documentation guidance.",
+    title: "ISBN & Publishing Support",
+    description: "Assistance with ISBN allocation, barcode preparation, and essential publication documentation.",
   },
   {
     title: "Premium Book Printing",
-    description: "High-quality paperback and hardcover printing using premium materials.",
+    description: "Professional paperback and hardcover printing with quality materials, sharp output, and refined finishing.",
   },
   {
-    title: "Online Distribution",
-    description: "Make your book available through Amazon, Flipkart, and other online platforms.",
+    title: "Global Book Distribution",
+    description: "Expand your book’s reach through leading online marketplaces and international distribution channels.",
   },
   {
     title: "Edited Book Publication",
-    description: "Complete publication support for edited books, conference proceedings, and institutional volumes.",
+    description: "Complete publishing support for edited volumes, academic collections, conference proceedings, and institutional publications.",
   },
   {
-    title: "Journal Publication",
-    description: "Professional journal publishing with ISSN support, peer-review workflow, and online hosting.",
+    title: "Journal Publication Services",
+    description: "Professional support for academic journal publishing, editorial workflows, ISSN processes, online publication, and journal management.",
   },
   {
     title: "Thesis to Book",
-    description: "Convert dissertations, research projects, and academic work into professionally published books.",
+    description: "Transform dissertations, theses, and academic research into professionally structured, publication-ready books.",
   },
   {
     title: "Bulk Printing",
-    description: "Cost-effective printing solutions for universities, colleges, schools, and organizations.",
+    description: "Reliable and cost-effective book printing solutions for authors, institutions, universities, colleges, and organizations.",
   },
   {
     title: "Book Marketing",
-    description: "Promotional support through social media, author branding, launch campaigns, and digital marketing.",
+    description: "Strategic promotional support through digital campaigns, social media, author branding, and book-launch visibility.",
   },
 ];
 
@@ -157,14 +157,10 @@ export const currentCallForPaper = {
 
 export const testimonials = [
   {
-    name: "Anil Deshmukh",
-    designation: "Author",
-    review: "Smooth publishing process and great support from manuscript consultation to listing.",
-  },
-  {
     name: "Dr. Priya Kulkarni",
-    designation: "Academic Contributor",
-    review: "Highly professional and quick service, especially for edited book publication and author coordination.",
+    designation: "Author & Academic Researcher",
+    review:
+      "From manuscript preparation to the final printed book, the entire process was handled professionally. The team was responsive, transparent, and supportive at every stage. I’m truly pleased with the quality of the final publication.",
   },
   {
     name: "Rohit Sharma",
@@ -309,12 +305,12 @@ export const blogPosts = [
 
 export const founderProfiles = [
   {
-    name: "Sandesh D. Pahulakr",
-    bio: "A visionary publishing professional committed to building a stronger academic publishing ecosystem through reliable ISBN and ISSN-led services for authors, researchers, and institutions.",
+    name: "Sandesh Pahulkar",
+    bio: "Leads publishing operations and author experience, with a focus on quality, clear communication, and a dependable publishing journey from manuscript to market.",
   },
   {
-    name: "Shivprasad D. Pahukar",
-    bio: "A digital publishing strategist focused on combining production quality, structured workflows, and dependable support for modern scholarly publishing.",
+    name: "Shivprasad Paul",
+    bio: "Leads business strategy, technology, and brand development, with a focus on building strong systems, new opportunities, and the long-term growth of Eagle Leap Publication.",
   },
 ];
 
