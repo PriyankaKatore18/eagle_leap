@@ -32,7 +32,7 @@ const trustFeatures: TrustFeature[] = [
     id: "end-to-end-publishing",
     number: "01",
     titleLines: ["End-to-End", "Publishing"],
-    description: "From manuscript submission to final publication, we manage every stage of the publishing process.",
+    description: "From manuscript preparation to final publication, we coordinate every stage with care, clarity, and professional attention.",
     icon: BookOpen,
     watermark: Feather,
   },
@@ -40,15 +40,15 @@ const trustFeatures: TrustFeature[] = [
     id: "professional-book-design",
     number: "02",
     titleLines: ["Professional", "Book Design"],
-    description: "Eye-catching cover designs and clean interior layouts that meet modern publishing standards.",
+    description: "Thoughtfully crafted covers and refined interior layouts designed to give every book a distinctive, publication-ready identity.",
     icon: PenTool,
     watermark: LibraryBig,
   },
   {
     id: "official-isbn-registration",
     number: "03",
-    titleLines: ["Official ISBN", "Registration"],
-    description: "Complete support for ISBN allocation, barcode generation, and publication documentation.",
+    titleLines: ["ISBN", "Support"],
+    description: "Complete assistance with ISBN allocation, barcode preparation, and essential publication details for your book.",
     icon: ShieldCheck,
     watermark: BookMarked,
   },
@@ -56,15 +56,15 @@ const trustFeatures: TrustFeature[] = [
     id: "premium-quality-printing",
     number: "04",
     titleLines: ["Premium Quality", "Printing"],
-    description: "High-quality paperback and hardcover printing with durable materials and professional finishing.",
+    description: "Professionally produced paperback and hardcover books with quality materials, sharp printing, and refined finishing.",
     icon: Printer,
     watermark: BookMarked,
   },
   {
     id: "nationwide-distribution",
     number: "05",
-    titleLines: ["Nationwide", "Distribution"],
-    description: "Reach readers across India through Amazon, Flipkart, and direct distribution channels.",
+    titleLines: ["Global Book", "Distribution"],
+    description: "Expand your book’s reach beyond borders through leading online marketplaces and international distribution channels.",
     icon: Truck,
     watermark: MapPinned,
   },
@@ -72,7 +72,7 @@ const trustFeatures: TrustFeature[] = [
     id: "dedicated-author-support",
     number: "06",
     titleLines: ["Dedicated Author", "Support"],
-    description: "A dedicated team to guide you throughout the publishing journey and answer your questions.",
+    description: "Clear, responsive, and dependable communication throughout your publishing journey — from first conversation to final book.",
     icon: Headset,
     watermark: Handshake,
   },
@@ -227,19 +227,21 @@ export function AuthorTrustShowcase() {
           </div>
 
           <h2 className="mx-auto mt-5 max-w-5xl text-balance font-display text-[2.1rem] font-extrabold leading-[1.06] tracking-[-0.04em] text-primary sm:text-[3rem] lg:text-[4.6rem]">
-            <span className="block">A publishing partner built around</span>
+            <span className="block">Publishing with purpose.</span>
             <span className="mt-1 block">
-              <span className="font-serif italic text-accent">quality</span>
-              <span className="text-primary">, </span>
-              <span className="font-serif italic text-accent">clarity</span>
-              <span className="text-primary">, and </span>
-              <span className="font-serif italic text-accent">support</span>
+              <span className="text-primary">Built on </span>
+              <span className="font-serif italic text-accent">quality, clarity,</span>
+              <span className="text-primary"> and </span>
+              <span className="font-serif italic text-accent">trust.</span>
             </span>
           </h2>
 
           <p className="mx-auto mt-6 max-w-3xl text-base leading-relaxed text-slate-600 sm:text-xl">
-            We combine editorial care, premium design, quality printing, ISBN support, and dependable communication to
-            help authors publish with confidence.
+            From careful editorial support and thoughtful book design to quality printing, ISBN assistance, and responsive
+            communication, we bring every stage of publishing together under one roof.
+            <strong className="mt-3 block font-semibold text-primary">
+              Because every manuscript deserves to become a book its author is proud to publish.
+            </strong>
           </p>
         </div>
 
@@ -266,7 +268,7 @@ export function AuthorTrustShowcase() {
             className="h-auto rounded-full bg-primary px-2 py-2 text-white shadow-[0_24px_55px_-28px_rgba(15,23,42,0.4)] hover:bg-primary"
           >
             <Link href="/publish-my-book" className="inline-flex flex-wrap items-center justify-center gap-3 rounded-full px-4 py-1 pr-2 sm:gap-4 sm:pl-8">
-              <span className="text-center font-display text-base font-bold tracking-[-0.03em] sm:text-[1.5rem]">Let&apos;s Publish Your Book</span>
+              <span className="text-center font-display text-base font-bold tracking-[-0.03em] sm:text-[1.5rem]">Bring Your Book to Life</span>
               <span className="flex h-12 w-12 items-center justify-center rounded-full bg-accent text-white">
                 <ArrowRight className="h-5 w-5" />
               </span>

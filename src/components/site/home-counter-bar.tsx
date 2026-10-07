@@ -15,7 +15,7 @@ const counterItems: CounterItem[] = [
   { value: "500+", label: "Books Published", icon: BookOpen },
   { value: "1000+", label: "Happy Authors", icon: Users },
   { value: "100+", label: "Institutions", icon: Building2 },
-  { value: "PAN India", label: "Distribution", icon: MapPin },
+  { value: "Global", label: "Distribution", icon: MapPin },
 ];
 
 function parseCounterValue(value: string) {
