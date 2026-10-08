@@ -17,9 +17,9 @@ export function SiteHeader() {
   const headerNavigation = navigation;
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur-md shadow-[0_14px_38px_-24px_rgba(15,23,42,0.35)]">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-slate-200 bg-white shadow-[0_14px_38px_-24px_rgba(15,23,42,0.35)]">
       <div className="container-custom flex h-[4.5rem] items-center gap-4 lg:h-20 lg:gap-6">
-        <SiteLogo variant="horizontal" size="xs" priority />
+        <SiteLogo variant="stacked" size="md" priority />
 
         <nav className="hidden flex-1 items-center justify-center gap-0.5 xl:flex">
           {headerNavigation.map((item) => {

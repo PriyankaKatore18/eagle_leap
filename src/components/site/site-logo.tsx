@@ -13,15 +13,15 @@ type SiteLogoProps = {
 
 export function SiteLogo({ light = false, size = "sm", variant = "stacked", className, priority = false }: SiteLogoProps) {
   const stackedDimensions = {
-    xs: { src: "/brand/eagle-leap-publication-logo.svg", width: 88, height: 78, heightClass: "h-10" },
-    sm: { src: "/brand/eagle-leap-publication-logo.svg", width: 118, height: 105, heightClass: "h-12" },
-    md: { src: "/brand/eagle-leap-publication-logo.svg", width: 156, height: 139, heightClass: "h-16" },
+    xs: { src: "/brand/eagle-leap-publication-logo.jpeg", width: 1145, height: 1145, heightClass: "h-10" },
+    sm: { src: "/brand/eagle-leap-publication-logo.jpeg", width: 1145, height: 1145, heightClass: "h-12" },
+    md: { src: "/brand/eagle-leap-publication-logo.jpeg", width: 1145, height: 1145, heightClass: "h-16" },
   } as const;
 
   const horizontalDimensions = {
-    xs: { src: "/brand/eagle-leap-publication-logo-horizontal.svg", width: 194, height: 52, heightClass: "h-9" },
-    sm: { src: "/brand/eagle-leap-publication-logo-horizontal.svg", width: 236, height: 62, heightClass: "h-11" },
-    md: { src: "/brand/eagle-leap-publication-logo-horizontal.svg", width: 284, height: 75, heightClass: "h-14" },
+    xs: { src: "/brand/eagle-leap-publication-logo.jpeg", width: 1145, height: 1145, heightClass: "h-10" },
+    sm: { src: "/brand/eagle-leap-publication-logo.jpeg", width: 1145, height: 1145, heightClass: "h-12" },
+    md: { src: "/brand/eagle-leap-publication-logo.jpeg", width: 1145, height: 1145, heightClass: "h-16" },
   } as const;
 
   const current = (variant === "horizontal" ? horizontalDimensions : stackedDimensions)[size];

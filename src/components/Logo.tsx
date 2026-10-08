@@ -8,7 +8,7 @@ const Logo = ({ light = false }: { light?: boolean }) => (
       }`}
     >
       <img
-        src="/brand/eagle-leap-publication-logo.svg"
+        src="/brand/eagle-leap-publication-logo.jpeg"
         alt="Eagle Leap Publication"
         width={132}
         height={132}

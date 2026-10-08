@@ -290,10 +290,10 @@ export function AboutStoryShowcase() {
 
                 <div className="absolute left-1/2 top-5 flex h-32 w-32 -translate-x-1/2 items-center justify-center rounded-full border border-[#f1dfcb] bg-white p-4 shadow-[0_28px_72px_-44px_rgba(15,23,42,0.32)] sm:h-36 sm:w-36 lg:top-28 lg:h-44 lg:w-44 lg:p-5">
                   <Image
-                    src="/brand/eagle-leap-publication-logo.svg"
+                    src="/brand/eagle-leap-publication-logo.jpeg"
                     alt="Eagle Leap Publication"
-                    width={156}
-                    height={139}
+                    width={1145}
+                    height={1145}
                     className="h-auto w-[6.3rem] sm:w-[6.75rem] lg:w-[8rem]"
                   />
                 </div>
